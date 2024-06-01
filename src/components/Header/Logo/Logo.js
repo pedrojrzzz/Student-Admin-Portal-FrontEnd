@@ -4,9 +4,9 @@ import { DivContainer } from './Styled';
 
 export default function Logo() {
   return (
-    <DivContainer className="navbar__logo__container">
+    <DivContainer>
       <Link to="/">
-        <p>Logo</p>
+        <p>Student Admin Portal</p>
       </Link>
     </DivContainer>
   );

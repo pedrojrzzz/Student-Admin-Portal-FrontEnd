@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Nav } from './Styled';
 import Logo from './Logo/Logo';
-import Links from './Links/Links';
-import LinksMobile from './LinksMobile/LinksMobile';
 import UserSpace from './UserSpace/UserSpace';
 import UserSpaceMobile from './UserSpaceMobile/UserSpaceMobile';
 import { bigDimension } from '../../config/dimesion';
@@ -25,9 +23,6 @@ export default function Header() {
   return (
     <Nav>
       <Logo />
-
-      {windowWidth > bigDimension ? <Links /> : <LinksMobile />}
-
       {windowWidth > bigDimension ? <UserSpace /> : <UserSpaceMobile />}
     </Nav>
   );

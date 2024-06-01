@@ -3,7 +3,7 @@ import { menuColor } from '../../../config/colors';
 
 export const DivContainer = styled.div`
   height: 100%;
-  width: 200px;
+  width: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,35 +11,21 @@ export const DivContainer = styled.div`
   position: absolute;
   left: 20px;
 
-  img {
-    height: 57px;
-    width: auto;
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
   }
 
-  @media (max-width: 1400px) {
-    width: 100px;
-    position: absolute;
-    left: 10px;
+  a:hover {
+    opacity: 0.7;
   }
 
-  @media (max-height: 624px) {
-    img {
-      height: 45px;
-      width: auto;
-    }
-  }
-
-  @media (max-height: 555px) {
-    img {
-      height: 40px;
-      width: auto;
-    }
-  }
+  // Max-Width
 
   @media (max-width: 1670px) {
-    img {
-      height: 55px;
-      width: auto;
+    a {
+      font-size: 20px;
     }
   }
 
@@ -56,4 +42,39 @@ export const DivContainer = styled.div`
       width: auto;
     }
   }
+
+  @media (max-width: 1400px) {
+    position: absolute;
+    left: 10px;
+    a {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    width: 200px;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    left: 5px;
+    a {
+      font-size: 17px;
+    }
+  }
+  // *******************
+
+  // Max-Height
+
+  @media (max-height: 624px) {
+    a {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-height: 555px) {
+    a {
+      font-size: 17px;
+    }
+  }
+  // **************
 `;
