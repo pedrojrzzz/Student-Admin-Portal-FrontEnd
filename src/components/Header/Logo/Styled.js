@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { menuColor } from '../../../config/colors';
+import { fourthColor, textColor } from '../../../config/colors';
 
 export const DivContainer = styled.div`
   height: 100%;
@@ -7,13 +7,13 @@ export const DivContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${menuColor};
+  background-color: ${fourthColor};
   position: absolute;
   left: 20px;
 
   a {
     text-decoration: none;
-    color: white;
+    color: ${textColor};
     font-size: 25px;
   }
 
@@ -56,9 +56,9 @@ export const DivContainer = styled.div`
     align-items: center;
     justify-content: flex-start;
     position: absolute;
-    left: 5px;
+    left: 10px;
     a {
-      font-size: 17px;
+      font-size: 19px;
     }
   }
   // *******************

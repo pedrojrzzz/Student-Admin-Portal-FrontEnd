@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
-import { white, successColor } from '../config/colors';
+import { fifthColor, successColor } from '../config/colors';
 
 export default createGlobalStyle`
   * {
@@ -15,7 +15,7 @@ export default createGlobalStyle`
 
   body {
     font-family: sans-serif;
-    background: ${white};
+    background-color: ${fifthColor};
   }
 
   body .Toastify__toast-container {
