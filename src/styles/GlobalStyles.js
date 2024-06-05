@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
-import { fifthColor, successColor } from '../config/colors';
+import { fifthColor, successColor, errorColor } from '../config/colors';
 
 export default createGlobalStyle`
   * {
@@ -19,11 +19,15 @@ export default createGlobalStyle`
   }
 
   body .Toastify__toast-container {
-    width: 500px;
+    width: auto;
   }
 
   body .Toastify__toast--success {
     background-color: ${successColor};
+  }
+
+  body .Toastify__toast--error {
+    background-color: ${errorColor};
   }
 
   a {

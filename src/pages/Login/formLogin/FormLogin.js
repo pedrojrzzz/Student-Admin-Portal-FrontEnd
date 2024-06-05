@@ -6,10 +6,18 @@ import {
   InputContainer,
   ButtonContainer,
 } from './styled';
+import { validationFormLogin } from '../../validationForm/ValidationForm';
 
 export default function FormLogin() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const email = event.target.elements.emailField.value;
+    const password = event.target.elements.passwordField.value;
+
+    validationFormLogin(email, password);
+  };
   return (
-    <FormLoginContainer>
+    <FormLoginContainer onSubmit={handleSubmit}>
       <TitleContainer>
         <h1>Login</h1>
       </TitleContainer>
@@ -18,18 +26,18 @@ export default function FormLogin() {
         <p>E-mail:</p>
       </ParagrafoContainer>
       <InputContainer>
-        <input placeholder="name@example.com" type="email" />
+        <input placeholder="name@example.com" type="email" id="emailField" />
       </InputContainer>
 
       <ParagrafoContainer>
         <p>Password:</p>
       </ParagrafoContainer>
       <InputContainer>
-        <input placeholder="Password..." type="password" />
+        <input placeholder="Password..." type="password" id="passwordField" />
       </InputContainer>
 
       <ButtonContainer>
-        <button type="button">Login</button>
+        <button type="submit">Login</button>
       </ButtonContainer>
     </FormLoginContainer>
   );

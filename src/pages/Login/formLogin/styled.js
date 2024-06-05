@@ -6,7 +6,7 @@ import {
   formColor,
 } from '../../../config/colors';
 
-export const FormLoginContainer = styled.div`
+export const FormLoginContainer = styled.form`
   height: auto;
   width: 30%;
   background-color: ${formColor};
@@ -80,7 +80,7 @@ export const ParagrafoContainer = styled.div`
     color: ${textColor};
     font-size: 15px;
     font-weight: 700;
-    margin-left: 6px;
+    margin-left: 60px;
   }
 
   @media (max-width: 1500px) {
@@ -135,7 +135,7 @@ export const ParagrafoContainer = styled.div`
   @media (max-width: 750px) {
     p {
       font-size: 14px;
-      margin-left: 10px;
+      margin-left: 34px;
     }
   }
 `;
