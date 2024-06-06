@@ -6,7 +6,7 @@ import {
   formColor,
 } from '../../../config/colors';
 
-export const FormRegisterContainer = styled.div`
+export const FormRegisterContainer = styled.form`
   height: auto;
   width: 30%;
   background-color: ${formColor};
@@ -69,6 +69,21 @@ export const TitleContainer = styled.div`
     h1 {
       font-size: 25px;
     }
+  }
+`;
+
+export const InfoPasswordContainer = styled.div`
+  height: auto;
+  width: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+
+  li {
+    font-size: 15px;
+    color: ${textColor};
+    font-weight: 600;
+    list-style-type: disc;
   }
 `;
 

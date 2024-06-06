@@ -6,7 +6,7 @@ import {
   InputContainer,
   ButtonContainer,
 } from './styled';
-import { validationFormLogin } from '../../validationForm/ValidationForm';
+import { validationFormLogin } from '../validationForm/ValidationForm';
 
 export default function FormLogin() {
   const handleSubmit = (event) => {
