@@ -1,0 +1,7 @@
+Onde parei: COnsegui transformar 1 letra em maiúsucula, mas quando eu selecionou outro input ele volta ao normal.
+colocar um controlador com useState
+
+Task atual: Quando usuário digitar o nome, transformar 1 letra em maiúscula
+
+Objetivo: Projetar um sistema de gerenciamento de alunos de uma escola
+onde vai ser possível adicionar, deletar e modificar os alunos
