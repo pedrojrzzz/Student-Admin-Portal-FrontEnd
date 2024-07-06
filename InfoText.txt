@@ -1,7 +1,7 @@
 Onde parei: COnsegui transformar 1 letra em maiúsucula, mas quando eu selecionou outro input ele volta ao normal.
 colocar um controlador com useState
 
-Task atual: Quando usuário digitar o nome, transformar 1 letra em maiúscula
+Task atual: Limpar os dados com dompurify antes de enviar para o servi
 
 Objetivo: Projetar um sistema de gerenciamento de alunos de uma escola
 onde vai ser possível adicionar, deletar e modificar os alunos

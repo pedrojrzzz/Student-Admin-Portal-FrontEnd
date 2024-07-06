@@ -6,15 +6,12 @@ import {
   InputContainer,
   ButtonContainer,
 } from './styled';
-import { validationFormLogin } from '../validationForm/ValidationForm';
 
 export default function FormLogin() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = event.target.elements.emailField.value;
     const password = event.target.elements.passwordField.value;
-
-    validationFormLogin(email, password);
   };
   return (
     <FormLoginContainer onSubmit={handleSubmit}>

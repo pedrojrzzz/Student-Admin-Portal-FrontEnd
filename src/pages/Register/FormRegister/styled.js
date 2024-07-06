@@ -272,5 +272,5 @@ export const ComponentErrorMessage = styled.div`
   color: red;
   font-size: 14px;
   font-weight: 800;
-  margin-top: 3px;
+  margin-top: -5px;
 `;
