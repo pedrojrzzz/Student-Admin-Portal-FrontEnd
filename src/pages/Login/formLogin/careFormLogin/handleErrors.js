@@ -8,6 +8,7 @@ const option = {
 };
 export const handleErrors = (error) => {
   const notify = (message) => toast.error(message, option);
+  console.log(error);
 
   if (error?.status !== 400) {
     return notify('Erro interno, tente novamente mais tarde.');
