@@ -5,7 +5,6 @@ import PrivateRoute from './PrivateRoutes';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import Page404 from '../pages/Page404/page404';
-import Contador from '../components/Contador/Contador';
 
 export default function Router() {
   return (
@@ -13,13 +12,12 @@ export default function Router() {
       <Route exact path="/" element={<Login />} />
       <Route exact path="/register" element={<Register />} />
       <Route path="*" element={<Page404 />} />
-      <Route path="/contador" element={<Contador />} />
       <Route
         exact
         path="/teste"
         element={
           <PrivateRoute>
-            <Login />
+            <Register />
           </PrivateRoute>
         }
       />

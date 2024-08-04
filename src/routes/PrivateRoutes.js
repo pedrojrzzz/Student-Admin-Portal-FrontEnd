@@ -1,17 +1,54 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import Cookies from 'universal-cookie';
+import { fetchRequest } from '../slices/testeSlice';
+/* eslint-disable */
 
 export default function PrivateRoute({ children }) {
-  const isLoggedIn = false; // Isso vai vir do backend
+  console.log('PrivateRoute rendered');
+  const dispatch = useDispatch()
+  const { data, error, loading } = useSelector((state) => state.teste);
+  const isLoggedIn = true; // Isso vai vir do backend
+  const fetchWasMade = useRef(false)
 
-  if (!isLoggedIn) {
-    // Verificação se user está logado e se a rota é fechada
-    return <Navigate to="/nãoAutenticado" replace />;
+  const cookie = new Cookies(null, { path: '/' });
+  const token = cookie.get('tokenUser')
+  const theToken = 'Bearer ' + token
+
+
+const handleDispatch = () => {
+  if (!fetchWasMade.current) {
+    dispatch(fetchRequest(theToken))
+    fetchWasMade.current = true;
   }
+  
+}
 
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  return isLoggedIn ? children : <Navigate to="/nãoAutenticado" replace />; // Se passar da validação renderize esse element
+if (!fetchWasMade.current) {
+  handleDispatch()
+}
+
+if (loading) {
+  console.log('oi')
+  console.log('Espere um pouco cidadão')
+}
+
+if (fetchWasMade.current && error) {
+  return <Navigate to="/error" replace />
+}
+
+if (!loading && data.length < 1) {
+  console.log(data)
+  return <Navigate to="/stopBitch" replace />
+}
+  
+
+  return (
+    children
+  )
 }
 
 PrivateRoute.propTypes = {

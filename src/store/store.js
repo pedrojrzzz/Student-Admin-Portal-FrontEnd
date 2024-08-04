@@ -4,7 +4,9 @@ import { all, fork } from 'redux-saga/effects';
 import counterReducer from '../slices/counterSlice';
 import dataReducer from '../slices/dataSlice';
 import loginReducer from '../slices/loginSlice';
+import testeReducer from '../slices/testeSlice';
 import watchFetchData from '../saga/dataSaga';
+import watchFetchContactApiForAuthorization from '../saga/testeSaga';
 
 import watchFetchRegisterNewUser from '../saga/registerSaga';
 import registerNewUserReducer from '../slices/registerSlice';
@@ -17,6 +19,7 @@ function* rootSaga() {
     fork(watchFetchData),
     fork(watchFetchRegisterNewUser),
     fork(watchFetchLoginUser),
+    fork(watchFetchContactApiForAuthorization),
   ]);
 }
 
@@ -26,6 +29,7 @@ const store = configureStore({
     data: dataReducer,
     register: registerNewUserReducer,
     login: loginReducer,
+    teste: testeReducer,
     // add seus reducers aqui
   },
   middleware: (getDefaultMiddleware) =>

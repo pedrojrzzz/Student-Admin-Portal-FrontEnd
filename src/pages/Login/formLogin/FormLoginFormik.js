@@ -34,6 +34,7 @@ export default function FormLoginFormik() {
     };
 
     dispatch(fetchRequest(credentials));
+    console.log(data, loading, error);
   };
 
   useEffect(() => {

@@ -1,7 +1,6 @@
-Onde parei: COnsegui transformar 1 letra em maiúsucula, mas quando eu selecionou outro input ele volta ao normal.
-colocar um controlador com useState
+Onde parei: Falta eu configurar a segurança do token no lado do servidor
 
-Task atual: Limpar os dados com dompurify antes de enviar para o servi
+Task atual: Não consigo acessar o cookie pelo lado do cliente
 
 Objetivo: Projetar um sistema de gerenciamento de alunos de uma escola
 onde vai ser possível adicionar, deletar e modificar os alunos
