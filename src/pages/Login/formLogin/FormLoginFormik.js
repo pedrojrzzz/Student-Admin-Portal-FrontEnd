@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { sanitizeData } from './careFormLogin/sanitizeData';
 import { fetchRequest, resetLoginState } from '../../../slices/loginSlice';
 import { handleErrors } from './careFormLogin/handleErrors';
 import { handleSuccess } from './careFormLogin/handleSuccess';
+import { saveInfoUser } from '../../../slices/infoUserSlice';
 import {
   FormStyled,
   TitleContainer,
@@ -21,6 +22,7 @@ export default function FormLoginFormik() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data, error, loading } = useSelector((state) => state.login);
+  const fetchWasMade = useRef(false); // Checando se o dispatch já foi feito
   const initialValues = {
     email: '',
     password: '',
@@ -34,17 +36,19 @@ export default function FormLoginFormik() {
     };
 
     dispatch(fetchRequest(credentials));
+    fetchWasMade.current = true;
     console.log(data, loading, error);
   };
 
   useEffect(() => {
-    if (error) {
+    if (error && fetchWasMade.current === true) {
       handleErrors(error);
     }
 
-    if (data?.code === 'SUCCESS') {
+    if (data?.code === 'SUCCESS' && fetchWasMade.current === true) {
       handleSuccess(data, navigate);
       dispatch(resetLoginState());
+      dispatch(saveInfoUser(data.user));
     }
   }, [data, error]);
 

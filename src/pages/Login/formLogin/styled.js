@@ -259,7 +259,7 @@ export const ComponentErrorMessage = styled.div`
   margin-top: 5px;
   flex-basis: 100%;
   width: 100%;
-  margin-left: 15%;
+  margin-left: 22%;
 `;
 
 export const SpinnerLoading = styled(ClipLoader)``;

@@ -5,8 +5,12 @@ import counterReducer from '../slices/counterSlice';
 import dataReducer from '../slices/dataSlice';
 import loginReducer from '../slices/loginSlice';
 import testeReducer from '../slices/testeSlice';
+import userIsLoggedInSlice from '../slices/userIsLoggedInSlice';
+import infoUserSlice from '../slices/infoUserSlice';
 import watchFetchData from '../saga/dataSaga';
 import watchFetchContactApiForAuthorization from '../saga/testeSaga';
+import watchFetchAlunos from '../saga/alunosSaga';
+import alunosSlice from '../slices/alunosSlice';
 
 import watchFetchRegisterNewUser from '../saga/registerSaga';
 import registerNewUserReducer from '../slices/registerSlice';
@@ -20,6 +24,7 @@ function* rootSaga() {
     fork(watchFetchRegisterNewUser),
     fork(watchFetchLoginUser),
     fork(watchFetchContactApiForAuthorization),
+    fork(watchFetchAlunos),
   ]);
 }
 
@@ -30,6 +35,9 @@ const store = configureStore({
     register: registerNewUserReducer,
     login: loginReducer,
     teste: testeReducer,
+    userIsLoggedIn: userIsLoggedInSlice,
+    infoUser: infoUserSlice,
+    alunos: alunosSlice,
     // add seus reducers aqui
   },
   middleware: (getDefaultMiddleware) =>

@@ -1,6 +1,6 @@
-Onde parei: Falta eu configurar a segurança do token no lado do servidor
+Onde parei: Estou pensando em criar uma função que vai lidar com os erros das apis, e vou colocalo na pasta 'utils' que eu criei
 
-Task atual: Não consigo acessar o cookie pelo lado do cliente
+Task atual: Tentar fazer deploy pra ver se os cookies com httpOnly funcionam, pq no localhost não funcionam
 
 Objetivo: Projetar um sistema de gerenciamento de alunos de uma escola
 onde vai ser possível adicionar, deletar e modificar os alunos

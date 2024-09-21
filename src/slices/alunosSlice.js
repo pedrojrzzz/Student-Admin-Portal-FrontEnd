@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+/* eslint-disable no-param-reassign */
 
 const initialState = {
   data: [],
-  error: null,
   loading: false,
-  isLoggedIn: false,
+  error: null,
 };
-/* eslint-disable no-param-reassign */
-const testeSlice = createSlice({
-  name: 'testandoAutorização',
+
+const alunosSlice = createSlice({
+  name: 'alunosSlice',
   initialState,
   reducers: {
     fetchRequest(state) {
@@ -28,5 +28,5 @@ const testeSlice = createSlice({
   },
 });
 
-export const { fetchRequest, fetchSuccess, fetchError } = testeSlice.actions;
-export default testeSlice.reducer;
+export const { fetchRequest, fetchSuccess, fetchError } = alunosSlice.actions;
+export default alunosSlice.reducer;
