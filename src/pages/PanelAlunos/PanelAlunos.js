@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import HeaderLogado from '../../components/HeaderLogado/HeaderLogado';
 import { fetchRequest } from '../../slices/alunosSlice';
 import { careFormErrors } from './careFetchErrors/careFetchErrors';
-import { DivContainer, ContainerTitle, ContainerCardAlunos } from './styled';
+import { DivContainer } from './styled';
 
 export default function PanelAlunos() {
   const { UserIsLoggedIn } = useSelector((state) => state.userIsLoggedIn);
@@ -31,20 +31,7 @@ export default function PanelAlunos() {
     <div>
       <HeaderLogado />
 
-      <DivContainer>
-        <ContainerTitle>
-          <h1>Portal Alunos</h1>
-        </ContainerTitle>
-
-        <ContainerCardAlunos>
-          <div className="ContainerImgAluno">
-            <div className="imgAluno">
-              <p>Pedro</p>{' '}
-            </div>
-          </div>
-          <p>Pedro</p>
-        </ContainerCardAlunos>
-      </DivContainer>
+      <DivContainer />
     </div>
   );
 }
