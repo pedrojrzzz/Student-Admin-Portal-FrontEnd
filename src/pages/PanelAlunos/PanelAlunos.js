@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import HeaderLogado from '../../components/HeaderLogado/HeaderLogado';
 import { fetchRequest } from '../../slices/alunosSlice';
 import { careFormErrors } from './careFetchErrors/careFetchErrors';
+import HeaderLogado from '../../components/HeaderLogado/HeaderLogado';
 import { DivContainer } from './styled';
+import TableInfo from '../../componentsNonReusable/tableInfo/TableInfo';
+import TableAlunos from '../../componentsNonReusable/TableAlunos/TableAlunos';
 
 export default function PanelAlunos() {
   const { UserIsLoggedIn } = useSelector((state) => state.userIsLoggedIn);
@@ -31,7 +33,10 @@ export default function PanelAlunos() {
     <div>
       <HeaderLogado />
 
-      <DivContainer />
+      <DivContainer>
+        <TableInfo />
+        <TableAlunos />
+      </DivContainer>
     </div>
   );
 }

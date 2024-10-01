@@ -8,6 +8,7 @@ export const DivContainer = styled.div`
   align-items: center;
   position: absolute;
   right: 40px;
+  overflow: hidden;
 
   a {
     display: flex;
