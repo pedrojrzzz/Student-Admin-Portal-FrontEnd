@@ -37,5 +37,6 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/prop-types': 0,
     'consistent-return': 0,
+    'spaced-comment': 0,
   },
 };

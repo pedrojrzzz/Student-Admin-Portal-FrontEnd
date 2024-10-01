@@ -6,7 +6,7 @@ export const InputWrapper = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  background-color: aliceblue;
+  background-color: #e0dede;
   border: none;
   border-radius: 24px;
   width: 250px;
@@ -29,6 +29,7 @@ export const Input = styled.input`
   font-size: 15px;
   font-family: inherit;
   text-indent: 4px;
+  background-color: #e0dede;
 
   &:focus {
     outline: none;
