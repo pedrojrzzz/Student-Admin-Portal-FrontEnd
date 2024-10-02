@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const DivContainer = styled.div`
   background-color: white;
-  height: 100px;
+  height: fit-content;
   width: 80%;
   margin-top: 40px;
+  padding-bottom: 40px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -15,7 +16,6 @@ export const DivContainer = styled.div`
 export const HeaderTableStudents = styled.div`
   width: 90%;
   height: fit-content;
-  border: 1px solid black;
   margin-top: 30px;
   display: flex;
   flex-direction: row;
@@ -23,7 +23,6 @@ export const HeaderTableStudents = styled.div`
 
 export const TitleHeaderTableStudents = styled.div`
   width: 67%;
-  border: 1px solid black;
   p {
     font-size: 32pt;
     font-weight: 300;

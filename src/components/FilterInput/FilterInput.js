@@ -7,9 +7,12 @@ import {
   DropdownSortBy,
   DivContent,
 } from './styled';
+import useStudentsInfoContext from '../../hooks/useStudentsInfoContext';
 
 export default function SortBy() {
   const [dropdownSortBy, setDropdownSortBy] = useState(null);
+  const { data, loading, error } = useStudentsInfoContext();
+  console.log(data, loading, error);
 
   const handleClickDropdown = () => {
     setDropdownSortBy(!dropdownSortBy);

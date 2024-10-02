@@ -22,7 +22,7 @@ export const InputWrapper = styled.div`
   font-family: inherit;
   padding-left: 5px;
   border-radius: 2px 2px 0 0;
-  background-color: #e0dede;
+  background-color: #edeaea;
 
   &:focus {
     outline: none;
@@ -38,7 +38,7 @@ export const Button = styled.button`
   font-size: 15px;
   font-family: inherit;
   text-indent: 4px;
-  background-color: #e0dede;
+  background-color: #edeaea;
 
   &:focus {
     outline: none;
@@ -60,7 +60,7 @@ export const DropdownSortBy = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  background-color: #e0dede;
+  background-color: #edeaea;
   border-radius: 0px 0px 2px 2px;
   position: absolute;
   top: 100%;
@@ -77,9 +77,11 @@ export const DivContent = styled.div`
 
   input {
     margin-left: 2px;
+    margin-top: 5px;
   }
 
   p {
     margin-left: 10px;
+    margin-top: 5px;
   }
 `;
