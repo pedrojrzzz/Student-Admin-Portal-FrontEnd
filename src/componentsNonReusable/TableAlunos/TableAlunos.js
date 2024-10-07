@@ -6,7 +6,7 @@ import {
 } from './styled';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import FilterInput from '../../components/FilterInput/FilterInput';
-import ColumnsNames from '../ColumnsNames/ColumnsNames';
+import ColumnsNames from '../ColumnsData/ColumnsData';
 
 export default function TableAlunos() {
   return (
