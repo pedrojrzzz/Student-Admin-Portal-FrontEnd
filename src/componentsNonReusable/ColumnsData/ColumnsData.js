@@ -1,7 +1,15 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import { DivContainer } from './styled';
+import { useSelector } from 'react-redux';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { DivContainer, DivLoading } from './styled';
 
 export default function ColumnsNames() {
+  const { data, loading, error } = useSelector((state) => state.alunos);
+  console.log('****** LOGS - COLUMNS DATA *********');
+  console.log('oi estou no columnsDATA');
+  console.log(data, loading, error);
   return (
     <DivContainer>
       <table>
@@ -17,8 +25,20 @@ export default function ColumnsNames() {
             <th className="columnEdit">Editar</th>
           </tr>
         </thead>
-
-        <tbody />
+        <tbody>
+          <tr>
+            <td>{}</td>
+            <td>
+              {loading ? (
+                <DivLoading>
+                  <ClipLoader size={50} />{' '}
+                </DivLoading>
+              ) : (
+                ''
+              )}
+            </td>
+          </tr>
+        </tbody>
       </table>
     </DivContainer>
   );

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const DivContainer = styled.div`
   background-color: white;
-  height: fit-content;
+  height: auto;
   width: 80%;
   margin-top: 40px;
   padding-bottom: 40px;

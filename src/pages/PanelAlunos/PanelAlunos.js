@@ -10,8 +10,8 @@ import TableAlunos from '../../componentsNonReusable/TableAlunos/TableAlunos';
 import { StudentsInfoContext } from '../../context/StudentsInfoContext';
 
 export default function PanelAlunos() {
-  const { UserIsLoggedIn } = useSelector((state) => state.userIsLoggedIn);
   const dispatch = useDispatch();
+  const { UserIsLoggedIn } = useSelector((state) => state.userIsLoggedIn);
   const { data, loading, error } = useSelector((state) => state.alunos);
   const alunoWasFetched = useRef(null);
 

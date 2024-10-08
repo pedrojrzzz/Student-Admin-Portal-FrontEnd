@@ -22,3 +22,12 @@ export const DivContainer = styled.div`
     visibility: hidden;
   }
 `;
+
+export const DivLoading = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+`;
