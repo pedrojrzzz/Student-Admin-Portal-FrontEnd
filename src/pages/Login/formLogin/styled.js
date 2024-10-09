@@ -58,29 +58,17 @@ export const FormLoginContainer = styled.form`
 
 export const FormStyled = styled(Form)`
   height: auto;
-  width: 30%;
+  width: 550px;
   background-color: ${formColor};
   box-shadow: ${shadow};
   padding: 20px;
-
-  @media (max-width: 1500px) {
-    padding: 20px;
-  }
-
-  @media (max-width: 1200px) {
-    width: 35%;
-  }
-
-  @media (max-width: 1000px) {
-    width: 40%;
-  }
-
-  @media (max-width: 900px) {
-    width: 45%;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: 750px) {
-    width: 55%;
+    width: 450px;
   }
 
   @media (max-width: 650px) {
@@ -113,12 +101,6 @@ export const TitleContainer = styled.div`
 
   h1 {
     color: ${textColor};
-  }
-
-  @media (max-width: 1500px) {
-    h1 {
-      font-size: 25px;
-    }
   }
 `;
 
@@ -252,14 +234,22 @@ export const ButtonContainer = styled.div`
   }
 `;
 
-export const ComponentErrorMessage = styled.div`
-  color: red;
-  font-size: 14px;
-  font-weight: 800;
-  margin-top: 5px;
-  flex-basis: 100%;
+export const DivError = styled.div`
+  position: relative;
+  height: fit-content;
   width: 100%;
-  margin-left: 22%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 10px 0px;
+  flex-wrap: wrap;
+`;
+
+export const ComponentErrorMessage = styled.div`
+  width: 300px;
+  margin-top: 2px;
+  font-size: 14px;
+  color: red;
 `;
 
 export const SpinnerLoading = styled(ClipLoader)``;

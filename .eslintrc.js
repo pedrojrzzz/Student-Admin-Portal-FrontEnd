@@ -38,5 +38,6 @@ module.exports = {
     'react/prop-types': 0,
     'consistent-return': 0,
     'spaced-comment': 0,
+    'array-callback-return': 0,
   },
 };

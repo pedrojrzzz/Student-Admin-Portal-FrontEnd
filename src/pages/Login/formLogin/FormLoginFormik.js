@@ -16,6 +16,7 @@ import {
   ButtonContainer,
   ComponentErrorMessage,
   SpinnerLoading,
+  DivError,
 } from './styled';
 
 export default function FormLoginFormik() {
@@ -69,7 +70,9 @@ export default function FormLoginFormik() {
               placeholder="example@hotmail.com"
               type="email"
             />
-            <ErrorMessage name="email" component={ComponentErrorMessage} />
+            <DivError>
+              <ErrorMessage name="email" component={ComponentErrorMessage} />
+            </DivError>
           </InputContainer>
 
           <InputContainer>
@@ -78,8 +81,9 @@ export default function FormLoginFormik() {
               placeholder="password"
               type="password"
             />
-
-            <ErrorMessage name="password" component={ComponentErrorMessage} />
+            <DivError>
+              <ErrorMessage name="password" component={ComponentErrorMessage} />
+            </DivError>
           </InputContainer>
           <ButtonContainer>
             <button type="submit">

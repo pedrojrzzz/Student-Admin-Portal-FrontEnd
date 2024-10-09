@@ -16,6 +16,7 @@ export default createGlobalStyle`
   body {
     font-family: sans-serif;
     background-color: ${fifthColor};
+    overflow: hidden;
   }
 
   body .Toastify__toast-container {

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { fourthColor, shadow } from '../../config/colors';
 
 export const Nav = styled.nav`
-  height: 8vh;
+  height: 80px;
   width: 100vw;
   background-color: ${fourthColor};
   display: flex;

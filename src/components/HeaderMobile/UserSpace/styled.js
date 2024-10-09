@@ -16,6 +16,15 @@ export const DivContainer = styled.div`
     align-items: center;
     margin-left: 8px;
   }
+
+  @media (max-width: 1600px) {
+    width: 250px;
+  }
+
+  @media (max-width: 1550px) {
+    width: 200px;
+    font: 15px;
+  }
 `;
 
 export const ButtonSignIn = styled.button`
@@ -35,6 +44,18 @@ export const ButtonSignIn = styled.button`
     opacity: 0.7;
     transition: 0.3s;
   }
+
+  @media (max-width: 1600px) {
+    height: 20px;
+    width: 80px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 1550px) {
+    height: 23px;
+    width: 77px;
+    font-size: 13px;
+  }
 `;
 
 export const ButtonCreateAccount = styled.a`
@@ -43,5 +64,13 @@ export const ButtonCreateAccount = styled.a`
   &:hover {
     opacity: 0.7;
     transition: 0.3s;
+  }
+
+  @media (max-width: 1600px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 1550px) {
+    font-size: 13px;
   }
 `;

@@ -20,4 +20,15 @@ export const DivContainer = styled.div`
   a:hover {
     opacity: 0.7;
   }
+
+  @media (max-width: 500px) {
+    width: 250px;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    left: 35px;
+    a {
+      font-size: 22px;
+    }
+  }
 `;

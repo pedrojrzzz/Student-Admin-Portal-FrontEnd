@@ -35,7 +35,9 @@ export default function PanelAlunos() {
     <div>
       <HeaderLogado />
 
-      <StudentsInfoContext.Provider value={{ data, loading, error }}>
+      <StudentsInfoContext.Provider
+        value={{ data, loading, error, resultSearch: null, resultFilter: null }}
+      >
         <DivContainer>
           <TableInfo />
           <TableAlunos />
