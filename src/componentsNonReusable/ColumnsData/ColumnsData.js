@@ -3,7 +3,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { DivContainer, DivLoading } from './styled';
+import { GiSinkingShip } from 'react-icons/gi';
+import { DivContainer, DivError, DivLoading } from './styled';
 
 export default function ColumnsNames() {
   const { data, loading, error } = useSelector((state) => state.alunos);
@@ -25,21 +26,25 @@ export default function ColumnsNames() {
             <th className="columnEdit">Editar</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>{}</td>
-            <td>
-              {loading ? (
-                <DivLoading>
-                  <ClipLoader size={50} />{' '}
-                </DivLoading>
-              ) : (
-                ''
-              )}
-            </td>
-          </tr>
-        </tbody>
       </table>
+
+      {loading ? (
+        <DivLoading>
+          <ClipLoader />
+          <p>Fetching students...</p>
+        </DivLoading>
+      ) : (
+        ''
+      )}
+
+      {error ? (
+        <DivError>
+          <GiSinkingShip size={100} />
+          <p>Desculpe, o erro foi do nosso lado</p>
+        </DivError>
+      ) : (
+        ''
+      )}
     </DivContainer>
   );
 }
