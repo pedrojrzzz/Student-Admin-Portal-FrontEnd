@@ -26,19 +26,21 @@ export const ButtonSignIn = styled.button`
   padding: 15px;
   border: none;
   border-radius: 20px;
-  background-color: #0ebcf1;
+  background-color: white;
   box-shadow: 1px 2px 10px #00000064;
-  color: white;
-  font-weight: 900;
+  color: black;
+  font-weight: 700;
 
   &:hover {
-    opacity: 0.7;
-    transition: 0.3s;
+    transition: 0.1s;
+    background-color: #a69e85;
+    color: white;
   }
 `;
 
 export const ButtonCreateAccount = styled.a`
-  font-weight: 900;
+  font-weight: 500;
+  font-size: 11pt;
   color: #fff;
   &:hover {
     opacity: 0.7;

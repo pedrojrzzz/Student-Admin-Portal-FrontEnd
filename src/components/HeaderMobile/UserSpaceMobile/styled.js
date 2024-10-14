@@ -19,6 +19,7 @@ export const HamburgerIcon = styled(CiMenuBurger)`
 
   &:hover {
     opacity: 0.6;
+    cursor: pointer;
   }
 `;
 
@@ -27,7 +28,7 @@ export const DropdownMenuUser = styled.div`
   opacity: 1;
   height: 100vh;
   width: 50vw;
-  background-color: #ffffff;
+  background-color: #322938;
   position: absolute;
   top: 100%;
   right: -5000%;
@@ -45,12 +46,16 @@ export const DropdownMenuUser = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    border-bottom: 0.5px solid white;
+    border-bottom: 0.2px solid rgb(165, 162, 162);
   }
 
   a {
     color: white;
+    font-size: 14pt;
     padding: 5px 7px 3px 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    -webkit-text-stroke: 0.1 black;
 
     &:hover {
       opacity: 0.6;

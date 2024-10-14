@@ -25,7 +25,6 @@ export default function LinksMobile() {
     <DivContainer>
       <HamburgerIcon
         onClick={handleClickDropdownMenuUser}
-        onMouseEnter={handleMouseEnterDropdownMenuUser}
         onMouseLeave={handleMouseLeaveDropdownMenuUser}
       />
       <DropdownMenuUser
@@ -39,7 +38,7 @@ export default function LinksMobile() {
           </li>
 
           <li>
-            <Link to="/">Register</Link>
+            <Link to="/register">Register</Link>
           </li>
         </ul>
       </DropdownMenuUser>
