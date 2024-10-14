@@ -6,7 +6,7 @@ import {
 } from './styled';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import FilterInput from '../../components/FilterInput/FilterInput';
-import ColumnsNames from '../ColumnsData/ColumnsData';
+import ColumnsData from '../ColumnsData/ColumnsData';
 
 export default function TableAlunos() {
   return (
@@ -20,7 +20,7 @@ export default function TableAlunos() {
           <FilterInput />
         </DivSearchAndFilter>
       </HeaderTableStudents>
-      <ColumnsNames />
+      <ColumnsData />
     </DivContainer>
   );
 }
