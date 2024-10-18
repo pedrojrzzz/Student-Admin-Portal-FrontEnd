@@ -27,6 +27,10 @@ export const InputWrapper = styled.div`
   &:focus {
     outline: none;
   }
+
+  &.active {
+    background-color: #dddbdb;
+  }
 `;
 
 export const Button = styled.button`
@@ -39,9 +43,14 @@ export const Button = styled.button`
   font-family: inherit;
   text-indent: 4px;
   background-color: #edeaea;
+  color: black;
 
   &:focus {
     outline: none;
+  }
+
+  &.active {
+    background-color: #dddbdb;
   }
 `;
 
@@ -64,6 +73,7 @@ export const DropdownSortBy = styled.div`
   border-radius: 0px 0px 2px 2px;
   position: absolute;
   top: 100%;
+  padding: 3px;
 
   &.visible {
     border-top: 0.5px solid #e0dede;
