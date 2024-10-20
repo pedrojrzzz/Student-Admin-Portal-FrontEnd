@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { GiSinkingShip } from 'react-icons/gi';
@@ -8,9 +8,10 @@ import { DivContainer, DivError, DivLoading } from './styled';
 
 export default function ColumnsNames() {
   const { data, loading, error } = useSelector((state) => state.alunos);
-  console.log('****** LOGS - COLUMNS DATA *********');
+  /* console.log('****** LOGS - COLUMNS DATA *********');
   console.log('oi estou no columnsDATA');
-  console.log(data, loading, error);
+  console.log(data, loading, error);  */
+
   return (
     <DivContainer>
       <table>
