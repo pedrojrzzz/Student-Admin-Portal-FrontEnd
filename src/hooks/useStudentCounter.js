@@ -9,8 +9,9 @@ export const useStudentCounter = (data) => {
   const activeStudentsArray = []
   const inativeStudentsArray = []
   data.map((currentObject) => {
-    console.log(currentObject.status)
+
     if (currentObject.status === 1) {
+    
       activeStudentsArray.push(currentObject)
       
     }

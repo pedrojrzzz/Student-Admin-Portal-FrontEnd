@@ -22,6 +22,8 @@ export const DivContainer = styled.div`
     color: #b9b7b6;
     font-weight: 600;
     border-bottom: 0.5px solid rgb(217, 217, 219);
+    padding: 10px; /* Adicionando padding para o cabeçalho */
+    caret-color: transparent;
   }
 
   .columnImg {
@@ -29,6 +31,17 @@ export const DivContainer = styled.div`
   }
   .columnEdit {
     visibility: visible;
+  }
+
+  table tbody tr {
+    padding-left: 50px;
+  }
+
+  table tbody tr td {
+    font-weight: 600;
+    border-bottom: 0.5px solid rgb(217, 217, 219);
+    padding: 10px; /* Adicione padding para as células */
+    text-align: center;
   }
 `;
 
@@ -60,4 +73,33 @@ export const DivError = styled.div`
     font-size: 13pt;
     margin-top: 3px;
   }
+`;
+
+export const ButtonEdit = styled.button`
+  border: 0.2px solid black;
+  border-radius: 2px;
+  padding: 5px;
+
+  &:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+`;
+
+export const ActiveButton = styled.button`
+  padding: 6px 10px 6px 10px;
+  color: black;
+  background-color: yellowgreen;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+`;
+
+export const InactiveButton = styled.button`
+  padding: 6px 10px 6px 10px;
+  color: white;
+  background-color: red;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
 `;
