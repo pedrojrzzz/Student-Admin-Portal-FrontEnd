@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { GiSinkingShip } from 'react-icons/gi';
+import { GiShipWreck } from 'react-icons/gi';
+import { IoMdRefresh } from 'react-icons/io';
 import {
   DivContainer,
   DivError,
@@ -11,6 +13,7 @@ import {
   ButtonEdit,
   ActiveButton,
   InactiveButton,
+  DivTableButton,
 } from './styled';
 
 export default function ColumnsNames() {
@@ -55,7 +58,6 @@ export default function ColumnsNames() {
             </tr>
           ))}
         </tbody>
-        <tfoot />
       </table>
 
       {loading ? (
@@ -69,12 +71,21 @@ export default function ColumnsNames() {
 
       {error ? (
         <DivError>
-          <GiSinkingShip size={100} />
-          <p>Desculpe, o erro foi do nosso lado</p>
+          <GiShipWreck size={100} />
+          <p>Desculpe, não foi possível buscar os alunos</p>
         </DivError>
       ) : (
         ''
       )}
+
+      <DivTableButton>
+        <button type="submit" className="buttonRefresh">
+          <div className="icon">
+            <IoMdRefresh size={18} />
+          </div>
+          Refresh
+        </button>
+      </DivTableButton>
     </DivContainer>
   );
 }

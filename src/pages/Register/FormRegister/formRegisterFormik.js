@@ -7,6 +7,7 @@ import {
   fetchRequest,
   resetRegisterState,
 } from '../../../slices/registerSlice';
+import { handleFixInputName } from '../../../hooks/handleFixInputName';
 import { sanitizeData } from './careForm/sanitizeData';
 import { handleErrors } from './careForm/handleErrors';
 import { handleSuccess } from './careForm/handleSuccess';
@@ -32,22 +33,6 @@ export default function FormRegisterFormik() {
 
   const { data, loading, error } = useSelector((state) => state.register);
   const navigate = useNavigate();
-
-  const handleFixInputName = (e, setFieldValue) => {
-    const { value } = e.target;
-
-    const fullName = value.split(' ');
-
-    const newName = fullName.map((each) => {
-      if (each.charAt(0) === each.charAt(0).toUpperCase()) {
-        return each;
-      }
-      const fixed = each.charAt(0).toUpperCase() + each.slice(1).toLowerCase();
-      return fixed;
-    });
-
-    setFieldValue('name', newName.join(' '));
-  };
 
   useEffect(() => {
     if (error) {

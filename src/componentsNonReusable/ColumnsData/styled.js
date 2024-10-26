@@ -75,6 +75,37 @@ export const DivError = styled.div`
   }
 `;
 
+export const DivTableButton = styled.div`
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  .buttonRefresh {
+    display: flex;
+    align-items: center;
+    width: auto;
+    padding: 6px 15px 6px 10px;
+    background-color: white;
+    border: 0.2px solid #d6d6d6;
+    border-radius: 5px;
+
+    .icon {
+      padding-right: 7px;
+    }
+
+    &:hover {
+      border: 0.2px solid #d6d6d6;
+      color: black;
+      box-shadow:
+        0px 0px 0em 6px #7caee912,
+        0 0 1em #69c1e3;
+    }
+    transition: 1s;
+  }
+`;
+
 export const ButtonEdit = styled.button`
   border: 0.2px solid black;
   border-radius: 2px;

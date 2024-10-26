@@ -62,6 +62,7 @@ export const TitleContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 10px;
 
   h1 {
     color: ${textColor};
