@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import { useSelector } from 'react-redux';
-import ClipLoader from 'react-spinners/ClipLoader';
 import {
   DivContainer,
   DivTotalAlunos,
@@ -15,6 +14,9 @@ import { useStudentCounter } from '../../hooks/useStudentCounter';
 export default function TableInfo() {
   const { data, loading, error } = useSelector((state) => state.alunos);
   const countedData = useStudentCounter(data);
+  console.log('Estou dentro do TableInfo');
+  console.log(countedData);
+
   return (
     <DivContainer>
       <DivTotalAlunos>
@@ -29,9 +31,7 @@ export default function TableInfo() {
           <div className="ContainerTitle">
             <p>Total de Alunos</p>
           </div>
-          <div className="ContainerNumber">
-            {loading ? <ClipLoader /> : countedData.numberOfStudents}
-          </div>
+          <div className="ContainerNumber">2</div>
         </div>
       </DivTotalAlunos>
 
@@ -47,9 +47,7 @@ export default function TableInfo() {
           <div className="ContainerTitle">
             <p>Alunos Ativos</p>
           </div>
-          <div className="ContainerNumber">
-            {loading ? <ClipLoader /> : countedData.activeStudents}
-          </div>
+          <div className="ContainerNumber">39</div>
         </div>
       </DivAlunosAtivos>
 
@@ -65,9 +63,7 @@ export default function TableInfo() {
           <div className="ContainerTitle">
             <p>Alunos Inativos</p>
           </div>
-          <div className="ContainerNumber">
-            {loading ? <ClipLoader /> : countedData.inactiveStudents}
-          </div>
+          <div className="ContainerNumber">11</div>
         </div>
       </DivAlunosInativos>
     </DivContainer>
