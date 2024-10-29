@@ -4,11 +4,11 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { GiSinkingShip } from 'react-icons/gi';
+import ButtonEdit from '../../components/ButtonEdit/ButtonEdit';
 import {
   DivContainer,
   DivError,
   DivLoading,
-  ButtonEdit,
   ActiveButton,
   InactiveButton,
 } from './styled';
@@ -50,7 +50,7 @@ export default function ColumnsNames() {
                 )}
               </td>
               <td className="columnEdit">
-                <ButtonEdit>Editar</ButtonEdit>
+                <ButtonEdit data={currentObject}>Editar</ButtonEdit>
               </td>
             </tr>
           ))}

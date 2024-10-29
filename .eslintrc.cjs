@@ -39,5 +39,6 @@ module.exports = {
     'consistent-return': 0,
     'spaced-comment': 0,
     'array-callback-return': 0,
+    'prefer-const': 0,
   },
 };

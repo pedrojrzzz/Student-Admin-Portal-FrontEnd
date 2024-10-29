@@ -75,17 +75,6 @@ export const DivError = styled.div`
   }
 `;
 
-export const ButtonEdit = styled.button`
-  border: 0.2px solid black;
-  border-radius: 2px;
-  padding: 5px;
-
-  &:hover {
-    opacity: 0.7;
-    cursor: pointer;
-  }
-`;
-
 export const ActiveButton = styled.button`
   padding: 6px 10px 6px 10px;
   color: black;

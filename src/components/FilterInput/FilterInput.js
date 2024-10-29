@@ -1,5 +1,6 @@
+/* eslint-disable no-const-assign */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -11,20 +12,28 @@ import {
   IconArrowDrop,
   DropdownSortBy,
 } from './styled';
+import { StudentsInfoContext } from '../../context/StudentsInfoContext';
 
 export default function SortBy() {
   const [dropdownSortBy, setDropdownSortBy] = useState(null);
-  const { data, loading, error } = useStudentsInfoContext();
   const [checkedActive, setCheckedActive] = useState(false);
   const [checkedInactive, setCheckedInactive] = useState(false);
+  const { listToBeDisplayed, setListToBeDisplayed, originalList } =
+    useContext(StudentsInfoContext);
 
   const handleChange = (event, field) => {
-    if (field === 'field1') {
+    if (field === 'fieldActive') {
       setCheckedActive(event.target.checked);
-      console.log(checkedActive);
+      originalList.map((currentObject) => {
+        if (currentObject.status === 1) {
+          console.log(currentObject);
+          setListToBeDisplayed([...listToBeDisplayed, currentObject]);
+        }
+      });
+      console.log(listToBeDisplayed);
     }
 
-    if (field === 'field2') {
+    if (field === 'fieldInactive') {
       setCheckedInactive(event.target.checked);
       console.log(checkedInactive);
     }
@@ -58,7 +67,7 @@ export default function SortBy() {
           <FormControlLabel
             control={<Checkbox />}
             onChange={(e) => {
-              handleChange(e, 'field1');
+              handleChange(e, 'fieldActive');
             }}
             label="Ativos"
             sx={{ '& .MuiSvgIcon-root': { fontSize: 22 } }}
@@ -66,7 +75,7 @@ export default function SortBy() {
           <FormControlLabel
             control={<Checkbox />}
             onChange={(e) => {
-              handleChange(e, 'field2');
+              handleChange(e, 'fieldInactive');
             }}
             label="Inativos"
             sx={{ '& .MuiSvgIcon-root': { fontSize: 22 } }}
