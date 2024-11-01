@@ -4,13 +4,11 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
-<<<<<<< HEAD
-import { GiSinkingShip } from 'react-icons/gi';
-import ButtonEdit from '../../components/ButtonEdit/ButtonEdit';
-=======
+
 import { GiShipWreck } from 'react-icons/gi';
 import { IoMdRefresh } from 'react-icons/io';
->>>>>>> 524c507e7df4a52a7ef36e25f46992f01009ab22
+import ButtonEdit from '../../components/ButtonEdit/ButtonEdit';
+
 import {
   DivContainer,
   DivError,

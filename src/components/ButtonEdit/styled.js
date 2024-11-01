@@ -15,7 +15,7 @@ export const ButtonEditComponent = styled.button`
 
 export const ModalEdit = styled.dialog`
   width: 600px;
-  background-color: #212529;
+  background-color: #ffffff;
   border: 0.1rem solid white;
   margin: auto auto;
   padding: 20px;

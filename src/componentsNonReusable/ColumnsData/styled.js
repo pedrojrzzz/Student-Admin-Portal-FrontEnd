@@ -75,8 +75,6 @@ export const DivError = styled.div`
   }
 `;
 
-<<<<<<< HEAD
-=======
 export const DivTableButton = styled.div`
   width: 100%;
   height: 10%;
@@ -119,7 +117,6 @@ export const ButtonEdit = styled.button`
   }
 `;
 
->>>>>>> 524c507e7df4a52a7ef36e25f46992f01009ab22
 export const ActiveButton = styled.button`
   padding: 6px 10px 6px 10px;
   color: black;

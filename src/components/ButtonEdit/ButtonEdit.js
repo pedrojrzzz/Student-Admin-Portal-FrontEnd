@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useRef } from 'react';
-import { TextField } from '@mui/material';
 import { ButtonEditComponent, ModalEdit, ButtonCloseModal } from './styled';
-import { CustomTextField } from './inputFIeld';
+import FormModalEdit from '../FormModalEdit/FormModalEdit';
 
 export default function ButtonEdit(props) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -26,13 +25,7 @@ export default function ButtonEdit(props) {
           <ButtonCloseModal size={30} onClick={handleClick} />
         </div>
 
-        <div className="body-modal">
-          <CustomTextField
-            id="standard-basic"
-            label="Standard"
-            variant="standard"
-          />
-        </div>
+        <FormModalEdit data={props} />
       </ModalEdit>
     </div>
   );
