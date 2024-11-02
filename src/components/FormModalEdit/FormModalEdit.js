@@ -1,24 +1,26 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { TextField, Button, colors } from '@mui/material'; // Certifique-se de importar o Button
+import { Formik, Field } from 'formik';
+import { TextField, Button } from '@mui/material'; // Certifique-se de importar o Button
 import { EditStudentsDataSchema } from './careForm/EditStudentDataSchema';
 import { FormStyled, FieldStyled } from './styled';
 
 export default function FormModalEdit(props) {
-  const handleSubmit = (values) => {
-    console.log(values);
-  };
-
   // Definindo valores iniciais
   const initialValues = {
-    nome: props.data.data.nome || '',
-    sobrenome: props.data.data.sobrenome || '',
-    email: props.data.data.email || '',
-    idade: props.data.data.idade || '',
-    peso: props.data.data.peso || '',
-    altura: props.data.data.altura || '',
+    nome: `${props.data.data.nome}`,
+    sobrenome: `${props.data.data.sobrenome}`,
+    email: `${props.data.data.email}`,
+    idade: `${props.data.data.idade}`,
+    peso: `${props.data.data.peso}`,
+    altura: `${props.data.data.altura}`,
+  };
+
+  const handleSubmit = () => {
+    console.log(typeof initialValues.idade);
+    console.log('Formulário enviado');
   };
 
   return (
@@ -34,11 +36,11 @@ export default function FormModalEdit(props) {
               <FieldStyled
                 name="nome"
                 as={TextField}
-                value={props.data.data.nome}
+                defaultValue={props.data.data.nome}
                 label="Nome"
                 variant="outlined"
-                error={touched.nome && Boolean(errors.nome)} // Verifica se o campo foi tocado e se há erros
-                helperText={touched.nome && errors.nome} // Exibe a mensagem de erro
+                error={touched.nome && Boolean(errors.nome)}
+                helperText={touched.nome && errors.nome}
               />
 
               <Field
@@ -60,36 +62,38 @@ export default function FormModalEdit(props) {
               error={touched.email && Boolean(errors.email)} // Verifica se o campo foi tocado e se há erros
               helperText={touched.email && errors.email} // Exibe a mensagem de erro
             />
-            <Field
-              name="idade"
-              as={TextField}
-              label="Idade"
-              variant="outlined"
-              fullWidth
-              error={touched.idade && Boolean(errors.idade)} // Verifica se o campo foi tocado e se há erros
-              helperText={touched.idade && errors.idade} // Exibe a mensagem de erro
-            />
-            <Field
-              name="peso"
-              as={TextField}
-              label="Peso"
-              variant="outlined"
-              fullWidth
-              error={touched.peso && Boolean(errors.peso)} // Verifica se o campo foi tocado e se há erros
-              helperText={touched.peso && errors.peso} // Exibe a mensagem de erro
-            />
-            <Field
-              name="altura"
-              as={TextField}
-              label="Altura"
-              variant="outlined"
-              fullWidth
-              error={touched.altura && Boolean(errors.altura)} // Verifica se o campo foi tocado e se há erros
-              helperText={touched.altura && errors.altura} // Exibe a mensagem de erro
-            />
-            <Button type="submit" variant="contained" color="primary">
-              Enviar
-            </Button>
+            <div className="div-idade-peso-altura">
+              <Field
+                name="idade"
+                as={TextField}
+                label="Idade"
+                variant="outlined"
+                error={touched.idade && Boolean(errors.idade)} // Verifica se o campo foi tocado e se há erros
+                helperText={touched.idade && errors.idade} // Exibe a mensagem de erro
+              />
+              <Field
+                name="peso"
+                as={TextField}
+                label="Peso"
+                variant="outlined"
+                error={touched.peso && Boolean(errors.peso)} // Verifica se o campo foi tocado e se há erros
+                helperText={touched.peso && errors.peso} // Exibe a mensagem de erro
+              />
+              <Field
+                name="altura"
+                as={TextField}
+                label="Altura"
+                variant="outlined"
+                error={touched.altura && Boolean(errors.altura)} // Verifica se o campo foi tocado e se há erros
+                helperText={touched.altura && errors.altura} // Exibe a mensagem de erro
+              />
+            </div>
+
+            <div className="div-buttons">
+              <Button type="submit" variant="contained" color="primary">
+                Salvar Alterações
+              </Button>
+            </div>
           </FormStyled>
         )}
       </Formik>

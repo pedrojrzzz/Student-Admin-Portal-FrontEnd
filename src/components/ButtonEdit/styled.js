@@ -21,6 +21,10 @@ export const ModalEdit = styled.dialog`
   padding: 20px;
   color: white;
 
+  h3 {
+    color: black;
+  }
+
   .header-modal {
     display: flex;
     justify-content: space-between;
@@ -41,6 +45,7 @@ export const ModalEdit = styled.dialog`
 `;
 
 export const ButtonCloseModal = styled(IoMdClose)`
+  color: black;
   &:hover {
     opacity: 0.7;
     cursor: pointer;

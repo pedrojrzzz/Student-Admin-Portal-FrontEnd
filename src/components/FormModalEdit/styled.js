@@ -9,6 +9,21 @@ export const FormStyled = styled(Form)`
     justify-content: space-between;
     margin-bottom: 15px;
   }
+
+  .div-idade-peso-altura {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+
+  .div-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15px;
+  }
 `;
 
 export const FieldStyled = styled(Field)``;

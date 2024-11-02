@@ -14,8 +14,6 @@ import { useStudentCounter } from '../../hooks/useStudentCounter';
 export default function TableInfo() {
   const { data, loading, error } = useSelector((state) => state.alunos);
   const countedData = useStudentCounter(data);
-  console.log('Estou dentro do TableInfo');
-  console.log(countedData);
 
   return (
     <DivContainer>

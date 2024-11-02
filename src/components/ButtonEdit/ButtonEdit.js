@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useRef } from 'react';
 import { ButtonEditComponent, ModalEdit, ButtonCloseModal } from './styled';
 import FormModalEdit from '../FormModalEdit/FormModalEdit';
@@ -6,6 +5,7 @@ import FormModalEdit from '../FormModalEdit/FormModalEdit';
 export default function ButtonEdit(props) {
   const [modalVisible, setModalVisible] = useState(false);
   const modalSelector = useRef(null);
+
   const handleClick = () => {
     if (modalVisible) {
       modalSelector.current.close();

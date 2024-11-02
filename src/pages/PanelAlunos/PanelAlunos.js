@@ -11,20 +11,13 @@ import { StudentsInfoContext } from '../../context/StudentsInfoContext';
 
 export default function PanelAlunos() {
   const dispatch = useDispatch();
-  const { UserIsLoggedIn } = useSelector((state) => state.userIsLoggedIn);
   const { data, loading, error } = useSelector((state) => state.alunos);
   const alunoWasFetched = useRef(null);
-
-  console.log(UserIsLoggedIn);
 
   useEffect(() => {
     if (alunoWasFetched.current === true) return;
     dispatch(fetchRequest());
     alunoWasFetched.current = true;
-
-    console.log(loading);
-    console.log(data);
-    console.log(error);
   }, []);
 
   if (error) {
