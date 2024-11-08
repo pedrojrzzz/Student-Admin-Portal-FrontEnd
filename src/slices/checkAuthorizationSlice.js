@@ -4,7 +4,6 @@ const initialState = {
   data: [],
   error: null,
   loading: false,
-  isLoggedIn: false,
 };
 /* eslint-disable no-param-reassign */
 const testeSlice = createSlice({

@@ -48,7 +48,7 @@ export default function ColumnsNames() {
               <td>{currentObject.peso}kg</td>
               <td>{currentObject.altura}m</td>
               <td>
-                {currentObject.status === 1 ? (
+                {currentObject.status === true ? (
                   <ActiveButton>Ativo</ActiveButton>
                 ) : (
                   <InactiveButton>Inativo</InactiveButton>

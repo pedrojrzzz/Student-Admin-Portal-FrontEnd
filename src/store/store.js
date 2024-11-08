@@ -4,11 +4,11 @@ import { all, fork } from 'redux-saga/effects';
 import counterReducer from '../slices/counterSlice';
 import dataReducer from '../slices/dataSlice';
 import loginReducer from '../slices/loginSlice';
-import testeReducer from '../slices/testeSlice';
+import checkAuthorizationReducer from '../slices/checkAuthorizationSlice';
 import userIsLoggedInSlice from '../slices/userIsLoggedInSlice';
 import infoUserSlice from '../slices/infoUserSlice';
 import watchFetchData from '../saga/dataSaga';
-import watchFetchContactApiForAuthorization from '../saga/testeSaga';
+import watchFetchContactApiForAuthorization from '../saga/checkAuthorizationSaga';
 import watchFetchAlunos from '../saga/alunosSaga';
 import alunosSlice from '../slices/alunosSlice';
 
@@ -34,7 +34,7 @@ const store = configureStore({
     data: dataReducer,
     register: registerNewUserReducer,
     login: loginReducer,
-    teste: testeReducer,
+    checkAuthorization: checkAuthorizationReducer,
     userIsLoggedIn: userIsLoggedInSlice,
     infoUser: infoUserSlice,
     alunos: alunosSlice,

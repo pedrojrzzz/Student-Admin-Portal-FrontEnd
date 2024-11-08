@@ -1,12 +1,16 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from '../services/axios';
-import { fetchError, fetchRequest, fetchSuccess } from '../slices/testeSlice';
+import {
+  fetchError,
+  fetchRequest,
+  fetchSuccess,
+} from '../slices/checkAuthorizationSlice';
 
 function contactApiForAuthorization(token) {
   const headers = {
     authorization: token,
   };
-  return axios.get('/teste', { headers });
+  return axios.get('/tokens/checkAuth', { headers });
 }
 
 function* fetchContactApiForAuthorization(action) {
