@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -23,6 +23,7 @@ export default function FormLoginFormik() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data, error, loading } = useSelector((state) => state.login);
+  const [buttonIsDisabled, setButtonIsDisable] = useState(false); // Não permitir que user envie muitas req pro servidor
   const fetchWasMade = useRef(false); // Checando se o dispatch já foi feito
   const initialValues = {
     email: '',
@@ -38,11 +39,12 @@ export default function FormLoginFormik() {
 
     dispatch(fetchRequest(credentials));
     fetchWasMade.current = true;
-    console.log(data, loading, error);
+    setButtonIsDisable(true);
   };
 
   useEffect(() => {
     if (error && fetchWasMade.current === true) {
+      setButtonIsDisable(false);
       handleErrors(error);
     }
 
@@ -86,7 +88,7 @@ export default function FormLoginFormik() {
             </DivError>
           </InputContainer>
           <ButtonContainer>
-            <button type="submit">
+            <button type="submit" disabled={buttonIsDisabled}>
               {loading ? <SpinnerLoading size={20} /> : 'Sign In'}
             </button>
           </ButtonContainer>

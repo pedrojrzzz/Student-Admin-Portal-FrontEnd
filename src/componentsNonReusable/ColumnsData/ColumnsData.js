@@ -6,8 +6,10 @@ import { useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import { GiShipWreck } from 'react-icons/gi';
+import { PiStudentLight } from 'react-icons/pi';
 import { IoMdRefresh } from 'react-icons/io';
 import ButtonEdit from '../../components/ButtonEdit/ButtonEdit';
+import ButtonAddNewStudent from '../../components/ButtonAddNewStudent/ButtonAddNewStudent';
 
 import {
   DivContainer,
@@ -81,6 +83,8 @@ export default function ColumnsNames() {
       )}
 
       <DivTableButton>
+        <ButtonAddNewStudent />
+
         <button type="submit" className="buttonRefresh">
           <div className="icon">
             <IoMdRefresh size={18} />

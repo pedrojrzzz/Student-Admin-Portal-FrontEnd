@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -30,13 +30,14 @@ const initialValues = {
 
 export default function FormRegisterFormik() {
   const dispatch = useDispatch();
-
+  const [buttonIsDisabled, setButtonIsDisabled] = useState(false); // Não permitir user enviar muitas req de uma vez pro servidor
   const { data, loading, error } = useSelector((state) => state.register);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (error) {
       handleErrors(error);
+      setButtonIsDisabled(false);
     }
 
     if (data?.code === 'SUCCESS') {
@@ -50,6 +51,7 @@ export default function FormRegisterFormik() {
       initialValues={initialValues}
       validationSchema={registerSchemaYup}
       onSubmit={(values) => {
+        setButtonIsDisabled(true);
         const { sanitizedName, sanitizedEmail, sanitizedPassword } =
           sanitizeData(values);
         const user = {
@@ -104,7 +106,7 @@ export default function FormRegisterFormik() {
           </InputContainer>
 
           <ButtonContainer>
-            <button type="submit">
+            <button type="submit" disabled={buttonIsDisabled}>
               {loading ? <SpinnerLoader size={20} /> : 'Submit'}
             </button>
           </ButtonContainer>

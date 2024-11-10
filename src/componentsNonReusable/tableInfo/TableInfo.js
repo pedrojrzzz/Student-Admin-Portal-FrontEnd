@@ -14,6 +14,7 @@ import { useStudentCounter } from '../../hooks/useStudentCounter';
 export default function TableInfo() {
   const { data, loading, error } = useSelector((state) => state.alunos);
   const countedData = useStudentCounter(data);
+  console.log(countedData);
 
   return (
     <DivContainer>
@@ -29,7 +30,9 @@ export default function TableInfo() {
           <div className="ContainerTitle">
             <p>Total de Alunos</p>
           </div>
-          <div className="ContainerNumber">2</div>
+          <div className="ContainerNumber">
+            {countedData.numberOfStudents ? countedData.numberOfStudents : '--'}
+          </div>
         </div>
       </DivTotalAlunos>
 
@@ -45,7 +48,9 @@ export default function TableInfo() {
           <div className="ContainerTitle">
             <p>Alunos Ativos</p>
           </div>
-          <div className="ContainerNumber">39</div>
+          <div className="ContainerNumber">
+            {countedData.activeStudents ? countedData.activeStudents : '--'}
+          </div>
         </div>
       </DivAlunosAtivos>
 
@@ -61,7 +66,9 @@ export default function TableInfo() {
           <div className="ContainerTitle">
             <p>Alunos Inativos</p>
           </div>
-          <div className="ContainerNumber">11</div>
+          <div className="ContainerNumber">
+            {countedData.inactiveStudents ? countedData.inactiveStudents : '--'}
+          </div>
         </div>
       </DivAlunosInativos>
     </DivContainer>
