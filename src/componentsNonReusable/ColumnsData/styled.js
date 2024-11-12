@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const DivContainer = styled.div`
-  height: fit-content;
+  height: 400px;
   width: 90%;
-
+  overflow-y: scroll;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -16,6 +16,9 @@ export const DivContainer = styled.div`
 
   table thead {
     border: 1px solid black;
+    position: sticky;
+    background-color: #ffffff;
+    top: 0;
   }
 
   table thead tr th {
@@ -43,6 +46,12 @@ export const DivContainer = styled.div`
     padding: 10px; /* Adicione padding para as células */
     text-align: center;
   }
+`;
+
+export const DivImgStudent = styled.div`
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 `;
 
 export const DivLoading = styled.div`
@@ -81,30 +90,6 @@ export const DivTableButton = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-
-  .buttonAddNewStudent {
-    display: flex;
-    align-items: center;
-    width: auto;
-    padding: 6px 15px 6px 10px;
-    background-color: white;
-    border: 0.2px solid #d6d6d6;
-    border-radius: 5px;
-    margin-right: 30px;
-
-    .icon {
-      padding-right: 7px;
-    }
-
-    &:hover {
-      border: 0.2px solid #d6d6d6;
-      color: black;
-      box-shadow:
-        0px 0px 0em 6px #7caee912,
-        0 0 1em #69c1e3;
-    }
-    transition: 0.3s;
-  }
 
   .buttonRefresh {
     display: flex;

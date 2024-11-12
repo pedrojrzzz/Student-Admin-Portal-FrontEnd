@@ -9,13 +9,12 @@ export const useStudentCounter = (data) => {
   const activeStudentsArray = []
   const inativeStudentsArray = []
   data.map((currentObject) => {
-
-    if (currentObject.status === 1) {
     
+    if (currentObject.status === true) {
       activeStudentsArray.push(currentObject)
       
     }
-    if (currentObject.status === 0) {
+    if (currentObject.status === false) {
       inativeStudentsArray.push(currentObject)
     }
     

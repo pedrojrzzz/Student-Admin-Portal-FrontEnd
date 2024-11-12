@@ -13,6 +13,7 @@ import ButtonAddNewStudent from '../../components/ButtonAddNewStudent/ButtonAddN
 
 import {
   DivContainer,
+  DivImgStudent,
   DivError,
   DivLoading,
   ActiveButton,
@@ -43,7 +44,11 @@ export default function ColumnsNames() {
             <tr key={currentObject.id}>
               {' '}
               {/* Adicione uma chave única para cada linha */}
-              <td>img</td>
+              <td>
+                <DivImgStudent>
+                  <img src={currentObject.Fotos[0].url} alt="imgStudent" />
+                </DivImgStudent>
+              </td>
               <td>{currentObject.nome}</td>
               <td>{currentObject.email}</td>
               <td>{currentObject.idade}</td>
