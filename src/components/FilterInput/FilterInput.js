@@ -1,10 +1,9 @@
 /* eslint-disable no-const-assign */
-/* eslint-disable no-unused-vars */
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import useStudentsInfoContext from '../../hooks/useStudentsInfoContext';
+import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 import {
   DivContainer,
   InputWrapper,
@@ -12,30 +11,40 @@ import {
   IconArrowDrop,
   DropdownSortBy,
 } from './styled';
-import { StudentsInfoContext } from '../../context/StudentsInfoContext';
 
 export default function SortBy() {
   const [dropdownSortBy, setDropdownSortBy] = useState(null);
   const [checkedActive, setCheckedActive] = useState(false);
   const [checkedInactive, setCheckedInactive] = useState(false);
-  const { listToBeDisplayed, setListToBeDisplayed, originalList } =
-    useContext(StudentsInfoContext);
+  const { setListToBeDisplayed, originalList } = useContext(
+    SearchAndFilterContext,
+  );
+
+  const filterList = () => {
+    let filteredList = [...originalList];
+
+    if (checkedActive) {
+      filteredList = filteredList.filter((item) => item.status === true);
+    }
+
+    if (checkedInactive) {
+      filteredList = filteredList.filter((item) => item.status === false);
+    }
+    console.log(filteredList);
+    setListToBeDisplayed(filteredList);
+  };
+
+  useEffect(() => {
+    filterList();
+  }, [checkedActive, checkedInactive, originalList]);
 
   const handleChange = (event, field) => {
     if (field === 'fieldActive') {
       setCheckedActive(event.target.checked);
-      originalList.map((currentObject) => {
-        if (currentObject.status === 1) {
-          console.log(currentObject);
-          setListToBeDisplayed([...listToBeDisplayed, currentObject]);
-        }
-      });
-      console.log(listToBeDisplayed);
     }
 
     if (field === 'fieldInactive') {
       setCheckedInactive(event.target.checked);
-      console.log(checkedInactive);
     }
   };
 
@@ -66,6 +75,7 @@ export default function SortBy() {
         <FormGroup>
           <FormControlLabel
             control={<Checkbox />}
+            disabled={checkedInactive}
             onChange={(e) => {
               handleChange(e, 'fieldActive');
             }}
@@ -74,6 +84,7 @@ export default function SortBy() {
           />
           <FormControlLabel
             control={<Checkbox />}
+            disabled={checkedActive}
             onChange={(e) => {
               handleChange(e, 'fieldInactive');
             }}

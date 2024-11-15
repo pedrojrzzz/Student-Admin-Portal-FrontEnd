@@ -7,6 +7,7 @@ export const DivContainer = styled.div`
   height: auto;
   width: fit-content;
   position: relative;
+  z-index: 2;
 `;
 
 export const InputWrapper = styled.div`

@@ -15,26 +15,29 @@ import {
   StudentsInfoContext,
   StudentsInfoContextProvider,
 } from '../../context/StudentsInfoContext';
+import { SearchAndFilterContextProvider } from '../../context/SearchAndFilterContext';
 
 export default function TableAlunos() {
   const { data, loading, error } = useSelector((state) => state.alunos);
-  const [listToBeDisplayed, setListToBeDisplayed] = useState([]);
+
   const originalList = data;
 
   return (
     <DivContainer>
-      <StudentsInfoContextProvider>
-        <HeaderTableStudents>
-          <TitleHeaderTableStudents>
-            <p>Alunos</p>
-          </TitleHeaderTableStudents>
-          <DivSearchAndFilter>
-            <SearchInput />
-            <FilterInput />
-          </DivSearchAndFilter>
-        </HeaderTableStudents>
-        <ColumnsData />
-      </StudentsInfoContextProvider>
+      <SearchAndFilterContextProvider>
+        <StudentsInfoContextProvider>
+          <HeaderTableStudents>
+            <TitleHeaderTableStudents>
+              <p>Alunos</p>
+            </TitleHeaderTableStudents>
+            <DivSearchAndFilter>
+              <SearchInput />
+              <FilterInput />
+            </DivSearchAndFilter>
+          </HeaderTableStudents>
+          <ColumnsData />
+        </StudentsInfoContextProvider>
+      </SearchAndFilterContextProvider>
     </DivContainer>
   );
 }

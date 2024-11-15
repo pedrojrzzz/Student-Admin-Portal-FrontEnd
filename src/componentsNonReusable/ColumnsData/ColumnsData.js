@@ -1,15 +1,16 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable array-callback-return */
-/* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import { GiShipWreck } from 'react-icons/gi';
-import { PiStudentLight } from 'react-icons/pi';
 import { IoMdRefresh } from 'react-icons/io';
+import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 import ButtonEdit from '../../components/ButtonEdit/ButtonEdit';
 import ButtonAddNewStudent from '../../components/ButtonAddNewStudent/ButtonAddNewStudent';
+import imgStudent from '../../images/imgStudentMulher4.jpg';
 
 import {
   DivContainer,
@@ -23,7 +24,7 @@ import {
 
 export default function ColumnsNames() {
   const { data, loading, error } = useSelector((state) => state.alunos);
-
+  const { listToBeDisplayed } = useContext(SearchAndFilterContext);
   return (
     <DivContainer>
       <table>
@@ -40,13 +41,18 @@ export default function ColumnsNames() {
           </tr>
         </thead>
         <tbody>
-          {data.map((currentObject) => (
+          {listToBeDisplayed.map((currentObject) => (
             <tr key={currentObject.id}>
               {' '}
               {/* Adicione uma chave única para cada linha */}
               <td>
                 <DivImgStudent>
-                  <img src={currentObject.Fotos[0].url} alt="imgStudent" />
+                  {/* <img src={currentObject.Fotos[0].url} alt="imgStudent" /> --- Esse é o código que vai pra produção*/}
+                  <img
+                    src={imgStudent}
+                    alt="Imagem de perfil estudante"
+                    className="img-perfil"
+                  />
                 </DivImgStudent>
               </td>
               <td>{currentObject.nome}</td>

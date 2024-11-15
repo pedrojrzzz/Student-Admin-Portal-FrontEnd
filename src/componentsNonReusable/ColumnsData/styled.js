@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const DivContainer = styled.div`
   height: 400px;
   width: 90%;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -18,6 +18,7 @@ export const DivContainer = styled.div`
     border: 1px solid black;
     position: sticky;
     background-color: #ffffff;
+    z-index: 1;
     top: 0;
   }
 
@@ -52,6 +53,15 @@ export const DivImgStudent = styled.div`
   height: 100px;
   width: 100px;
   border-radius: 50%;
+  background-color: red;
+  position: relative;
+
+  .img-perfil {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    z-index: 0;
+  }
 `;
 
 export const DivLoading = styled.div`
