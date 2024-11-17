@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { IoMdClose } from 'react-icons/io';
 
 export const ButtonEditComponent = styled.button`
   border-radius: 5px;
@@ -41,13 +40,5 @@ export const ModalEdit = styled.dialog`
 
   &::backdrop {
     backdrop-filter: blur(1px);
-  }
-`;
-
-export const ButtonCloseModal = styled(IoMdClose)`
-  color: black;
-  &:hover {
-    opacity: 0.7;
-    cursor: pointer;
   }
 `;

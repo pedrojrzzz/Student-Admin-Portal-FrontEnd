@@ -1,11 +1,12 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
+
 import React from 'react';
 import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material'; // Certifique-se de importar o Button
+import { IoCloudUploadOutline } from 'react-icons/io5';
 import { EditStudentsDataSchema } from './careForm/EditStudentDataSchema';
-import { FormStyled, FieldStyled } from './styled';
+import { FormStyled, ButtonCloseModal } from './styled';
+import imgStudent from '../../images/imgStudentMulher4.jpg';
 
 export default function FormModalEdit(props) {
   // Definindo valores iniciais
@@ -18,9 +19,15 @@ export default function FormModalEdit(props) {
     altura: `${props.data.data.altura}`,
   };
 
+  // Lidar com as fotos dos alunos
+  const handleFileChange = (e) => {
+    const file = e.target.files[0]; // Pega o primeiro arquivo selecionado
+    console.log(file);
+  };
+
   const handleSubmit = () => {
-    console.log(typeof initialValues.idade);
     console.log('Formulário enviado');
+    console.log(props.data.data.nome);
   };
 
   return (
@@ -28,12 +35,44 @@ export default function FormModalEdit(props) {
       <Formik
         initialValues={initialValues} // Corrigido para usar a constante definida
         validationSchema={EditStudentsDataSchema}
-        onSubmit={handleSubmit}
+        onSubmit={(values) => handleSubmit(values)}
       >
-        {({ errors, touched }) => (
+        {({ errors, touched, resetForm }) => (
           <FormStyled>
+            <div className="header-modal">
+              <h3>Editar informações</h3>
+              <ButtonCloseModal
+                size={30}
+                onClick={() => props.funcCloseModal(resetForm)}
+              />
+            </div>
+
+            <div className="div-container-img-student">
+              <div className="img-student-perfil">
+                <img
+                  src={imgStudent}
+                  alt="Imagem de perfil estudante"
+                  className="img-perfil"
+                />
+              </div>
+              <Button
+                component="label"
+                role={undefined}
+                variant="outlined"
+                tabIndex={-1}
+                startIcon={<IoCloudUploadOutline />}
+              >
+                Alterar imagem
+                <input
+                  type="file"
+                  hidden
+                  onChange={(e) => handleFileChange(e)}
+                />
+              </Button>
+            </div>
+
             <div className="div-nome-sobrenome">
-              <FieldStyled
+              <Field
                 name="nome"
                 as={TextField}
                 defaultValue={props.data.data.nome}
@@ -88,7 +127,6 @@ export default function FormModalEdit(props) {
                 helperText={touched.altura && errors.altura} // Exibe a mensagem de erro
               />
             </div>
-
             <div className="div-buttons">
               <Button type="submit" variant="contained" color="primary">
                 Salvar Alterações

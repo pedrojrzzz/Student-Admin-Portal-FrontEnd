@@ -13,6 +13,7 @@ import ButtonAddNewStudent from '../../components/ButtonAddNewStudent/ButtonAddN
 import imgStudent from '../../images/imgStudentMulher4.jpg';
 
 import {
+  DivContainerFather,
   DivContainer,
   DivImgStudent,
   DivError,
@@ -23,76 +24,81 @@ import {
 } from './styled';
 
 export default function ColumnsNames() {
-  const { data, loading, error } = useSelector((state) => state.alunos);
+  const { loading, error } = useSelector((state) => state.alunos);
   const { listToBeDisplayed } = useContext(SearchAndFilterContext);
   return (
-    <DivContainer>
-      <table>
-        <thead>
-          <tr>
-            <th className="columnImg">Imagem</th>
-            <th>Nome do Aluno</th>
-            <th>E-mail</th>
-            <th>Idade</th>
-            <th>Peso</th>
-            <th>Altura</th>
-            <th>Status</th>
-            <th className="columnEdit">Editar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {listToBeDisplayed.map((currentObject) => (
-            <tr key={currentObject.id}>
-              {' '}
-              {/* Adicione uma chave única para cada linha */}
-              <td>
-                <DivImgStudent>
-                  {/* <img src={currentObject.Fotos[0].url} alt="imgStudent" /> --- Esse é o código que vai pra produção*/}
-                  <img
-                    src={imgStudent}
-                    alt="Imagem de perfil estudante"
-                    className="img-perfil"
-                  />
-                </DivImgStudent>
-              </td>
-              <td>{currentObject.nome}</td>
-              <td>{currentObject.email}</td>
-              <td>{currentObject.idade}</td>
-              <td>{currentObject.peso}kg</td>
-              <td>{currentObject.altura}m</td>
-              <td>
-                {currentObject.status === true ? (
-                  <ActiveButton>Ativo</ActiveButton>
-                ) : (
-                  <InactiveButton>Inativo</InactiveButton>
-                )}
-              </td>
-              <td className="columnEdit">
-                <ButtonEdit data={currentObject}>Editar</ButtonEdit>
-              </td>
+    <DivContainerFather>
+      <DivContainer>
+        <table>
+          <thead>
+            <tr>
+              <th className="columnImg">
+                <p>Imagem</p>
+              </th>
+              <th>Nome do Aluno</th>
+              <th>E-mail</th>
+              <th>Idade</th>
+              <th>Peso</th>
+              <th>Altura</th>
+              <th>Status</th>
+              <th className="columnEdit">
+                <p>Editar</p>
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {listToBeDisplayed.map((currentObject) => (
+              <tr key={currentObject.id}>
+                {' '}
+                {/* Adicione uma chave única para cada linha */}
+                <td>
+                  <DivImgStudent>
+                    {/* <img src={currentObject.Fotos[0].url} alt="imgStudent" /> --- Esse é o código que vai pra produção*/}
+                    <img
+                      src={imgStudent}
+                      alt="Imagem de perfil estudante"
+                      className="img-perfil"
+                    />
+                  </DivImgStudent>
+                </td>
+                <td>{`${currentObject.nome} ${currentObject.sobrenome}`}</td>
+                <td>{currentObject.email}</td>
+                <td>{currentObject.idade}</td>
+                <td>{currentObject.peso}kg</td>
+                <td>{currentObject.altura}m</td>
+                <td>
+                  {currentObject.status === true ? (
+                    <ActiveButton>Ativo</ActiveButton>
+                  ) : (
+                    <InactiveButton>Inativo</InactiveButton>
+                  )}
+                </td>
+                <td className="columnEdit">
+                  <ButtonEdit data={currentObject}>Editar</ButtonEdit>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-      {loading ? (
-        <DivLoading>
-          <ClipLoader />
-          <p>Fetching students...</p>
-        </DivLoading>
-      ) : (
-        ''
-      )}
+        {loading ? (
+          <DivLoading>
+            <ClipLoader />
+            <p>Fetching students...</p>
+          </DivLoading>
+        ) : (
+          ''
+        )}
 
-      {error ? (
-        <DivError>
-          <GiShipWreck size={100} />
-          <p>Desculpe, não foi possível buscar os alunos</p>
-        </DivError>
-      ) : (
-        ''
-      )}
-
+        {error ? (
+          <DivError>
+            <GiShipWreck size={100} />
+            <p>Desculpe, não foi possível buscar os alunos</p>
+          </DivError>
+        ) : (
+          ''
+        )}
+      </DivContainer>
       <DivTableButton>
         <ButtonAddNewStudent />
 
@@ -103,7 +109,6 @@ export default function ColumnsNames() {
           Refresh
         </button>
       </DivTableButton>
-    </DivContainer>
+    </DivContainerFather>
   );
 }
-// Fazer com tabela html

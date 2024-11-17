@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
-export const DivContainer = styled.div`
-  height: 400px;
+export const DivContainerFather = styled.div`
+  height: 450px;
   width: 90%;
+`;
+
+export const DivContainer = styled.div`
+  height: 415px;
+  width: 100%;
   overflow-y: auto;
   margin-top: 20px;
   display: flex;
@@ -32,9 +37,17 @@ export const DivContainer = styled.div`
 
   .columnImg {
     opacity: 1;
+
+    p {
+      visibility: hidden;
+    }
   }
   .columnEdit {
     visibility: visible;
+
+    p {
+      visibility: visible;
+    }
   }
 
   table tbody tr {
@@ -97,9 +110,11 @@ export const DivError = styled.div`
 export const DivTableButton = styled.div`
   width: 100%;
   height: 10%;
+  margin-bottom: 15px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
+  background-color: transparent;
 
   .buttonRefresh {
     display: flex;

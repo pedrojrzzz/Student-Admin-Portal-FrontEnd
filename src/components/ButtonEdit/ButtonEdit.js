@@ -1,5 +1,6 @@
+/* eslint-disable no-const-assign */
 import React, { useState, useRef } from 'react';
-import { ButtonEditComponent, ModalEdit, ButtonCloseModal } from './styled';
+import { ButtonEditComponent, ModalEdit } from './styled';
 import FormModalEdit from '../FormModalEdit/FormModalEdit';
 
 export default function ButtonEdit(props) {
@@ -15,17 +16,23 @@ export default function ButtonEdit(props) {
     setModalVisible(true);
     modalSelector.current.showModal();
   };
+
+  const handleCloseModal = (resetForm) => {
+    modalSelector.current.close();
+    resetForm();
+    setModalVisible(false);
+  };
+
   return (
     <div className="ContainerFather">
       <ButtonEditComponent onClick={handleClick}>Editar</ButtonEditComponent>
 
       <ModalEdit ref={modalSelector}>
-        <div className="header-modal">
-          <h3>Editar informações</h3>
-          <ButtonCloseModal size={30} onClick={handleClick} />
-        </div>
-
-        <FormModalEdit data={props} />
+        <FormModalEdit
+          data={props}
+          modalSelector={modalSelector}
+          funcCloseModal={handleCloseModal}
+        />
       </ModalEdit>
     </div>
   );
