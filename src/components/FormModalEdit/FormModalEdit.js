@@ -1,14 +1,17 @@
 /* eslint-disable react/destructuring-assignment */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material'; // Certifique-se de importar o Button
-import { IoCloudUploadOutline } from 'react-icons/io5';
+import { IoCloudUploadOutline, IoCloudUpload } from 'react-icons/io5';
 import { EditStudentsDataSchema } from './careForm/EditStudentDataSchema';
 import { FormStyled, ButtonCloseModal } from './styled';
 import imgStudent from '../../images/imgStudentMulher4.jpg';
+import SanitizeDataModalEdit from './careForm/SanitizeData';
 
 export default function FormModalEdit(props) {
+  const [fileUploaded, setFileUploaded] = useState(false);
+  const [fileData, setFileData] = useState(null);
   // Definindo valores iniciais
   const initialValues = {
     nome: `${props.data.data.nome}`,
@@ -22,12 +25,9 @@ export default function FormModalEdit(props) {
   // Lidar com as fotos dos alunos
   const handleFileChange = (e) => {
     const file = e.target.files[0]; // Pega o primeiro arquivo selecionado
-    console.log(file);
-  };
-
-  const handleSubmit = () => {
-    console.log('Formulário enviado');
-    console.log(props.data.data.nome);
+    setFileUploaded(true);
+    setFileData(file);
+    console.log(fileData);
   };
 
   return (
@@ -35,7 +35,7 @@ export default function FormModalEdit(props) {
       <Formik
         initialValues={initialValues} // Corrigido para usar a constante definida
         validationSchema={EditStudentsDataSchema}
-        onSubmit={(values) => handleSubmit(values)}
+        onSubmit={(values) => SanitizeDataModalEdit(values)}
       >
         {({ errors, touched, resetForm }) => (
           <FormStyled>
@@ -60,9 +60,12 @@ export default function FormModalEdit(props) {
                 role={undefined}
                 variant="outlined"
                 tabIndex={-1}
-                startIcon={<IoCloudUploadOutline />}
+                startIcon={
+                  fileUploaded ? <IoCloudUpload /> : <IoCloudUploadOutline />
+                }
+                disabled={fileUploaded}
               >
-                Alterar imagem
+                {fileUploaded ? 'Arquivo enviado' : 'Alterar imagem'}
                 <input
                   type="file"
                   hidden
