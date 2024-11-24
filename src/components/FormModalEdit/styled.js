@@ -44,9 +44,11 @@ export const FormStyled = styled(Form)`
 `;
 
 export const ButtonCloseModal = styled(IoMdClose)`
+  border-radius: 50%;
   color: black;
   &:hover {
     opacity: 0.7;
+    background-color: #ede6e6;
     cursor: pointer;
   }
 `;

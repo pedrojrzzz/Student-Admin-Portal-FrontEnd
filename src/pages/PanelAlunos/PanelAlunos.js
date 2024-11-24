@@ -20,7 +20,6 @@ export default function PanelAlunos() {
     alunoWasFetched.current = true;
   }, []);
 
-  console.log(data);
   if (error) {
     careFormErrors(error);
   }

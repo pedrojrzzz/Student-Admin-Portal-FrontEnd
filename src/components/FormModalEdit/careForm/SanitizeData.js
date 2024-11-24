@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 import DOMPurify from 'dompurify';
+import HandlePost from './HandlePost';
 
 const formatFirstName = (name) => {
   const sanitizedInput = DOMPurify.sanitize(name);
@@ -17,11 +17,37 @@ const formatFirstName = (name) => {
   return formattedName.join('');
 };
 
-export default function SanitizeDataModalEdit(data) {
-  const sanitizedData = {
-    firstName: formatFirstName(data.nome),
-  };
-  console.log(sanitizedData);
+const formatEmail = (email) => {
+  const sanitizedEmail = DOMPurify.sanitize(email);
+  return sanitizedEmail;
+};
 
+const formatAge = (age) => {
+  const sanitizedAge = DOMPurify.sanitize(age);
+
+  return sanitizedAge;
+};
+
+const formatWeight = (weight) => {
+  const sanitizedWeight = DOMPurify.sanitize(weight);
+  return sanitizedWeight;
+};
+
+const formatHeight = (height) => {
+  const sanitizedHeight = DOMPurify.sanitize(height);
+  return sanitizedHeight;
+};
+
+export default function SanitizeDataModalEdit(data, idStudent) {
+  const sanitizedData = {
+    idStudent,
+    firstName: formatFirstName(data.nome),
+    lastName: formatFirstName(data.sobrenome),
+    email: formatEmail(data.email),
+    age: formatAge(data.idade),
+    weight: formatWeight(data.peso),
+    height: formatHeight(data.altura),
+  };
+  HandlePost(sanitizedData);
   return sanitizedData;
 }

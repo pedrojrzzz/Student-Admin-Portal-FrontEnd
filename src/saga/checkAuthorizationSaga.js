@@ -16,7 +16,6 @@ function contactApiForAuthorization(token) {
 function* fetchContactApiForAuthorization(action) {
   try {
     const response = yield call(contactApiForAuthorization, action.payload);
-    console.log(response.data);
     yield put(fetchSuccess(response.data));
   } catch (error) {
     const serializableError = {
@@ -24,6 +23,7 @@ function* fetchContactApiForAuthorization(action) {
       status: error.response?.status,
       message: error.response?.data.errors,
     };
+    // eslint-disable-next-line no-console
     console.log(serializableError);
     yield put(fetchError(serializableError));
   }

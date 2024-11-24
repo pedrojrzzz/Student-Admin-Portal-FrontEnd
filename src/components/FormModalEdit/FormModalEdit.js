@@ -1,15 +1,18 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material'; // Certifique-se de importar o Button
 import { IoCloudUploadOutline, IoCloudUpload } from 'react-icons/io5';
 import { EditStudentsDataSchema } from './careForm/EditStudentDataSchema';
 import { FormStyled, ButtonCloseModal } from './styled';
+import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 import imgStudent from '../../images/imgStudentMulher4.jpg';
 import SanitizeDataModalEdit from './careForm/SanitizeData';
 
 export default function FormModalEdit(props) {
+  const { originalList } = useContext(SearchAndFilterContext);
   const [fileUploaded, setFileUploaded] = useState(false);
   const [fileData, setFileData] = useState(null);
   // Definindo valores iniciais
@@ -27,7 +30,17 @@ export default function FormModalEdit(props) {
     const file = e.target.files[0]; // Pega o primeiro arquivo selecionado
     setFileUploaded(true);
     setFileData(file);
-    console.log(fileData);
+  };
+
+  const handleSubmit = (values) => {
+    let idStudent = null;
+    originalList.map((item) => {
+      if (values.email === item.email) {
+        idStudent = item.id;
+      }
+    });
+
+    SanitizeDataModalEdit(values, idStudent);
   };
 
   return (
@@ -35,7 +48,7 @@ export default function FormModalEdit(props) {
       <Formik
         initialValues={initialValues} // Corrigido para usar a constante definida
         validationSchema={EditStudentsDataSchema}
-        onSubmit={(values) => SanitizeDataModalEdit(values)}
+        onSubmit={(values) => handleSubmit(values)}
       >
         {({ errors, touched, resetForm }) => (
           <FormStyled>

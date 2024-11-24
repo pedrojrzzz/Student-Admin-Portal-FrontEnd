@@ -30,7 +30,6 @@ export default function SortBy() {
     if (checkedInactive) {
       filteredList = filteredList.filter((item) => item.status === false);
     }
-    console.log(filteredList);
     setListToBeDisplayed(filteredList);
   };
 

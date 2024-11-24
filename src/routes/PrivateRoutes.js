@@ -11,7 +11,6 @@ export default function PrivateRoute({ children }) {
   const { data, error, loading } = useSelector(
     (state) => state.checkAuthorization,
   );
-  const { dataUser } = useSelector((state) => state.infoUser);
 
   const [tokenIsValid, setTokenIsValid] = useState(null);
 
@@ -52,7 +51,6 @@ export default function PrivateRoute({ children }) {
 
   dispatch(logado()); // Definindo state que user está logado
 
-  console.log(dataUser);
   return children;
 }
 
