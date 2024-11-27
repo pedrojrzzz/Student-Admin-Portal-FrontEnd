@@ -8,7 +8,6 @@ const option = {
 
 export const careFormErrors = (error) => {
   const notify = (message) => toast.error(message, option);
-  console.log(error);
 
   if (error.type === 'Error Network') {
     return toast.error(
