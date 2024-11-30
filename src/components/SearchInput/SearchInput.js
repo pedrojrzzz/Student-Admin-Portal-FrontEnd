@@ -13,35 +13,25 @@ export default function SearchInput() {
   const { listToBeDisplayed, setListToBeDisplayed, originalList } = useContext(
     SearchAndFilterContext,
   );
-
-  const listToBeFiltered = {};
+  const formerListToBeDisplayed = listToBeDisplayed;
 
   function convertToStringExceptObjects(obj) {
-    // Verifica se o objeto é válido
-    if (!obj) return {}; // Se o objeto for nulo ou indefinido, retornamos um objeto vazio
-
-    // Criando uma cópia profunda para evitar mutação do estado original
     let newObj = JSON.parse(JSON.stringify(obj));
 
-    // Verifica se é um array
     if (Array.isArray(newObj)) {
-      // Se for array, iteramos sobre cada item e convertemos
       for (let i = 0; i < newObj.length; i++) {
-        // Para cada item do array, convertemos suas propriedades para string
         for (let key in newObj[i]) {
           if (newObj[i].hasOwnProperty(key)) {
-            if (key === 'id') continue; // Ignora a conversão se for a chave 'id'
+            if (key === 'id') continue;
             if (typeof newObj[i][key] !== 'object' || newObj[i][key] === null) {
-              newObj[i][key] = String(newObj[i][key]); // Converte para string
+              newObj[i][key] = String(newObj[i][key]);
             }
           }
         }
       }
     } else {
-      // Se não for array, percorre o objeto e converte para string
       for (let key in newObj) {
         if (newObj.hasOwnProperty(key)) {
-          // Se não for um objeto e nem array, converte para string
           if (typeof newObj[key] !== 'object' || newObj[key] === null) {
             newObj[key] = String(newObj[key]); // Converte para string
           }
@@ -53,21 +43,34 @@ export default function SearchInput() {
 
   const searching = (event) => {
     const searchValue = event.target.value;
-    const result = [];
     const alreadySearch = [];
-    const objString = convertToStringExceptObjects(listToBeDisplayed);
-    console.log(objString);
-    /* objString.map((currentObject, index) => {
-      Object.keys(currentObject).forEach((key) => {
-        if (alreadySearch.includes(index)) return;
+    const result = [];
 
-        if (String(currentObject[key].match(searchValue))) {
+    const objString = convertToStringExceptObjects(listToBeDisplayed);
+
+    if (searchValue.length === 0) {
+      setListToBeDisplayed(originalList);
+      return;
+    }
+
+    if (objString === null) return;
+    objString.map((item, index) => {
+      Object.keys(item).forEach((key) => {
+        if (key === 'id' || key === 'Fotos') return; // Não checar chave id e Fotos, não necessário
+        if (alreadySearch.includes(index)) return; // Se aluno já estiver incluido no resultado, não incluir novamente.
+        if (item[key].match(searchValue)) {
+          result.push(item);
           alreadySearch.push(index);
-          result.push(currentObject);
         }
       });
-    }); */
-    console.log(result);
+    });
+    if (result.length > 0) {
+      setListToBeDisplayed(result);
+    } else {
+      setListToBeDisplayed(originalList);
+    }
+
+    console.log(searchValue);
   };
 
   return (
@@ -78,6 +81,7 @@ export default function SearchInput() {
           placeholder="Search"
           type="search"
           onChange={(e) => searching(e)}
+          onK
           on
         />
       </InputWrapper>

@@ -7,6 +7,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 import { GiShipWreck } from 'react-icons/gi';
 import { IoMdRefresh } from 'react-icons/io';
+import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
 import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 import ButtonEdit from '../../components/ButtonEdit/ButtonEdit';
 import ButtonAddNewStudent from '../../components/ButtonAddNewStudent/ButtonAddNewStudent';
@@ -26,6 +27,7 @@ import {
 export default function ColumnsNames() {
   const { loading, error } = useSelector((state) => state.alunos);
   const { listToBeDisplayed } = useContext(SearchAndFilterContext);
+
   return (
     <DivContainerFather>
       <DivContainer>
@@ -47,37 +49,46 @@ export default function ColumnsNames() {
             </tr>
           </thead>
           <tbody>
-            {listToBeDisplayed.map((currentObject) => (
-              <tr key={currentObject.id}>
-                {' '}
-                {/* Adicione uma chave única para cada linha */}
-                <td>
-                  <DivImgStudent>
-                    {/* <img src={currentObject.Fotos[0].url} alt="imgStudent" /> --- Esse é o código que vai pra produção*/}
-                    <img
-                      src={imgStudent}
-                      alt="Imagem de perfil estudante"
-                      className="img-perfil"
-                    />
-                  </DivImgStudent>
-                </td>
-                <td>{`${currentObject.nome} ${currentObject.sobrenome}`}</td>
-                <td>{currentObject.email}</td>
-                <td>{currentObject.idade}</td>
-                <td>{currentObject.peso}kg</td>
-                <td>{currentObject.altura}m</td>
-                <td>
-                  {currentObject.status === true ? (
-                    <ActiveButton>Ativo</ActiveButton>
-                  ) : (
-                    <InactiveButton>Inativo</InactiveButton>
-                  )}
-                </td>
-                <td className="columnEdit">
-                  <ButtonEdit data={currentObject}>Editar</ButtonEdit>
+            {listToBeDisplayed && listToBeDisplayed.length > 0 ? (
+              listToBeDisplayed.map((currentObject) => (
+                <tr key={currentObject.id}>
+                  {/* Adicionando uma chave única para cada linha */}
+                  <td>
+                    <DivImgStudent>
+                      {/* Este é o código que vai para produção, descomente quando estiver pronto */}
+                      {/* <img src={currentObject.Fotos[0].url} alt="imgStudent" /> */}
+                      <img
+                        src={imgStudent}
+                        alt="Imagem de perfil estudante"
+                        className="img-perfil"
+                      />
+                    </DivImgStudent>
+                  </td>
+                  <td>{`${currentObject.nome} ${currentObject.sobrenome}`}</td>
+                  <td>{currentObject.email}</td>
+                  <td>{currentObject.idade}</td>
+                  <td>{currentObject.peso}kg</td>
+                  <td>{currentObject.altura}m</td>
+                  <td>
+                    {currentObject.status === true ? (
+                      <ActiveButton>Ativo</ActiveButton>
+                    ) : (
+                      <InactiveButton>Inativo</InactiveButton>
+                    )}
+                  </td>
+                  <td className="columnEdit">
+                    <ButtonEdit data={currentObject}>Editar</ButtonEdit>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="22">
+                  <HiMiniMagnifyingGlass size={100} />
+                  <p>Não foi encontrado nenhum aluno...</p>
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
 
@@ -99,9 +110,9 @@ export default function ColumnsNames() {
           ''
         )}
       </DivContainer>
+
       <DivTableButton>
         <ButtonAddNewStudent />
-
         <button type="submit" className="buttonRefresh">
           <div className="icon">
             <IoMdRefresh size={18} />
