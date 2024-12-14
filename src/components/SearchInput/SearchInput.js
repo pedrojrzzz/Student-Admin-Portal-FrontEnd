@@ -10,10 +10,12 @@ import { InputWrapper, SearchIcon, Input } from './styled';
 import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 
 export default function SearchInput() {
-  const { listToBeDisplayed, setListToBeDisplayed, originalList } = useContext(
-    SearchAndFilterContext,
-  );
-  const formerListToBeDisplayed = listToBeDisplayed;
+  const {
+    listToBeDisplayed,
+    setListToBeDisplayed,
+    originalList,
+    setListIsEmpty,
+  } = useContext(SearchAndFilterContext);
 
   function convertToStringExceptObjects(obj) {
     let newObj = JSON.parse(JSON.stringify(obj));
@@ -48,6 +50,8 @@ export default function SearchInput() {
 
     const objString = convertToStringExceptObjects(listToBeDisplayed);
 
+    setListIsEmpty(false);
+
     if (searchValue.length === 0) {
       setListToBeDisplayed(originalList);
       return;
@@ -58,7 +62,7 @@ export default function SearchInput() {
       Object.keys(item).forEach((key) => {
         if (key === 'id' || key === 'Fotos') return; // Não checar chave id e Fotos, não necessário
         if (alreadySearch.includes(index)) return; // Se aluno já estiver incluido no resultado, não incluir novamente.
-        if (item[key].match(searchValue)) {
+        if (item[key].includes(searchValue)) {
           result.push(item);
           alreadySearch.push(index);
         }
@@ -66,11 +70,11 @@ export default function SearchInput() {
     });
     if (result.length > 0) {
       setListToBeDisplayed(result);
+      setListIsEmpty(false);
     } else {
-      setListToBeDisplayed(originalList);
+      setListToBeDisplayed(result);
+      setListIsEmpty(true);
     }
-
-    console.log(searchValue);
   };
 
   return (

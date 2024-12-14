@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
@@ -17,24 +17,26 @@ export default function CheckAuth({ children }) {
 
   const token = cookie.get('tokenUser');
 
-  if (token) {
-    const theToken = `Bearer ${token}`;
+  useEffect(() => {
+    if (token) {
+      const theToken = `Bearer ${token}`;
 
-    if (!fetchWasMade.current) {
-      dispatch(fetchRequest(theToken));
-      fetchWasMade.current = true;
+      if (!fetchWasMade.current) {
+        dispatch(fetchRequest(theToken));
+        fetchWasMade.current = true;
+      }
+
+      if (fetchWasMade.current && error) {
+        return navigate('/error');
+      }
+
+      if (!loading && data.length < 1) {
+        return navigate('/404');
+      }
+
+      return navigate('/portal-alunos');
     }
-
-    if (fetchWasMade.current && error) {
-      return navigate('/error');
-    }
-
-    if (!loading && data.length < 1) {
-      return navigate('/404');
-    }
-
-    return navigate('/portal-alunos');
-  }
+  }, [token, dispatch, error, data, loading, navigate]);
 
   return children;
 }

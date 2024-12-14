@@ -8,6 +8,7 @@ export const StudentsInfoContext = createContext(null);
 export function StudentsInfoContextProvider({ children }) {
   const { data, loading, error } = useSelector((state) => state.alunos);
   const [listToBeDisplayed, setListToBeDisplayed] = useState([]);
+
   const originalList = data;
 
   return (

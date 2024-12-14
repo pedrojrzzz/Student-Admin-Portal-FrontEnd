@@ -7,7 +7,6 @@ import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import Page404 from '../pages/Page404/page404';
 import PanelAlunos from '../pages/PanelAlunos/PanelAlunos';
-import PageLoading from '../pages/PageLoading/pageLoading';
 
 export default function Router() {
   return (
@@ -45,8 +44,6 @@ export default function Router() {
           </PrivateRoute>
         }
       />
-
-      <Route exact path="/page-loading" element={<PageLoading />} />
     </Routes>
   );
 }

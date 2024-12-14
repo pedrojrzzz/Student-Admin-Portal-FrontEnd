@@ -30,7 +30,9 @@ export default function TableInfo() {
             <p>Total de Alunos</p>
           </div>
           <div className="ContainerNumber">
-            {countedData.numberOfStudents ? countedData.numberOfStudents : '--'}
+            {countedData && countedData.numberOfStudents
+              ? countedData.numberOfStudents
+              : '--'}
           </div>
         </div>
       </DivTotalAlunos>
@@ -48,7 +50,9 @@ export default function TableInfo() {
             <p>Alunos Ativos</p>
           </div>
           <div className="ContainerNumber">
-            {countedData.activeStudents ? countedData.activeStudents : '--'}
+            {countedData && countedData.activeStudents
+              ? countedData.activeStudents
+              : '--'}
           </div>
         </div>
       </DivAlunosAtivos>
@@ -66,7 +70,9 @@ export default function TableInfo() {
             <p>Alunos Inativos</p>
           </div>
           <div className="ContainerNumber">
-            {countedData.inactiveStudents ? countedData.inactiveStudents : '--'}
+            {countedData && countedData.inactiveStudents
+              ? countedData.inactiveStudents
+              : '--'}
           </div>
         </div>
       </DivAlunosInativos>

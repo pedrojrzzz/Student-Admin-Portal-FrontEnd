@@ -7,13 +7,22 @@ export const SearchAndFilterContext = createContext(null);
 export function SearchAndFilterContextProvider({ children }) {
   const { data } = useSelector((state) => state.alunos);
   const [listToBeDisplayed, setListToBeDisplayed] = useState([]);
+  const [searchedValue, setSearchedValue] = useState(null);
+  const [filteredValue, setFilteredValue] = useState(null);
+  const [listIsEmpty, setListIsEmpty] = useState(false);
   const originalList = data;
   return (
     <SearchAndFilterContext.Provider
       value={{
+        originalList,
         listToBeDisplayed,
         setListToBeDisplayed,
-        originalList,
+        searchedValue,
+        listIsEmpty,
+        setListIsEmpty,
+        setSearchedValue,
+        filteredValue,
+        setFilteredValue,
       }}
     >
       {children}

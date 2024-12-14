@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
+import ClipLoader from 'react-spinners/ClipLoader';
 import { fifthColor, successColor, errorColor } from '../config/colors';
 
 export default createGlobalStyle`
@@ -53,3 +54,5 @@ export const Container = styled.section`
   justify-content: center;
   align-items: center;
 `;
+
+export const SpinnerLoading = styled(ClipLoader)``;

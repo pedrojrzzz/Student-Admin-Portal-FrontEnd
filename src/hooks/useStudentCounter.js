@@ -4,10 +4,13 @@
 
 /* eslint-disable no-undef */
 export const useStudentCounter = (data) => {
-
+  if (!data || data.length === 0 || data === undefined || data === null) return;
+  console.log(data)
   /* Contando os estudantes ativos */
   const activeStudentsArray = []
   const inativeStudentsArray = []
+
+  if (!Array.isArray(data) || data.length === 0) return;
   data.map((currentObject) => {
     
     if (currentObject.status === true) {

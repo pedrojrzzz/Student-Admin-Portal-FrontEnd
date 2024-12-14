@@ -1,5 +1,5 @@
 import DOMPurify from 'dompurify';
-import HandlePost from './HandlePost';
+//import HandlePost from './HandlePost';
 
 const formatFirstName = (name) => {
   const sanitizedInput = DOMPurify.sanitize(name);
@@ -48,6 +48,5 @@ export default function SanitizeDataModalEdit(data, idStudent) {
     weight: formatWeight(data.peso),
     height: formatHeight(data.altura),
   };
-  HandlePost(sanitizedData);
   return sanitizedData;
 }

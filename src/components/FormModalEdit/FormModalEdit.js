@@ -2,6 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 
 import React, { useState, useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material'; // Certifique-se de importar o Button
 import { IoCloudUploadOutline, IoCloudUpload } from 'react-icons/io5';
@@ -10,11 +11,17 @@ import { FormStyled, ButtonCloseModal } from './styled';
 import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 import imgStudent from '../../images/imgStudentMulher4.jpg';
 import SanitizeDataModalEdit from './careForm/SanitizeData';
+import { fetchRequest } from '../../slices/studentEditSlice';
+import { SpinnerLoading } from '../../styles/GlobalStyles';
 
 export default function FormModalEdit(props) {
   const { originalList } = useContext(SearchAndFilterContext);
   const [fileUploaded, setFileUploaded] = useState(false);
   const [fileData, setFileData] = useState(null);
+  const dispatch = useDispatch();
+  const { dataAlunosEdit, loading, error } = useSelector(
+    (state) => state.alunosEdit,
+  );
   // Definindo valores iniciais
   const initialValues = {
     nome: `${props.data.data.nome}`,
@@ -40,7 +47,13 @@ export default function FormModalEdit(props) {
       }
     });
 
-    SanitizeDataModalEdit(values, idStudent);
+    const sanitizedData = SanitizeDataModalEdit(values, idStudent);
+    dispatch(fetchRequest(sanitizedData));
+    console.log('******* LOGS TESTE ***********');
+    console.log(dataAlunosEdit);
+    console.log(loading);
+    console.log(error);
+    console.log('******* LOGS TESTE FIM ***********');
   };
 
   return (
@@ -144,8 +157,17 @@ export default function FormModalEdit(props) {
               />
             </div>
             <div className="div-buttons">
-              <Button type="submit" variant="contained" color="primary">
-                Salvar Alterações
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="medium"
+              >
+                {loading ? (
+                  <SpinnerLoading size={20} color="white" />
+                ) : (
+                  'Salvar Alterações'
+                )}
               </Button>
             </div>
           </FormStyled>

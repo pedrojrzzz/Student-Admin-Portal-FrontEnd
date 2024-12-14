@@ -11,10 +11,12 @@ import watchFetchData from '../saga/dataSaga';
 import watchFetchContactApiForAuthorization from '../saga/checkAuthorizationSaga';
 import watchFetchAlunos from '../saga/alunosSaga';
 import alunosSlice from '../slices/alunosSlice';
+import studentEditSlice from '../slices/studentEditSlice';
 
 import watchFetchRegisterNewUser from '../saga/registerSaga';
 import registerNewUserReducer from '../slices/registerSlice';
 import watchFetchLoginUser from '../saga/loginSaga';
+import watchFetchEditStudentData from '../saga/studentEditSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -25,6 +27,7 @@ function* rootSaga() {
     fork(watchFetchLoginUser),
     fork(watchFetchContactApiForAuthorization),
     fork(watchFetchAlunos),
+    fork(watchFetchEditStudentData),
   ]);
 }
 
@@ -38,6 +41,7 @@ const store = configureStore({
     userIsLoggedIn: userIsLoggedInSlice,
     infoUser: infoUserSlice,
     alunos: alunosSlice,
+    alunosEdit: studentEditSlice,
     // add seus reducers aqui
   },
   middleware: (getDefaultMiddleware) =>

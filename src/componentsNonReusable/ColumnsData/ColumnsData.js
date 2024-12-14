@@ -25,8 +25,8 @@ import {
 } from './styled';
 
 export default function ColumnsNames() {
-  const { loading, error } = useSelector((state) => state.alunos);
-  const { listToBeDisplayed } = useContext(SearchAndFilterContext);
+  const { data, loading, error } = useSelector((state) => state.alunos);
+  const { listToBeDisplayed, listIsEmpty } = useContext(SearchAndFilterContext);
 
   return (
     <DivContainerFather>
@@ -49,48 +49,52 @@ export default function ColumnsNames() {
             </tr>
           </thead>
           <tbody>
-            {listToBeDisplayed && listToBeDisplayed.length > 0 ? (
-              listToBeDisplayed.map((currentObject) => (
-                <tr key={currentObject.id}>
-                  {/* Adicionando uma chave única para cada linha */}
-                  <td>
-                    <DivImgStudent>
-                      {/* Este é o código que vai para produção, descomente quando estiver pronto */}
-                      {/* <img src={currentObject.Fotos[0].url} alt="imgStudent" /> */}
-                      <img
-                        src={imgStudent}
-                        alt="Imagem de perfil estudante"
-                        className="img-perfil"
-                      />
-                    </DivImgStudent>
-                  </td>
-                  <td>{`${currentObject.nome} ${currentObject.sobrenome}`}</td>
-                  <td>{currentObject.email}</td>
-                  <td>{currentObject.idade}</td>
-                  <td>{currentObject.peso}kg</td>
-                  <td>{currentObject.altura}m</td>
-                  <td>
-                    {currentObject.status === true ? (
-                      <ActiveButton>Ativo</ActiveButton>
-                    ) : (
-                      <InactiveButton>Inativo</InactiveButton>
-                    )}
-                  </td>
-                  <td className="columnEdit">
-                    <ButtonEdit data={currentObject}>Editar</ButtonEdit>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="22">
-                  <HiMiniMagnifyingGlass size={100} />
-                  <p>Não foi encontrado nenhum aluno...</p>
-                </td>
-              </tr>
-            )}
+            {listToBeDisplayed && listToBeDisplayed.length > 0
+              ? listToBeDisplayed.map((currentObject) => (
+                  <tr key={currentObject.id}>
+                    {/* Adicionando uma chave única para cada linha */}
+                    <td>
+                      <DivImgStudent>
+                        {/* Este é o código que vai para produção, descomente quando estiver pronto */}
+                        {/* <img src={currentObject.Fotos[0].url} alt="imgStudent" /> */}
+                        <img
+                          src={imgStudent}
+                          alt="Imagem de perfil estudante"
+                          className="img-perfil"
+                        />
+                      </DivImgStudent>
+                    </td>
+                    <td>{`${currentObject.nome} ${currentObject.sobrenome}`}</td>
+                    <td>{currentObject.email}</td>
+                    <td>{currentObject.idade}</td>
+                    <td>{currentObject.peso}kg</td>
+                    <td>{currentObject.altura}m</td>
+                    <td>
+                      {currentObject.status === true ? (
+                        <ActiveButton>Ativo</ActiveButton>
+                      ) : (
+                        <InactiveButton>Inativo</InactiveButton>
+                      )}
+                    </td>
+                    <td className="columnEdit">
+                      <ButtonEdit data={currentObject}>Editar</ButtonEdit>
+                    </td>
+                  </tr>
+                ))
+              : ''}
           </tbody>
         </table>
+
+        {listIsEmpty ? (
+          <tr>
+            <td colSpan="22">
+              <HiMiniMagnifyingGlass size={100} />
+              <p>Não foi encontrado nenhum aluno...</p>
+            </td>
+          </tr>
+        ) : (
+          ''
+        )}
 
         {loading ? (
           <DivLoading>
