@@ -8,26 +8,29 @@ const initialState = {
 };
 
 const studentEditSlice = createSlice({
-  name: 'alunosSlice',
+  name: 'alunosEditSlice',
   initialState,
   reducers: {
-    fetchRequest(state) {
+    fetchRequestEditStudents(state) {
       state.loading = true;
       state.error = null;
     },
 
-    fetchSuccess(state, action) {
+    fetchSuccessEditStudent(state, action) {
       state.loading = false;
       state.data = action.payload;
     },
 
-    fetchError(state, action) {
+    fetchErrorEditStudent(state, action) {
       state.loading = false;
       state.error = action.payload;
     },
   },
 });
 
-export const { fetchRequest, fetchSuccess, fetchError } =
-  studentEditSlice.actions;
+export const {
+  fetchRequestEditStudents,
+  fetchSuccessEditStudent,
+  fetchErrorEditStudent,
+} = studentEditSlice.actions;
 export default studentEditSlice.reducer;

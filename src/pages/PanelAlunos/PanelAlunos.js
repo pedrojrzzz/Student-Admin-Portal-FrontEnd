@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchRequest } from '../../slices/alunosSlice';
+import { fetchRequest } from '../../redux/slices/alunosSlice';
 import { careFormErrors } from './careFetchErrors/careFetchErrors';
 import HeaderLogado from '../../components/HeaderLogado/HeaderLogado';
 import { DivContainer } from './styled';

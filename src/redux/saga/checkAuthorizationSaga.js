@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import axios from '../services/axios';
+import axios from '../../services/axios';
 import {
   fetchError,
   fetchRequest,

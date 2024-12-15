@@ -11,7 +11,7 @@ import { FormStyled, ButtonCloseModal } from './styled';
 import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 import imgStudent from '../../images/imgStudentMulher4.jpg';
 import SanitizeDataModalEdit from './careForm/SanitizeData';
-import { fetchRequest } from '../../slices/studentEditSlice';
+import { fetchRequestEditStudents } from '../../redux/slices/studentEditSlice';
 import { SpinnerLoading } from '../../styles/GlobalStyles';
 
 export default function FormModalEdit(props) {
@@ -22,6 +22,7 @@ export default function FormModalEdit(props) {
   const { dataAlunosEdit, loading, error } = useSelector(
     (state) => state.alunosEdit,
   );
+
   // Definindo valores iniciais
   const initialValues = {
     nome: `${props.data.data.nome}`,
@@ -48,7 +49,7 @@ export default function FormModalEdit(props) {
     });
 
     const sanitizedData = SanitizeDataModalEdit(values, idStudent);
-    dispatch(fetchRequest(sanitizedData));
+    dispatch(fetchRequestEditStudents(sanitizedData));
     console.log('******* LOGS TESTE ***********');
     console.log(dataAlunosEdit);
     console.log(loading);

@@ -4,7 +4,7 @@ import {
   fetchSuccess,
   fetchError,
 } from '../slices/registerSlice';
-import axios from '../services/axios';
+import axios from '../../services/axios';
 
 function registerNewUserApi(user) {
   return axios.post('/users', user);

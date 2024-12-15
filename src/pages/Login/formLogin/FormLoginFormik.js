@@ -2,12 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { saveInfoUser } from '../../../redux/slices/infoUserSlice';
 import { schemaValidationYup } from './careFormLogin/schemaValidationYup';
 import { sanitizeData } from './careFormLogin/sanitizeData';
-import { fetchRequest, resetLoginState } from '../../../slices/loginSlice';
+import {
+  fetchRequest,
+  resetLoginState,
+} from '../../../redux/slices/loginSlice';
 import { handleErrors } from './careFormLogin/handleErrors';
 import { handleSuccess } from './careFormLogin/handleSuccess';
-import { saveInfoUser } from '../../../slices/infoUserSlice';
 import {
   FormStyled,
   TitleContainer,

@@ -1,5 +1,5 @@
 import { call, put, takeEvery, delay } from 'redux-saga/effects';
-import axios from '../services/axios';
+import axios from '../../services/axios';
 import { fetchRequest, fetchSuccess, fetchError } from '../slices/loginSlice';
 
 function contactApiForLogin(data) {

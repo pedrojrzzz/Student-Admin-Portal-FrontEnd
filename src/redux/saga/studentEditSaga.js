@@ -1,19 +1,11 @@
 import { call, put, takeEvery, delay } from 'redux-saga/effects';
-import Cokkies from 'js-cookie';
 import {
-  fetchRequest,
-  fetchSuccess,
-  fetchError,
+  fetchRequestEditStudents,
+  fetchSuccessEditStudent,
+  fetchErrorEditStudent,
 } from '../slices/studentEditSlice';
-import axios from '../services/axios';
-
-function getAuthorization() {
-  const authorization = Cokkies.get('tokenUser');
-  if (!authorization) {
-    return new Error('Não foi possível obter a autorização do usuário');
-  }
-  return authorization;
-}
+import axios from '../../services/axios';
+import { getAuthorization } from '../../utils/authUtils';
 
 function editStudentData(studentNewData) {
   const authorization = getAuthorization();
@@ -26,19 +18,19 @@ function* fetchEditStudentData(action) {
   try {
     yield delay(1000);
     const response = yield call(editStudentData, action.payload);
-    yield put(fetchSuccess(response.data));
+    yield put(fetchSuccessEditStudent(response.data));
   } catch (error) {
     const serializableError = {
       errorType: error.message,
       status: error.response?.status,
       message: error.response?.data.errors,
     };
-    yield put(fetchError(serializableError));
+    yield put(fetchErrorEditStudent(serializableError));
   }
 }
 
 function* watchFetchEditStudentData() {
-  yield takeEvery(fetchRequest, fetchEditStudentData);
+  yield takeEvery(fetchRequestEditStudents, fetchEditStudentData);
 }
 
 export default watchFetchEditStudentData;

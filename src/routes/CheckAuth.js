@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRequest } from '../slices/checkAuthorizationSlice';
+import { fetchRequest } from '../redux/slices/checkAuthorizationSlice';
 
 // Esse componente checa se o user já está autenticado e não deixa ele acessar login ou register novamente
 export default function CheckAuth({ children }) {

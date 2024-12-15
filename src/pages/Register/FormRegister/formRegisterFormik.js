@@ -6,7 +6,7 @@ import { registerSchemaYup } from './careForm/schemaValidation';
 import {
   fetchRequest,
   resetRegisterState,
-} from '../../../slices/registerSlice';
+} from '../../../redux/slices/registerSlice';
 import { handleFixInputName } from '../../../hooks/handleFixInputName';
 import { sanitizeData } from './careForm/sanitizeData';
 import { handleErrors } from './careForm/handleErrors';

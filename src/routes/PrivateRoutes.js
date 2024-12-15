@@ -3,8 +3,8 @@ import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'universal-cookie';
-import { fetchRequest } from '../slices/checkAuthorizationSlice';
-import { logado } from '../slices/userIsLoggedInSlice';
+import { fetchRequest } from '../redux/slices/checkAuthorizationSlice';
+import { logado } from '../redux/slices/userIsLoggedInSlice';
 
 export default function PrivateRoute({ children }) {
   const dispatch = useDispatch();

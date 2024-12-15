@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
-import store from './store/store';
+import store from './redux/store/store';
 import Router from './routes';
 import GlobalStyles from './styles/GlobalStyles';
 

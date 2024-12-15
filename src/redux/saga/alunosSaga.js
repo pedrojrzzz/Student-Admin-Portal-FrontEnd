@@ -1,6 +1,6 @@
 import { call, put, takeEvery, delay } from 'redux-saga/effects';
 import { fetchRequest, fetchSuccess, fetchError } from '../slices/alunosSlice';
-import axios from '../services/axios';
+import axios from '../../services/axios';
 
 function fetchAlunosApi() {
   return axios.get('/alunos');
