@@ -37,7 +37,7 @@ export const FormStyled = styled(Form)`
   .div-buttons {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     margin-top: 15px;
   }

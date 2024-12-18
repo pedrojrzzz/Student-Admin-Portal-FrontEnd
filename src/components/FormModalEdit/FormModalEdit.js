@@ -20,7 +20,7 @@ export default function FormModalEdit(props) {
   const { originalList } = useContext(SearchAndFilterContext);
   const [fileUploaded, setFileUploaded] = useState(false);
   const [fileData, setFileData] = useState(null);
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
   const dispatch = useDispatch();
   const { dataAlunosEdit, loading, error } = useSelector(
     (state) => state.alunosEdit,
@@ -44,7 +44,8 @@ export default function FormModalEdit(props) {
   };
 
   const handleSubmit = (values) => {
-    console.log(checked);
+    const newObj = { ...values, status: checked };
+    console.log(newObj);
     /* let idStudent = null;
     originalList.map((item) => {
       if (values.email === item.email) {
@@ -161,9 +162,11 @@ export default function FormModalEdit(props) {
                 helperText={touched.altura && errors.altura} // Exibe a mensagem de erro
               />
             </div>
+
             <div className="div-status">
               <SwitchButton setChecked={setChecked} checked={checked} />
             </div>
+
             <div className="div-buttons">
               <Button
                 type="submit"
