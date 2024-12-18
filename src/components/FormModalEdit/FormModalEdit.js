@@ -13,11 +13,14 @@ import imgStudent from '../../images/imgStudentMulher4.jpg';
 import SanitizeDataModalEdit from './careForm/SanitizeData';
 import { fetchRequestEditStudents } from '../../redux/slices/studentEditSlice';
 import { SpinnerLoading } from '../../styles/GlobalStyles';
+import '@mantine/core/styles.css';
+import SwitchButton from '../SwitchButton/SwitchButton';
 
 export default function FormModalEdit(props) {
   const { originalList } = useContext(SearchAndFilterContext);
   const [fileUploaded, setFileUploaded] = useState(false);
   const [fileData, setFileData] = useState(null);
+  const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
   const { dataAlunosEdit, loading, error } = useSelector(
     (state) => state.alunosEdit,
@@ -41,7 +44,8 @@ export default function FormModalEdit(props) {
   };
 
   const handleSubmit = (values) => {
-    let idStudent = null;
+    console.log(checked);
+    /* let idStudent = null;
     originalList.map((item) => {
       if (values.email === item.email) {
         idStudent = item.id;
@@ -54,7 +58,7 @@ export default function FormModalEdit(props) {
     console.log(dataAlunosEdit);
     console.log(loading);
     console.log(error);
-    console.log('******* LOGS TESTE FIM ***********');
+    console.log('******* LOGS TESTE FIM ***********'); */
   };
 
   return (
@@ -156,6 +160,9 @@ export default function FormModalEdit(props) {
                 error={touched.altura && Boolean(errors.altura)} // Verifica se o campo foi tocado e se há erros
                 helperText={touched.altura && errors.altura} // Exibe a mensagem de erro
               />
+            </div>
+            <div className="div-status">
+              <SwitchButton setChecked={setChecked} checked={checked} />
             </div>
             <div className="div-buttons">
               <Button
