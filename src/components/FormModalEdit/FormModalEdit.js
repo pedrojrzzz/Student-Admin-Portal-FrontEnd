@@ -15,11 +15,12 @@ import { fetchRequestEditStudents } from '../../redux/slices/studentEditSlice';
 import { SpinnerLoading } from '../../styles/GlobalStyles';
 import '@mantine/core/styles.css';
 import SwitchButton from '../SwitchButton/SwitchButton';
+import ButtonFile from '../FileButton/ButtonFile';
 
 export default function FormModalEdit(props) {
   const { originalList } = useContext(SearchAndFilterContext);
   const [fileUploaded, setFileUploaded] = useState(false);
-  const [fileData, setFileData] = useState(null);
+  const [file, setFile] = useState(null);
   const [checked, setChecked] = useState(true);
   const dispatch = useDispatch();
   const { dataAlunosEdit, loading, error } = useSelector(
@@ -38,14 +39,15 @@ export default function FormModalEdit(props) {
 
   // Lidar com as fotos dos alunos
   const handleFileChange = (e) => {
-    const file = e.target.files[0]; // Pega o primeiro arquivo selecionado
+    const file1 = e.target.files[0]; // Pega o primeiro arquivo selecionado
     setFileUploaded(true);
-    setFileData(file);
+    setFile(file1);
   };
 
   const handleSubmit = (values) => {
     const newObj = { ...values, status: checked };
     console.log(newObj);
+    console.log(fileUploaded);
     /* let idStudent = null;
     originalList.map((item) => {
       if (values.email === item.email) {
@@ -104,6 +106,10 @@ export default function FormModalEdit(props) {
                   onChange={(e) => handleFileChange(e)}
                 />
               </Button>
+              <ButtonFile
+                fileUploaded={fileUploaded}
+                setFileUploaded={setFileUploaded}
+              />
             </div>
 
             <div className="div-nome-sobrenome">
