@@ -19,7 +19,7 @@ import ButtonFile from '../FileButton/ButtonFile';
 
 export default function FormModalEdit(props) {
   const { originalList } = useContext(SearchAndFilterContext);
-  const [fileUploaded, setFileUploaded] = useState(false);
+  const [fileUploaded, setFileUploaded] = useState(null);
   const [file, setFile] = useState(null);
   const [checked, setChecked] = useState(true);
   const dispatch = useDispatch();
@@ -45,23 +45,20 @@ export default function FormModalEdit(props) {
   };
 
   const handleSubmit = (values) => {
-    const newObj = { ...values, status: checked };
-    console.log(newObj);
-    console.log(fileUploaded);
-    /* let idStudent = null;
-    originalList.map((item) => {
-      if (values.email === item.email) {
-        idStudent = item.id;
-      }
-    });
+    const newObj = {
+      ...values,
+      id: props.data.data.id,
+      status: checked,
+      Fotos: fileUploaded || null,
+    };
 
-    const sanitizedData = SanitizeDataModalEdit(values, idStudent);
+    const sanitizedData = SanitizeDataModalEdit(newObj);
     dispatch(fetchRequestEditStudents(sanitizedData));
     console.log('******* LOGS TESTE ***********');
     console.log(dataAlunosEdit);
     console.log(loading);
     console.log(error);
-    console.log('******* LOGS TESTE FIM ***********'); */
+    console.log('******* LOGS TESTE FIM ***********');
   };
 
   return (
@@ -89,23 +86,7 @@ export default function FormModalEdit(props) {
                   className="img-perfil"
                 />
               </div>
-              <Button
-                component="label"
-                role={undefined}
-                variant="outlined"
-                tabIndex={-1}
-                startIcon={
-                  fileUploaded ? <IoCloudUpload /> : <IoCloudUploadOutline />
-                }
-                disabled={fileUploaded}
-              >
-                {fileUploaded ? 'Arquivo enviado' : 'Alterar imagem'}
-                <input
-                  type="file"
-                  hidden
-                  onChange={(e) => handleFileChange(e)}
-                />
-              </Button>
+
               <ButtonFile
                 fileUploaded={fileUploaded}
                 setFileUploaded={setFileUploaded}

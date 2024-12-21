@@ -38,15 +38,18 @@ const formatHeight = (height) => {
   return sanitizedHeight;
 };
 
-export default function SanitizeDataModalEdit(data, idStudent) {
+export default function SanitizeDataModalEdit(data) {
   const sanitizedData = {
-    idStudent,
-    firstName: formatFirstName(data.nome),
-    lastName: formatFirstName(data.sobrenome),
+    id: data.id,
+    nome: formatFirstName(data.nome),
+    sobrenome: formatFirstName(data.sobrenome),
     email: formatEmail(data.email),
-    age: formatAge(data.idade),
-    weight: formatWeight(data.peso),
-    height: formatHeight(data.altura),
+    idade: formatAge(data.idade),
+    peso: formatWeight(data.peso),
+    altura: formatHeight(data.altura),
+    status: data.status,
+    Fotos: data.Fotos,
   };
+  console.log(sanitizedData);
   return sanitizedData;
 }

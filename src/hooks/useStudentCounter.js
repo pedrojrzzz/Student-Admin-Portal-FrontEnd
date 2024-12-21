@@ -5,7 +5,6 @@
 /* eslint-disable no-undef */
 export const useStudentCounter = (data) => {
   if (!data || data.length === 0 || data === undefined || data === null) return;
-  console.log(data)
   /* Contando os estudantes ativos */
   const activeStudentsArray = []
   const inativeStudentsArray = []

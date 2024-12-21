@@ -9,7 +9,7 @@ import { getAuthorization } from '../../utils/authUtils';
 
 function editStudentData(studentNewData) {
   const authorization = getAuthorization();
-  return axios.put(`/alunos/${studentNewData.idStudent}`, studentNewData, {
+  return axios.put(`/alunos/${studentNewData.id}`, studentNewData, {
     headers: { authorization: `Bearer ${authorization}` },
   });
 }
