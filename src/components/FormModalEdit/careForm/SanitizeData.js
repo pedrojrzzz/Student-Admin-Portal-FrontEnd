@@ -38,6 +38,13 @@ const formatHeight = (height) => {
   return sanitizedHeight;
 };
 
+const formatStatus = (status) => {
+  if (status === true) {
+    return 1;
+  }
+  return 0;
+};
+
 export default function SanitizeDataModalEdit(data) {
   const sanitizedData = {
     id: data.id,
@@ -47,9 +54,9 @@ export default function SanitizeDataModalEdit(data) {
     idade: formatAge(data.idade),
     peso: formatWeight(data.peso),
     altura: formatHeight(data.altura),
-    status: data.status,
+    status: formatStatus(data.status),
     Fotos: data.Fotos,
   };
-  console.log(sanitizedData);
+
   return sanitizedData;
 }

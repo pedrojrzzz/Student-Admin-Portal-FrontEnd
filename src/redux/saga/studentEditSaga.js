@@ -1,4 +1,4 @@
-import { call, put, takeEvery, delay } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import {
   fetchRequestEditStudents,
   fetchSuccessEditStudent,
@@ -16,14 +16,13 @@ function editStudentData(studentNewData) {
 
 function* fetchEditStudentData(action) {
   try {
-    yield delay(1000);
     const response = yield call(editStudentData, action.payload);
     yield put(fetchSuccessEditStudent(response.data));
   } catch (error) {
     const serializableError = {
       errorType: error.message,
       status: error.response?.status,
-      message: error.response?.data.errors,
+      message: error.response?.data.errors || 'Erro desconhecido',
     };
     yield put(fetchErrorEditStudent(serializableError));
   }

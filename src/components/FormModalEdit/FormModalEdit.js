@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material'; // Certifique-se de importar o Button
@@ -12,6 +12,7 @@ import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 import imgStudent from '../../images/imgStudentMulher4.jpg';
 import SanitizeDataModalEdit from './careForm/SanitizeData';
 import { fetchRequestEditStudents } from '../../redux/slices/studentEditSlice';
+import { fetchRequestEditFotoStudent } from '../../redux/slices/studentEditFotoSlice';
 import { SpinnerLoading } from '../../styles/GlobalStyles';
 import '@mantine/core/styles.css';
 import SwitchButton from '../SwitchButton/SwitchButton';
@@ -23,8 +24,13 @@ export default function FormModalEdit(props) {
   const [file, setFile] = useState(null);
   const [checked, setChecked] = useState(true);
   const dispatch = useDispatch();
-  const { dataAlunosEdit, loading, error } = useSelector(
-    (state) => state.alunosEdit,
+  const {
+    data: dataAlunosEdit,
+    loading: loadingAlunosEdit,
+    error: errorAlunosEdit,
+  } = useSelector((state) => state.alunosEdit);
+  const { dataFotoSlice, loadingFotoSlice, errorFotoSlice } = useSelector(
+    (state) => state.alunosFotoEdit,
   );
 
   // Definindo valores iniciais
@@ -38,11 +44,11 @@ export default function FormModalEdit(props) {
   };
 
   // Lidar com as fotos dos alunos
-  const handleFileChange = (e) => {
+  /*   const handleFileChange = (e) => {
     const file1 = e.target.files[0]; // Pega o primeiro arquivo selecionado
     setFileUploaded(true);
     setFile(file1);
-  };
+  }; */
 
   const handleSubmit = (values) => {
     const newObj = {
@@ -53,12 +59,24 @@ export default function FormModalEdit(props) {
     };
 
     const sanitizedData = SanitizeDataModalEdit(newObj);
+    if (fileUploaded) {
+      setFile(fileUploaded);
+      console.log(file);
+      /*       dispatch(
+        fetchRequestEditFotoStudent({ id: newObj.id, file: fileUploaded }),
+      ); */
+      /*       console.log(newObj.id);
+      console.log('******* LOGS TESTE ***********');
+      console.log(dataFotoSlice);
+      console.log(loadingFotoSlice);
+      console.log(errorFotoSlice);
+      console.log('******* LOGS TESTE FIM ***********');
+    } else {
+      console.log('nenhum file encontrado'); */
+    }
+
     dispatch(fetchRequestEditStudents(sanitizedData));
-    console.log('******* LOGS TESTE ***********');
     console.log(dataAlunosEdit);
-    console.log(loading);
-    console.log(error);
-    console.log('******* LOGS TESTE FIM ***********');
   };
 
   return (
@@ -161,7 +179,7 @@ export default function FormModalEdit(props) {
                 color="primary"
                 size="medium"
               >
-                {loading ? (
+                {loadingAlunosEdit ? (
                   <SpinnerLoading size={20} color="white" />
                 ) : (
                   'Salvar Alterações'

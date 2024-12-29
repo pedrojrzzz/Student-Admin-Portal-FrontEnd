@@ -7,10 +7,18 @@ import {
 import axios from '../../services/axios';
 import { getAuthorization } from '../../utils/authUtils';
 
-function changeFotoStudent(studentId) {
+function changeFotoStudent({ id: studentId, file }) {
   const authorization = getAuthorization();
-  return axios.put(`/fotos/${studentId}`, null, {
-    headers: { authorization: `Bearer ${authorization}` },
+
+  const formFile = new FormData();
+  formFile.append('aluno_id', studentId);
+  formFile.append('arquivo', file);
+
+  return axios.put(`/fotos/${studentId}`, formFile, {
+    headers: {
+      authorization: `Bearer ${authorization}`,
+      'Content-Type': 'multipart/form-data',
+    },
   });
 }
 

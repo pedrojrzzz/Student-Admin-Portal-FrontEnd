@@ -2,9 +2,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  data: [],
-  loading: false,
-  error: null,
+  dataFotoSlice: [],
+  loadingFotoSlice: false,
+  errorFotoSlice: null,
 };
 
 const studentEditFotoSlice = createSlice({
@@ -12,18 +12,18 @@ const studentEditFotoSlice = createSlice({
   initialState,
   reducers: {
     fetchRequestEditFotoStudent(state) {
-      state.loading = true;
-      state.error = null;
+      state.loadingFotoSlice = true;
+      state.errorFotoSlice = null;
     },
 
     fetchSuccesEditFotoStudent(state, action) {
-      state.loading = false;
-      state.data = action.payload;
+      state.loadingFotoSlice = false;
+      state.dataFotoSlice = action.payload;
     },
 
     fetchErrorEditFotoStudent(state, action) {
-      state.loading = false;
-      state.error = action.payload;
+      state.loadingFotoSlice = false;
+      state.errorFotoSlice = action.payload;
     },
   },
 });
