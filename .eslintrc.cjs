@@ -41,5 +41,6 @@ module.exports = {
     'array-callback-return': 0,
     'prefer-const': 0,
     'no-console': 'warn',
+    'max-len': 0,
   },
 };

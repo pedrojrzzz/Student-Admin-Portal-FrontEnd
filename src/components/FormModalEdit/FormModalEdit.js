@@ -1,16 +1,14 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material'; // Certifique-se de importar o Button
-import { IoCloudUploadOutline, IoCloudUpload } from 'react-icons/io5';
-import { EditStudentsDataSchema } from './careForm/EditStudentDataSchema';
+import { useNavigate } from 'react-router-dom';
+import { EditStudentsDataSchema } from './handlers/EditStudentDataSchema';
 import { FormStyled, ButtonCloseModal } from './styled';
-import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 import imgStudent from '../../images/imgStudentMulher4.jpg';
-import SanitizeDataModalEdit from './careForm/SanitizeData';
+import SanitizeDataModalEdit from './handlers/SanitizeData';
 import { fetchRequestEditStudents } from '../../redux/slices/studentEditSlice';
 import { fetchRequestEditFotoStudent } from '../../redux/slices/studentEditFotoSlice';
 import { SpinnerLoading } from '../../styles/GlobalStyles';
@@ -18,71 +16,51 @@ import '@mantine/core/styles.css';
 import SwitchButton from '../SwitchButton/SwitchButton';
 import ButtonFile from '../FileButton/ButtonFile';
 
-export default function FormModalEdit(props) {
-  const { originalList } = useContext(SearchAndFilterContext);
+export default function FormModalEdit({ data, funcCloseModal }) {
   const [fileUploaded, setFileUploaded] = useState(null);
-  const [file, setFile] = useState(null);
   const [checked, setChecked] = useState(true);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const {
     data: dataAlunosEdit,
     loading: loadingAlunosEdit,
     error: errorAlunosEdit,
   } = useSelector((state) => state.alunosEdit);
+
   const { dataFotoSlice, loadingFotoSlice, errorFotoSlice } = useSelector(
     (state) => state.alunosFotoEdit,
   );
 
-  // Definindo valores iniciais
-  const initialValues = {
-    nome: `${props.data.data.nome}`,
-    sobrenome: `${props.data.data.sobrenome}`,
-    email: `${props.data.data.email}`,
-    idade: `${props.data.data.idade}`,
-    peso: `${props.data.data.peso}`,
-    altura: `${props.data.data.altura}`,
-  };
+  const { id, nome, sobrenome, email, idade, peso, altura } = data.data;
 
-  // Lidar com as fotos dos alunos
-  /*   const handleFileChange = (e) => {
-    const file1 = e.target.files[0]; // Pega o primeiro arquivo selecionado
-    setFileUploaded(true);
-    setFile(file1);
-  }; */
+  const initialValues = { nome, sobrenome, email, idade, peso, altura };
 
   const handleSubmit = (values) => {
     const newObj = {
       ...values,
-      id: props.data.data.id,
+      id,
       status: checked,
       Fotos: fileUploaded || null,
     };
 
     const sanitizedData = SanitizeDataModalEdit(newObj);
+
+    dispatch(fetchRequestEditStudents(sanitizedData)); // Não está sendo assincrono
     if (fileUploaded) {
-      setFile(fileUploaded);
-      console.log(file);
-      /*       dispatch(
+      dispatch(
         fetchRequestEditFotoStudent({ id: newObj.id, file: fileUploaded }),
-      ); */
-      /*       console.log(newObj.id);
-      console.log('******* LOGS TESTE ***********');
-      console.log(dataFotoSlice);
-      console.log(loadingFotoSlice);
-      console.log(errorFotoSlice);
-      console.log('******* LOGS TESTE FIM ***********');
-    } else {
-      console.log('nenhum file encontrado'); */
+      );
     }
 
-    dispatch(fetchRequestEditStudents(sanitizedData));
-    console.log(dataAlunosEdit);
+    navigate('/');
   };
 
   return (
     <div>
       <Formik
         initialValues={initialValues} // Corrigido para usar a constante definida
+        enableReinitialize
         validationSchema={EditStudentsDataSchema}
         onSubmit={(values) => handleSubmit(values)}
       >
@@ -92,7 +70,7 @@ export default function FormModalEdit(props) {
               <h3>Editar informações</h3>
               <ButtonCloseModal
                 size={30}
-                onClick={() => props.funcCloseModal(resetForm)}
+                onClick={() => funcCloseModal(resetForm)}
               />
             </div>
 
@@ -115,7 +93,7 @@ export default function FormModalEdit(props) {
               <Field
                 name="nome"
                 as={TextField}
-                defaultValue={props.data.data.nome}
+                /* defaultValue={props.data.data.nome} */
                 label="Nome"
                 variant="outlined"
                 error={touched.nome && Boolean(errors.nome)}
@@ -178,6 +156,7 @@ export default function FormModalEdit(props) {
                 variant="contained"
                 color="primary"
                 size="medium"
+                disabled={loadingAlunosEdit}
               >
                 {loadingAlunosEdit ? (
                   <SpinnerLoading size={20} color="white" />

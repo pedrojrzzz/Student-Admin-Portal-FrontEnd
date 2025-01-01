@@ -57,7 +57,7 @@ export default function ColumnsNames() {
                       <DivImgStudent>
                         {/* Este é o código que vai para produção, descomente quando estiver pronto */}
                         {/* <img src={currentObject.Fotos[0].url} alt="imgStudent" /> */}
-                        <img
+                        <img //apenas para ter uma imagem de teste
                           src={imgStudent}
                           alt="Imagem de perfil estudante"
                           className="img-perfil"

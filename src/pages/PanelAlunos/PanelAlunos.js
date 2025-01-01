@@ -18,7 +18,7 @@ export default function PanelAlunos() {
     if (alunoWasFetched.current === true) return;
     dispatch(fetchRequest());
     alunoWasFetched.current = true;
-  }, []);
+  }, [dispatch, data]);
 
   if (error) {
     careFormErrors(error);
