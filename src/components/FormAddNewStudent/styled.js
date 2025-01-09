@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form, Field } from 'formik';
+import { Form } from 'formik';
 import { IoMdClose } from 'react-icons/io';
 
 export const FormStyled = styled(Form)`
@@ -56,5 +56,3 @@ export const ButtonCloseModal = styled(IoMdClose)`
     cursor: pointer;
   }
 `;
-
-export const FieldStyled = styled(Field)``;

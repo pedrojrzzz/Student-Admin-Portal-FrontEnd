@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material'; // Certifique-se de importar o Button
@@ -15,12 +16,16 @@ import { SpinnerLoading } from '../../styles/GlobalStyles';
 import '@mantine/core/styles.css';
 import SwitchButton from '../SwitchButton/SwitchButton';
 import ButtonFile from '../FileButton/ButtonFile';
+import handleErrors from './handlers/handleErrors';
+import handleSuccess from './handlers/handleSuccess';
 
 export default function FormModalEdit({ data, funcCloseModal }) {
   const [fileUploaded, setFileUploaded] = useState(null);
   const [checked, setChecked] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const errorAlreadyDisplayed = useRef(false);
+  const successMessageAlreadyDisplayed = useRef(false);
 
   const {
     data: dataAlunosEdit,
@@ -34,8 +39,6 @@ export default function FormModalEdit({ data, funcCloseModal }) {
 
   const { id, nome, sobrenome, email, idade, peso, altura } = data.data;
 
-  const initialValues = { nome, sobrenome, email, idade, peso, altura };
-
   const handleSubmit = (values) => {
     const newObj = {
       ...values,
@@ -46,20 +49,39 @@ export default function FormModalEdit({ data, funcCloseModal }) {
 
     const sanitizedData = SanitizeDataModalEdit(newObj);
 
-    dispatch(fetchRequestEditStudents(sanitizedData)); // Não está sendo assincrono
+    dispatch(fetchRequestEditStudents(sanitizedData));
+
     if (fileUploaded) {
       dispatch(
         fetchRequestEditFotoStudent({ id: newObj.id, file: fileUploaded }),
       );
     }
-
-    navigate('/');
   };
+
+  useEffect(() => {
+    if (errorAlunosEdit && !errorAlreadyDisplayed.current) {
+      // Marca o erro como já exibido
+      errorAlreadyDisplayed.current = true;
+      funcCloseModal(); // Fecha o modal
+      handleErrors(errorAlunosEdit); // Lida com o erro
+    }
+    if (!errorAlunosEdit) {
+      errorAlreadyDisplayed.current = false;
+    }
+    if (
+      Object.keys(dataAlunosEdit).length > 0 &&
+      !successMessageAlreadyDisplayed.current
+    ) {
+      successMessageAlreadyDisplayed.current = true;
+      funcCloseModal();
+      handleSuccess(dataAlunosEdit.response, navigate);
+    }
+  }, [errorAlunosEdit, dataAlunosEdit]);
 
   return (
     <div>
       <Formik
-        initialValues={initialValues} // Corrigido para usar a constante definida
+        initialValues={{ id, nome, sobrenome, email, idade, peso, altura }} // Corrigido para usar a constante definida
         enableReinitialize
         validationSchema={EditStudentsDataSchema}
         onSubmit={(values) => handleSubmit(values)}

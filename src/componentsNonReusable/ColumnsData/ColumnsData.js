@@ -1,9 +1,7 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable array-callback-return */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { useNavigate } from 'react-router-dom';
 
 import { GiShipWreck } from 'react-icons/gi';
 import { IoMdRefresh } from 'react-icons/io';
@@ -25,8 +23,23 @@ import {
 } from './styled';
 
 export default function ColumnsNames() {
-  const { data, loading, error } = useSelector((state) => state.alunos);
-  const { listToBeDisplayed, listIsEmpty } = useContext(SearchAndFilterContext);
+  const navigate = useNavigate();
+  const { loading, error } = useSelector((state) => state.alunos);
+  const { listToBeDisplayed, listIsEmpty, setListIsEmpty } = useContext(
+    SearchAndFilterContext,
+  );
+
+  const refreshPage = () => {
+    navigate(0);
+  };
+
+  useEffect(() => {
+    if (listToBeDisplayed.length > 0) {
+      setListIsEmpty(false);
+    } else {
+      setListIsEmpty(true);
+    }
+  }, [setListIsEmpty, listIsEmpty, listToBeDisplayed, loading]);
 
   return (
     <DivContainerFather>
@@ -37,8 +50,8 @@ export default function ColumnsNames() {
               <th className="columnImg">
                 <p>Imagem</p>
               </th>
-              <th>Nome do Aluno</th>
-              <th>E-mail</th>
+              <th>Nome</th>
+              <th>Email</th>
               <th>Idade</th>
               <th>Peso</th>
               <th>Altura</th>
@@ -64,7 +77,10 @@ export default function ColumnsNames() {
                         />
                       </DivImgStudent>
                     </td>
-                    <td>{`${currentObject.nome} ${currentObject.sobrenome}`}</td>
+                    <td>
+                      {' '}
+                      {`${currentObject.nome} ${currentObject.sobrenome}`}
+                    </td>
                     <td>{currentObject.email}</td>
                     <td>{currentObject.idade}</td>
                     <td>{currentObject.peso}kg</td>
@@ -85,13 +101,11 @@ export default function ColumnsNames() {
           </tbody>
         </table>
 
-        {listIsEmpty ? (
-          <tr>
-            <td colSpan="22">
-              <HiMiniMagnifyingGlass size={100} />
-              <p>Não foi encontrado nenhum aluno...</p>
-            </td>
-          </tr>
+        {listIsEmpty && loading === false ? (
+          <DivLoading>
+            <HiMiniMagnifyingGlass size={100} />
+            <p>Não foi encontrado nenhum aluno...</p>
+          </DivLoading>
         ) : (
           ''
         )}
@@ -117,7 +131,7 @@ export default function ColumnsNames() {
 
       <DivTableButton>
         <ButtonAddNewStudent />
-        <button type="submit" className="buttonRefresh">
+        <button type="submit" className="buttonRefresh" onClick={refreshPage}>
           <div className="icon">
             <IoMdRefresh size={18} />
           </div>

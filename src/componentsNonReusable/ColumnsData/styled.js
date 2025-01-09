@@ -33,6 +33,7 @@ export const DivContainer = styled.div`
     border-bottom: 0.5px solid rgb(217, 217, 219);
     padding: 10px; /* Adicionando padding para o cabeçalho */
     caret-color: transparent;
+    text-align: start;
   }
 
   .columnImg {
@@ -58,20 +59,20 @@ export const DivContainer = styled.div`
     font-weight: 600;
     border-bottom: 0.5px solid rgb(217, 217, 219);
     padding: 10px; /* Adicione padding para as células */
-    text-align: center;
+    text-align: start;
   }
 `;
 
 export const DivImgStudent = styled.div`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   background-color: red;
   position: relative;
 
   .img-perfil {
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     z-index: 0;
   }

@@ -19,7 +19,7 @@ export default function ButtonEdit(props) {
 
   const handleCloseModal = (resetForm) => {
     modalSelector.current.close();
-    resetForm();
+    if (resetForm) resetForm();
     setModalVisible(false);
   };
 

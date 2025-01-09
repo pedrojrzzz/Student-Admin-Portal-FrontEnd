@@ -23,3 +23,34 @@ export const ButtonAddNewStudentStyled = styled.div`
   }
   transition: 0.3s;
 `;
+
+export const ModalEdit = styled.dialog`
+  width: 600px;
+  background-color: #ffffff;
+  border: 0.1rem solid white;
+  margin: auto auto;
+  padding: 20px;
+  color: white;
+
+  h3 {
+    color: black;
+  }
+
+  .header-modal {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    caret-color: transparent;
+  }
+
+  .body-modal {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    color: white;
+  }
+
+  &::backdrop {
+    backdrop-filter: blur(1px);
+  }
+`;
