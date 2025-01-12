@@ -13,7 +13,10 @@ export default function ButtonAddNewStudent() {
     modalRef.current.showModal();
   };
 
-  const closeModal = () => {
+  const closeModal = (resetForm, setFileUploaded, setUrlImgStudent) => {
+    if (resetForm) resetForm();
+    setFileUploaded(null);
+    setUrlImgStudent(null);
     setModalVisible(false);
     modalRef.current.close();
   };
@@ -27,7 +30,6 @@ export default function ButtonAddNewStudent() {
       </ButtonAddNewStudentStyled>
 
       <ModalEdit ref={modalRef}>
-        <p>Teste</p>
         <FormAddNewStudent
           modalSelector={modalRef}
           funcCloseModal={closeModal}

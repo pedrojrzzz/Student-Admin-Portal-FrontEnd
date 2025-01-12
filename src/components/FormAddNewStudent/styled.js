@@ -16,13 +16,9 @@ export const FormStyled = styled(Form)`
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     border-radius: 50%;
     padding-bottom: 10px;
-    img {
-      height: 150px;
-      width: 150px;
-      border-radius: 50%;
-    }
   }
   .div-nome-sobrenome {
     width: 100%;

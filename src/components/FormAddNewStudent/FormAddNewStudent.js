@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Formik, Field } from 'formik';
@@ -7,14 +8,26 @@ import { FormStyled, ButtonCloseModal } from './styled';
 import { AddNewStudentSchema } from './careForm/AddNewStudentSchema';
 import ButtonFile from '../FileButton/ButtonFile';
 
+const initialValues = {
+  nome: '',
+  sobrenome: '',
+  email: '',
+  idade: '',
+  peso: '',
+  altura: '',
+};
+
 // eslint-disable-next-line no-unused-vars
 export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
   const [fileUploaded, setFileUploaded] = useState(null);
+  const [urlImgStudent, setUrlImgStudent] = useState(null);
   const handleSubmit = (values) => {
     console.log(values);
   };
+
   return (
     <Formik
+      initialValues={initialValues}
       enableReinitialize
       validationSchema={AddNewStudentSchema}
       onSubmit={(values) => {
@@ -25,29 +38,30 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
         <FormStyled>
           <div className="header-modal">
             <h3>Adiconar novo estudante</h3>
-            <ButtonCloseModal size={30} onClick={() => funcCloseModal()} />
+            <ButtonCloseModal
+              size={30}
+              onClick={() =>
+                funcCloseModal(resetForm, setFileUploaded, setUrlImgStudent)
+              }
+            />
           </div>
 
           <div className="div-container-img-student">
             <div className="img-student-perfil">
               <Avatar
-                src={null}
+                src={urlImgStudent}
                 alt="nenhuma img"
                 size={150}
                 variant="light"
-                color="teal"
-                radius="lg"
-              />
-              <img
-                /*src={}*/
-                alt="Imagem de perfil estudante"
-                className="img-perfil"
+                color="rgba(40, 165, 237, 1)"
+                radius="xl"
               />
             </div>
 
             <ButtonFile
               fileUploaded={fileUploaded}
               setFileUploaded={setFileUploaded}
+              setUrlImgStudent={setUrlImgStudent}
             />
           </div>
 

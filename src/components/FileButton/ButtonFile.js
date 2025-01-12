@@ -3,14 +3,28 @@
 import { FileButton, Button, Group } from '@mantine/core';
 import { FcRemoveImage } from 'react-icons/fc';
 
-export default function ButtonFile({ fileUploaded, setFileUploaded }) {
+export default function ButtonFile({
+  fileUploaded,
+  setFileUploaded,
+  setUrlImgStudent,
+}) {
   const handleReset = () => {
     setFileUploaded(null);
+    setUrlImgStudent(null);
+  };
+
+  const handleChange = (file) => {
+    const fileUrl = URL.createObjectURL(file);
+    setFileUploaded(file);
+    setUrlImgStudent(fileUrl);
   };
   return (
     <Group justify="center" display="block">
       {!fileUploaded && (
-        <FileButton onChange={setFileUploaded} accept="image/png,image/jpeg">
+        <FileButton
+          onChange={(file) => handleChange(file)}
+          accept="image/png,image/jpeg"
+        >
           {(props) => (
             <Button
               variant="default"
@@ -27,13 +41,8 @@ export default function ButtonFile({ fileUploaded, setFileUploaded }) {
       {fileUploaded && (
         <Button variant="default" onHove onClick={handleReset}>
           <FcRemoveImage size={25} />
+          <p> {fileUploaded.name}</p>
         </Button>
-      )}
-
-      {fileUploaded && (
-        <p style={{ color: 'black', fontWeight: 'lighter' }}>
-          Img: {fileUploaded.name}
-        </p>
       )}
     </Group>
   );
