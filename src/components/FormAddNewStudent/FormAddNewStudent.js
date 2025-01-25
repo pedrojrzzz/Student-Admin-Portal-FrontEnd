@@ -1,12 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material';
 import { Avatar } from '@mantine/core';
+import { useSelector, useDispatch } from 'react-redux';
 import { FormStyled, ButtonCloseModal } from './styled';
 import { AddNewStudentSchema } from './careForm/AddNewStudentSchema';
 import ButtonFile from '../FileButton/ButtonFile';
+import { fetchRequest } from '../../redux/slices/addStudentSlice';
+import { SpinnerLoading } from '../../styles/GlobalStyles';
 
 const initialValues = {
   nome: '',
@@ -15,15 +18,31 @@ const initialValues = {
   idade: '',
   peso: '',
   altura: '',
+  status: 1,
 };
 
 // eslint-disable-next-line no-unused-vars
 export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
   const [fileUploaded, setFileUploaded] = useState(null);
   const [urlImgStudent, setUrlImgStudent] = useState(null);
+  const dispatch = useDispatch();
+  const { data, error, loading } = useSelector((state) => state.addNewStudent);
   const handleSubmit = (values) => {
     console.log(values);
+    dispatch(fetchRequest(values));
   };
+
+  useEffect(() => {
+    console.log(data);
+    if (data.length > 0 && error === null) {
+      console.log('Novo aluno criado');
+    }
+
+    if (error) {
+      console.log('Erro ao criar aluno');
+      console.log(error);
+    }
+  }, [data, error, loading]);
 
   return (
     <Formik
@@ -129,7 +148,7 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
               color="primary"
               size="medium"
             >
-              Adicionar estudante
+              {loading ? <SpinnerLoading size={20} /> : 'Adicionar Estudante'}
             </Button>
           </div>
         </FormStyled>
