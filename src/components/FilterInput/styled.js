@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { IoMdArrowDropdown } from 'react-icons/io';
 
 export const DivContainer = styled.div`
+  padding-left: 10px;
   display: flex;
   flex-direction: column;
   height: auto;
@@ -17,7 +18,7 @@ export const InputWrapper = styled.div`
   align-items: center;
   background-color: aliceblue;
   border: none;
-  width: 150px;
+  width: 50px;
   height: 28px;
   font-size: 15px;
   font-family: inherit;
@@ -35,9 +36,12 @@ export const InputWrapper = styled.div`
 `;
 
 export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   border-radius: 2px 2px 0 0;
-  width: 225px;
+  width: 55px;
   height: 28px;
   text-indent: 15px;
   font-size: 15px;
@@ -69,7 +73,7 @@ export const DropdownSortBy = styled.div`
   display: none;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
+  width: 150px;
   background-color: #edeaea;
   border-radius: 0px 0px 2px 2px;
   position: absolute;

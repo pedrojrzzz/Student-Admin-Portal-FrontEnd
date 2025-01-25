@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { LuFilter, LuFilterX } from 'react-icons/lu';
 import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 import {
   DivContainer,
@@ -62,9 +63,13 @@ export default function SortBy() {
         onClick={handleClickDropdown}
       >
         <Button className={checkedActive || checkedInactive ? 'active' : ''}>
-          Filter
+          {checkedActive || checkedInactive ? (
+            <LuFilterX size={18} />
+          ) : (
+            <LuFilter size={18} />
+          )}
         </Button>
-        <IconArrowDrop size={20} className={dropdownSortBy ? 'rotate' : ''} />
+        <IconArrowDrop size={40} className={dropdownSortBy ? 'rotate' : ''} />
       </InputWrapper>
 
       <DropdownSortBy

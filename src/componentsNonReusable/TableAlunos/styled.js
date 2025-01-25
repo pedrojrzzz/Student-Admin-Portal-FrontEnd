@@ -19,6 +19,11 @@ export const HeaderTableStudents = styled.div`
   margin-top: 30px;
   display: flex;
   flex-direction: row;
+  position: relative;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `;
 
 export const TitleHeaderTableStudents = styled.div`
@@ -30,11 +35,19 @@ export const TitleHeaderTableStudents = styled.div`
 `;
 
 export const DivSearchAndFilter = styled.div`
-  width: 33%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 900px) {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 700px) {
+    justify-content: space-between;
+  }
 `;
 
 //**?xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ?*/

@@ -5,11 +5,13 @@ import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material';
 import { Avatar } from '@mantine/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { FormStyled, ButtonCloseModal } from './styled';
-import { AddNewStudentSchema } from './careForm/AddNewStudentSchema';
-import ButtonFile from '../FileButton/ButtonFile';
+import { useNavigate } from 'react-router-dom';
 import { fetchRequest } from '../../redux/slices/addStudentSlice';
+import { AddNewStudentSchema } from './careForm/AddNewStudentSchema';
+import { FormStyled, ButtonCloseModal } from './styled';
+import ButtonFile from '../FileButton/ButtonFile';
 import { SpinnerLoading } from '../../styles/GlobalStyles';
+import handleSuccess from './careForm/handleSuccess';
 
 const initialValues = {
   nome: '',
@@ -25,6 +27,7 @@ const initialValues = {
 export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
   const [fileUploaded, setFileUploaded] = useState(null);
   const [urlImgStudent, setUrlImgStudent] = useState(null);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data, error, loading } = useSelector((state) => state.addNewStudent);
   const handleSubmit = (values) => {
@@ -33,9 +36,9 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
   };
 
   useEffect(() => {
-    console.log(data);
-    if (data.length > 0 && error === null) {
+    if (Object.keys(data).length > 0 && error === null) {
       console.log('Novo aluno criado');
+      handleSuccess(navigate);
     }
 
     if (error) {
