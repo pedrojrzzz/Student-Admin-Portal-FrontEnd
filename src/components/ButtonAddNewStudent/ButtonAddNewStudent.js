@@ -13,11 +13,17 @@ export default function ButtonAddNewStudent() {
     modalRef.current.showModal();
   };
 
-  const closeModal = (resetForm, setFileUploaded, setUrlImgStudent) => {
+  const closeModal = (
+    resetForm,
+    setFileUploaded,
+    setUrlImgStudent,
+    setProfileImgIsEmpty,
+  ) => {
     if (resetForm) resetForm();
     setFileUploaded(null);
     setUrlImgStudent(null);
     setModalVisible(false);
+    setProfileImgIsEmpty(false);
     modalRef.current.close();
   };
   return (

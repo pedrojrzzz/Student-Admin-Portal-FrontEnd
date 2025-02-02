@@ -3,24 +3,26 @@
 import { FileButton, Button, Group } from '@mantine/core';
 import { FcRemoveImage } from 'react-icons/fc';
 
-export default function ButtonFile({
-  fileUploaded,
-  setFileUploaded,
-  setUrlImgStudent,
-}) {
+export default function ButtonFile({ studentImgState, setStudentImgState }) {
   const handleReset = () => {
-    setFileUploaded(null);
-    setUrlImgStudent(null);
+    setStudentImgState((prev) => ({
+      ...prev,
+      fileUploaded: null,
+      urlImgStudent: null,
+    }));
   };
 
   const handleChange = (file) => {
     const fileUrl = URL.createObjectURL(file);
-    setFileUploaded(file);
-    setUrlImgStudent(fileUrl);
+    setStudentImgState((prev) => ({
+      ...prev,
+      fileUploaded: file,
+      urlImgStudent: fileUrl,
+    }));
   };
   return (
     <Group justify="center" display="block">
-      {!fileUploaded && (
+      {!studentImgState?.fileUploaded && (
         <FileButton
           onChange={(file) => handleChange(file)}
           accept="image/png,image/jpeg"
@@ -30,7 +32,7 @@ export default function ButtonFile({
               variant="default"
               gradient={{ from: 'cyan', to: 'blue', deg: 121 }}
               {...props}
-              disabled={fileUploaded}
+              disabled={studentImgState?.fileUploaded}
             >
               Alterar Imagem
             </Button>
@@ -38,10 +40,10 @@ export default function ButtonFile({
         </FileButton>
       )}
 
-      {fileUploaded && (
+      {studentImgState?.fileUploaded && (
         <Button variant="default" onHove onClick={handleReset}>
           <FcRemoveImage size={25} />
-          <p> {fileUploaded.name}</p>
+          <p> {studentImgState.fileUploaded.name}</p>
         </Button>
       )}
     </Group>

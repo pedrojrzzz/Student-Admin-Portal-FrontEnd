@@ -20,6 +20,13 @@ export const FormStyled = styled(Form)`
     border-radius: 50%;
     padding-bottom: 10px;
   }
+  .error-profile-img {
+    margin: 5px 0px 5px 0px;
+    p {
+      color: red;
+    }
+  }
+
   .div-nome-sobrenome {
     width: 100%;
     display: flex;

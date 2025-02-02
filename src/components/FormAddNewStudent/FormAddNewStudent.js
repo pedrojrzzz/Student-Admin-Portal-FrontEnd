@@ -25,12 +25,29 @@ const initialValues = {
 
 // eslint-disable-next-line no-unused-vars
 export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
+  const [studentImgState, setStudentImgState] = useState({
+    fileUploaded: null,
+    urlImgStudent: null,
+    isEmpty: false,
+  });
   const [fileUploaded, setFileUploaded] = useState(null);
   const [urlImgStudent, setUrlImgStudent] = useState(null);
+  const [profileImgIsEmpty, setProfileImgIsEmpty] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data, error, loading } = useSelector((state) => state.addNewStudent);
+
   const handleSubmit = (values) => {
+    if (!studentImgState.fileUploaded) {
+      // Não permitir envio do formulário sem uma foto de perfil pro aluno
+      setStudentImgState((prev) => ({
+        ...prev,
+        isEmpty: true,
+      }));
+      setProfileImgIsEmpty(true);
+      return;
+    }
+    setProfileImgIsEmpty(false);
     console.log(values);
     dispatch(fetchRequest(values));
   };
@@ -46,6 +63,16 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
       console.log(error);
     }
   }, [data, error, loading]);
+
+  useEffect(() => {
+    console.log(studentImgState);
+    if (studentImgState.fileUploaded) {
+      setStudentImgState((prev) => ({
+        ...prev,
+        isEmpty: false,
+      }));
+    }
+  }, [studentImgState.fileUploaded]);
 
   return (
     <Formik
@@ -63,7 +90,12 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
             <ButtonCloseModal
               size={30}
               onClick={() =>
-                funcCloseModal(resetForm, setFileUploaded, setUrlImgStudent)
+                funcCloseModal(
+                  resetForm,
+                  setFileUploaded,
+                  setUrlImgStudent,
+                  setProfileImgIsEmpty,
+                )
               }
             />
           </div>
@@ -71,19 +103,28 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
           <div className="div-container-img-student">
             <div className="img-student-perfil">
               <Avatar
-                src={urlImgStudent}
-                alt="nenhuma img"
+                src={studentImgState.urlImgStudent}
+                alt="profile picture"
                 size={150}
                 variant="light"
                 color="rgba(40, 165, 237, 1)"
                 radius="xl"
               />
             </div>
+            <div className="error-profile-img">
+              {studentImgState.isEmpty ? (
+                <p>
+                  A imagem de perfil é obrigatória. Selecione uma imagem para
+                  continuar.
+                </p>
+              ) : (
+                ' '
+              )}
+            </div>
 
             <ButtonFile
-              fileUploaded={fileUploaded}
-              setFileUploaded={setFileUploaded}
-              setUrlImgStudent={setUrlImgStudent}
+              studentImgState={studentImgState}
+              setStudentImgState={setStudentImgState}
             />
           </div>
 
