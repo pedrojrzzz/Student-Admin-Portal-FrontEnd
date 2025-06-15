@@ -7,6 +7,7 @@ import {
   secondyColor,
   formColor,
 } from '../../../config/colors';
+import { fontFamilyConfig } from '../../../config/fonts';
 
 export const FormRegisterContainer = styled.form`
   height: auto;
@@ -66,6 +67,7 @@ export const TitleContainer = styled.div`
 
   h1 {
     color: ${textColor};
+    font-family: ${fontFamilyConfig.emphasis};
   }
 
   @media (max-width: 1500px) {
@@ -173,6 +175,7 @@ export const InputContainer = styled.div`
     width: 300px;
     border-radius: 3px;
     text-indent: 5px;
+    font-family: ${fontFamilyConfig.text};
   }
 
   input:focus {
@@ -195,6 +198,7 @@ export const ButtonContainer = styled.div`
     border: none;
     font-size: 14px;
     transition: 0.3s;
+    font-family: ${fontFamilyConfig.text};
   }
 
   button:hover {

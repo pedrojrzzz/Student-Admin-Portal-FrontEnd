@@ -11,6 +11,7 @@ import watchFetchData from '../saga/dataSaga';
 import watchFetchContactApiForAuthorization from '../saga/checkAuthorizationSaga';
 import watchFetchAlunos from '../saga/alunosSaga';
 import alunosSlice from '../slices/alunosSlice';
+import addPhotoStudentSlice from '../slices/addPhotoStudentSlice';
 import studentEditSlice from '../slices/studentEditSlice';
 import studentEditFotoSlice from '../slices/studentEditFotoSlice';
 import addStudentSlice from '../slices/addStudentSlice';
@@ -21,6 +22,7 @@ import watchFetchLoginUser from '../saga/loginSaga';
 import watchFetchEditStudentData from '../saga/studentEditSaga';
 import watchFetchChangeFotoStudent from '../saga/studentEditFotoSaga';
 import watchFetchCreateStudentApi from '../saga/addStudentSaga';
+import watchFetchAddPhotoStudent from '../saga/addPhotoStudentSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -34,6 +36,7 @@ function* rootSaga() {
     fork(watchFetchEditStudentData),
     fork(watchFetchChangeFotoStudent),
     fork(watchFetchCreateStudentApi),
+    fork(watchFetchAddPhotoStudent),
   ]);
 }
 
@@ -47,6 +50,7 @@ const store = configureStore({
     userIsLoggedIn: userIsLoggedInSlice,
     infoUser: infoUserSlice,
     alunos: alunosSlice,
+    alunoAddPhoto: addPhotoStudentSlice,
     alunosEdit: studentEditSlice,
     alunosFotoEdit: studentEditFotoSlice,
     addNewStudent: addStudentSlice,

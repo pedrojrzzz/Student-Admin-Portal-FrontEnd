@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events  */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 
 import React from 'react';
@@ -55,7 +54,9 @@ export default function UserSpaceLogado() {
           <p>Olá, {dataUser ? dataUser.nome : 'Anônimo'}</p>
         </ContainerInfoUser>
         <ContainerLogout>
-          <p onClick={handleClickLogout}>Logout</p>
+          <p onClick={handleClickLogout} onKeyDown={null}>
+            Logout
+          </p>
         </ContainerLogout>
       </SideDivs>
     </DivContainer>

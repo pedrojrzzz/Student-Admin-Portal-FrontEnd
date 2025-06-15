@@ -7,9 +7,18 @@ import {
 import axios from '../../services/axios';
 import { getAuthorization } from '../../utils/authUtils';
 
-function cresteStudentsApi(newStudent) {
+function cresteStudentsApi({ newStudent, file }) {
   const authorization = getAuthorization();
-  return axios.post('/alunos', newStudent, {
+
+  console.log('dentro do saga');
+  console.log(newStudent);
+  console.log(file);
+
+  const formData = new FormData();
+  formData.append('aluno', JSON.stringify(newStudent));
+  formData.append('arquivo', file); // Arquivo aqui
+
+  return axios.post('/alunos', formData, {
     headers: {
       authorization: `Bearer ${authorization}`,
     },

@@ -71,7 +71,7 @@ export default function FormRegisterFormik() {
           <InputContainer>
             <FieldStyled
               name="name"
-              placeholder="Name"
+              placeholder="name"
               onBlur={(e) => {
                 handleFixInputName(e, setFieldValue);
               }}
@@ -89,7 +89,11 @@ export default function FormRegisterFormik() {
           </InputContainer>
 
           <InputContainer>
-            <FieldStyled name="password" type="password" placeholder="senha" />
+            <FieldStyled
+              name="password"
+              type="password"
+              placeholder="password"
+            />
             <ErrorMessage name="password" component={ComponentErrorMessage} />
           </InputContainer>
 
@@ -97,7 +101,7 @@ export default function FormRegisterFormik() {
             <FieldStyled
               name="repeatPassword"
               type="password"
-              placeholder="Confirme sua senha"
+              placeholder="repeat password"
             />
             <ErrorMessage
               name="repeatPassword"

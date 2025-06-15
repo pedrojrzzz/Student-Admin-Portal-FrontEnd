@@ -6,6 +6,7 @@ import { MantineProvider } from '@mantine/core';
 import store from './redux/store/store';
 import Router from './routes';
 import GlobalStyles from './styles/GlobalStyles';
+import { InjectFonts } from './components/InjectFonts/InjectFonts';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Provider store={store}>
           <BrowserRouter>
             <Router />
+            <InjectFonts />
             <GlobalStyles />
             <ToastContainer
               limit={1} // Permite apenas 1 toast por vez

@@ -12,9 +12,9 @@ export default function handleSuccess(navigate) {
   const notify = () => {
     return toast.success('Aluno criado com sucesso', options);
   };
-  setTimeout(() => {
-    navigate(0);
-  }, 3000);
+  // setTimeout(() => {
+  //   navigate(0);
+  // }, 3000);
 
   notify();
 }

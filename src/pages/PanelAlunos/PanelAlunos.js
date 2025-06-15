@@ -14,6 +14,8 @@ export default function PanelAlunos() {
   const { data, loading, error } = useSelector((state) => state.alunos);
   const alunoWasFetched = useRef(null);
 
+  console.log(data);
+
   useEffect(() => {
     if (alunoWasFetched.current === true) return;
     dispatch(fetchRequest());

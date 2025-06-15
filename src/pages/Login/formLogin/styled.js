@@ -7,6 +7,7 @@ import {
   secondyColor,
   formColor,
 } from '../../../config/colors';
+import { fontFamilyConfig } from '../../../config/fonts';
 
 export const FormLoginContainer = styled.form`
   height: auto;
@@ -101,6 +102,8 @@ export const TitleContainer = styled.div`
 
   h1 {
     color: ${textColor};
+    font-family: ${fontFamilyConfig.emphasis};
+    letter-spacing: 1px;
   }
 `;
 
@@ -109,6 +112,7 @@ export const ParagrafoContainer = styled.div`
   width: 100%;
 
   p {
+    font-family: ${fontFamilyConfig.text};
     color: ${textColor};
     font-size: 15px;
     font-weight: 700;
@@ -189,6 +193,7 @@ export const InputContainer = styled.div`
     border-radius: 3px;
     text-indent: 5px;
     margin-top: 5px;
+    font-family: ${fontFamilyConfig.text};
   }
 
   input:focus {
@@ -203,6 +208,7 @@ export const FieldStyled = styled(Field)`
     width: 300px;
     border-radius: 3px;
     text-indent: 5px;
+    font-family: ${fontFamilyConfig.text};
   }
 
   input:focus {
@@ -225,6 +231,7 @@ export const ButtonContainer = styled.div`
     border: none;
     font-size: 14px;
     transition: 0.3s;
+    font-family: ${fontFamilyConfig.text};
   }
 
   button:hover {

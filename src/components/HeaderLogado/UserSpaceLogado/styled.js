@@ -24,6 +24,11 @@ export const DivContainer = styled.div`
     width: 200px;
     font: 15px;
   }
+
+  @media (max-width: 600px) {
+    position: absolute;
+    right: 0px;
+  }
 `;
 
 export const DivIconUser = styled.div`

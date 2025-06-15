@@ -1,5 +1,65 @@
 import styled from 'styled-components';
 
+const borderColor = '#d9dbe0';
+const backgroundColor = '#ecf0fd';
+const titleColor = '#9c9898';
+const textColor = 'black';
+const titleFontSize = '15pt';
+const numberFontSize = '38pt';
+
+const DivBase = styled.div`
+  height: 110px;
+  width: 300px;
+  display: flex;
+  border-right: 0.3px solid ${borderColor};
+
+  .ContainerImage {
+    height: 100%;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .Elipse {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    background-color: ${backgroundColor};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  img {
+    height: 80px;
+  }
+
+  .ContainerTitleAndNumber {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ContainerTitle {
+    width: 150px;
+    color: ${titleColor};
+    font-size: ${titleFontSize};
+    font-weight: 500;
+    padding-top: 10px;
+  }
+
+  .ContainerNumber {
+    padding-top: 10px;
+    padding-right: 28px;
+    color: ${textColor};
+    font-size: ${numberFontSize};
+  }
+`;
+
 export const DivContainer = styled.div`
   height: 150px;
   width: 80%;
@@ -11,153 +71,15 @@ export const DivContainer = styled.div`
   justify-content: space-evenly;
   padding-left: 60px;
   padding-right: 60px;
-`;
 
-export const DivTotalAlunos = styled.div`
-  height: 110px;
-  width: 350px;
-  border-right: 0.3px solid #d9dbe0;
-  display: flex;
-
-  .ContainerImage {
-    height: 100%;
-    width: 45%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .Elipse {
-    border-radius: 50%;
-    height: 110px;
-    width: 110px;
-    background-color: #ecf0fd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  img {
-    height: 90px;
-  }
-
-  .ContainerTitleAndNumber {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .ContainerTitle {
-    width: 150px;
-    color: #9c9898;
-    font-size: 15pt;
-    font-weight: 500;
-    padding-top: 10px;
-  }
-
-  .ContainerNumber {
-    padding-top: 10px;
-    padding-right: 21px;
-    color: black;
-    font-size: 38pt;
+  @media (max-width: 1100px) {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 `;
 
-export const DivAlunosAtivos = styled.div`
-  height: 110px;
-  width: 350px;
-  border-right: 0.3px solid #d9dbe0;
-  display: flex;
+export const DivTotalAlunos = styled(DivBase)``;
 
-  .ContainerImage {
-    height: 100%;
-    width: 45%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
+export const DivAlunosAtivos = styled(DivBase)``;
 
-  .Elipse {
-    border-radius: 50%;
-    height: 110px;
-    width: 110px;
-    background-color: #ecf0fd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  img {
-    height: 90px;
-  }
-
-  .ContainerTitleAndNumber {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .ContainerTitle {
-    width: 150px;
-    color: #9c9898;
-    font-size: 15pt;
-    font-weight: 500;
-    padding-top: 10px;
-  }
-
-  .ContainerNumber {
-    padding-top: 10px;
-    padding-right: 28px;
-    color: black;
-    font-size: 38pt;
-  }
-`;
-
-export const DivAlunosInativos = styled.div`
-  height: 110px;
-  width: 350px;
-  display: flex;
-
-  .ContainerImage {
-    height: 100%;
-    width: 45%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .Elipse {
-    border-radius: 50%;
-    height: 110px;
-    width: 110px;
-    background-color: #ecf0fd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  img {
-    height: 90px;
-  }
-
-  .ContainerTitleAndNumber {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .ContainerTitle {
-    width: 150px;
-    color: #9c9898;
-    font-size: 15pt;
-    font-weight: 500;
-    padding-top: 10px;
-  }
-
-  .ContainerNumber {
-    padding-top: 10px;
-    padding-right: 28px;
-    color: black;
-    font-size: 38pt;
-  }
-`;
+export const DivAlunosInativos = styled(DivBase)``;

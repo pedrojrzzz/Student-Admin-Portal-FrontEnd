@@ -30,26 +30,35 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
     urlImgStudent: null,
     isEmpty: false,
   });
-  const [fileUploaded, setFileUploaded] = useState(null);
-  const [urlImgStudent, setUrlImgStudent] = useState(null);
+  const [fileUploaded, setFileUploaded] = useState(null); // Apagar depois, checar se está sendo usado
+  const [urlImgStudent, setUrlImgStudent] = useState(null); // Apagar depois, checar se está sendo usado
   const [profileImgIsEmpty, setProfileImgIsEmpty] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data, error, loading } = useSelector((state) => state.addNewStudent);
 
-  const handleSubmit = (values) => {
-    if (!studentImgState.fileUploaded) {
-      // Não permitir envio do formulário sem uma foto de perfil pro aluno
-      setStudentImgState((prev) => ({
-        ...prev,
-        isEmpty: true,
-      }));
-      setProfileImgIsEmpty(true);
-      return;
-    }
-    setProfileImgIsEmpty(false);
-    console.log(values);
-    dispatch(fetchRequest(values));
+  const handleSubmit = async (values) => {
+    // if (!studentImgState.fileUploaded) {
+    //   // Não permitir envio do formulário sem uma foto de perfil pro aluno
+    //   setStudentImgState((prev) => ({
+    //     ...prev,
+    //     isEmpty: true,
+    //   }));
+    //   setProfileImgIsEmpty(true);
+    //   return;
+    // }
+    // setProfileImgIsEmpty(false);
+    console.log(`antes do dispatch:`);
+    console.log(studentImgState);
+    dispatch(
+      fetchRequest({ newStudent: values, file: studentImgState.fileUploaded }),
+    );
+    // console.log('aqui o data do aluno criado:');
+    // console.log(data);
+    console.log({
+      id: data.id,
+      file: studentImgState.fileUploaded,
+    });
   };
 
   useEffect(() => {
@@ -62,7 +71,7 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
       console.log('Erro ao criar aluno');
       console.log(error);
     }
-  }, [data, error, loading]);
+  }, [loading]);
 
   useEffect(() => {
     console.log(studentImgState);

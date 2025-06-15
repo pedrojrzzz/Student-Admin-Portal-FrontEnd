@@ -26,7 +26,7 @@ export default function FormLoginFormik() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data, error, loading } = useSelector((state) => state.login);
-  const [buttonIsDisabled, setButtonIsDisable] = useState(false); // Não permitir que user envie muitas req pro servidor
+  const [buttonIsDisabled, setButtonIsDisable] = useState(false); // Não permitir que user envie muitas request pro servidor
   const fetchWasMade = useRef(false); // Checando se o dispatch já foi feito
   const initialValues = {
     email: '',
@@ -67,7 +67,7 @@ export default function FormLoginFormik() {
       {() => (
         <FormStyled>
           <TitleContainer>
-            <h1>Login</h1>
+            <h1>login</h1>
           </TitleContainer>
           <InputContainer>
             <FieldStyled
@@ -76,7 +76,9 @@ export default function FormLoginFormik() {
               type="email"
             />
             <DivError>
-              <ErrorMessage name="email" component={ComponentErrorMessage} />
+              {error && (
+                <ErrorMessage name="email" component={ComponentErrorMessage} />
+              )}
             </DivError>
           </InputContainer>
 
@@ -87,7 +89,12 @@ export default function FormLoginFormik() {
               type="password"
             />
             <DivError>
-              <ErrorMessage name="password" component={ComponentErrorMessage} />
+              {error && (
+                <ErrorMessage
+                  name="password"
+                  component={ComponentErrorMessage}
+                />
+              )}
             </DivError>
           </InputContainer>
           <ButtonContainer>
