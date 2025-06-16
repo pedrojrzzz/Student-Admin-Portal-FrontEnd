@@ -33,8 +33,6 @@ export default function Router() {
 
       <Route path="*" element={<Page404 />} />
 
-      <Route path="/editando" element={<PanelAlunos />} />
-
       <Route
         exact
         path="/portal-alunos"

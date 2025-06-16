@@ -10,6 +10,8 @@ const numberFontSize = '38pt';
 const DivBase = styled.div`
   height: 110px;
   width: 300px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   border-right: 0.3px solid ${borderColor};
 
@@ -58,6 +60,69 @@ const DivBase = styled.div`
     color: ${textColor};
     font-size: ${numberFontSize};
   }
+
+  @media (max-width: 1350px) {
+    width: 250px;
+
+    img {
+      height: 65px;
+    }
+
+    .ContainerTitle {
+      display: flex;
+      align-items: center;
+      padding-top: 0;
+      padding-right: 0;
+      width: 100%;
+      height: 50%;
+      font-size: 13pt;
+
+      p {
+        text-align: center;
+      }
+    }
+
+    .ContainerNumber {
+      font-size: 20pt;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    width: 200px;
+
+    img {
+      height: 55px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .ContainerImage {
+      display: none;
+    }
+
+    .ContainerTitleAndNumber {
+      width: 100%;
+    }
+
+    .ContainerTitle {
+      width: 100%;
+      p {
+        width: 100%;
+      }
+    }
+
+    .ContainerNumber {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0px;
+    }
+  }
 `;
 
 export const DivContainer = styled.div`
@@ -82,4 +147,6 @@ export const DivTotalAlunos = styled(DivBase)``;
 
 export const DivAlunosAtivos = styled(DivBase)``;
 
-export const DivAlunosInativos = styled(DivBase)``;
+export const DivAlunosInativos = styled(DivBase)`
+  border: none;
+`;

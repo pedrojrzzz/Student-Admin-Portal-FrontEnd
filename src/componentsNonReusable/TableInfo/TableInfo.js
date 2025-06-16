@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useSelector } from 'react-redux';
 import {
   DivContainer,
@@ -12,7 +11,7 @@ import inactiveStudentIcon from '../../images/alerta.png';
 import { useStudentCounter } from '../../hooks/useStudentCounter';
 
 export default function TableInfo() {
-  const { data, loading, error } = useSelector((state) => state.alunos);
+  const { data } = useSelector((state) => state.alunos);
   const countedData = useStudentCounter(data);
 
   return (
