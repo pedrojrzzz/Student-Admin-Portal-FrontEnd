@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { LiaUserSolid } from 'react-icons/lia';
+import { fontFamilyConfig } from '../../../config/fonts';
 
 export const DivContainer = styled.div`
   height: 100%;
@@ -8,13 +9,6 @@ export const DivContainer = styled.div`
   align-items: center;
   position: absolute;
   right: 40px;
-
-  a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 8px;
-  }
 
   @media (max-width: 1600px) {
     width: 250px;
@@ -53,6 +47,7 @@ export const ContainerInfoUser = styled.div`
     color: white;
     font-size: 17px;
     font-weight: 500;
+    font-family: ${fontFamilyConfig.text};
   }
 `;
 
@@ -64,6 +59,7 @@ export const ContainerLogout = styled.div`
   p {
     color: white;
     text-decoration: none;
+    font-family: ${fontFamilyConfig.text};
     font-size: 17px;
     font-weight: 500;
     cursor: pointer;

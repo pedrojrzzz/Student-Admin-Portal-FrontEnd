@@ -1,6 +1,0 @@
-Onde parei: Estou criando o modal que vai editar os alunos
-
-Task atual: acessar esse link, usar mui com formik pro form ficar legal, https://codesandbox.io/p/sandbox/simple-mui-formik-yup-form-validation-jlr1o?file=%2Fsrc%2FComponents%2FBasicFormValidation.js
-
-Objetivo: Projetar um sistema de gerenciamento de alunos de uma escola
-onde vai ser possível adicionar, deletar e modificar os alunos

@@ -9,7 +9,6 @@ import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
 import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 import ButtonEdit from '../../components/ButtonEdit/ButtonEdit';
 import ButtonAddNewStudent from '../../components/ButtonAddNewStudent/ButtonAddNewStudent';
-import imgStudent from '../../images/imgStudentMulher4.jpg';
 
 import {
   DivContainerFather,
@@ -68,10 +67,9 @@ export default function ColumnsNames() {
                     {/* Adicionando uma chave única para cada linha */}
                     <td>
                       <DivImgStudent>
-                        {/* Este é o código que vai para produção, descomente quando estiver pronto */}
-                        {/* <img src={currentObject.Fotos[0].url} alt="imgStudent" /> */}
-                        <img //apenas para ter uma imagem de teste
-                          src={imgStudent}
+                        <img
+                          crossOrigin="use-credentials"
+                          src={currentObject.Fotos[0].url}
                           alt="Imagem de perfil estudante"
                           className="img-perfil"
                         />
@@ -104,7 +102,7 @@ export default function ColumnsNames() {
         {listIsEmpty && loading === false ? (
           <DivLoading>
             <HiMiniMagnifyingGlass size={100} />
-            <p>Não foi encontrado nenhum aluno...</p>
+            <p>Nenhum aluno foi encontrado.</p>
           </DivLoading>
         ) : (
           ''
@@ -113,7 +111,7 @@ export default function ColumnsNames() {
         {loading ? (
           <DivLoading>
             <ClipLoader />
-            <p>Fetching students...</p>
+            <p>Buscando alunos...</p>
           </DivLoading>
         ) : (
           ''

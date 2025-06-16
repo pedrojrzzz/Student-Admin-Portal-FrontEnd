@@ -48,17 +48,9 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
     //   return;
     // }
     // setProfileImgIsEmpty(false);
-    console.log(`antes do dispatch:`);
-    console.log(studentImgState);
     dispatch(
       fetchRequest({ newStudent: values, file: studentImgState.fileUploaded }),
     );
-    // console.log('aqui o data do aluno criado:');
-    // console.log(data);
-    console.log({
-      id: data.id,
-      file: studentImgState.fileUploaded,
-    });
   };
 
   useEffect(() => {
