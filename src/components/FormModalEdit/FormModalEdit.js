@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/destructuring-assignment */
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field } from 'formik';
@@ -8,7 +5,6 @@ import { TextField, Button } from '@mui/material'; // Certifique-se de importar 
 import { useNavigate } from 'react-router-dom';
 import { EditStudentsDataSchema } from './handlers/EditStudentDataSchema';
 import { FormStyled, ButtonCloseModal } from './styled';
-import imgStudent from '../../images/imgStudentMulher4.jpg';
 import SanitizeDataModalEdit from './handlers/SanitizeData';
 import { fetchRequestEditStudents } from '../../redux/slices/studentEditSlice';
 import { fetchRequestEditFotoStudent } from '../../redux/slices/studentEditFotoSlice';
@@ -33,11 +29,7 @@ export default function FormModalEdit({ data, funcCloseModal }) {
     error: errorAlunosEdit,
   } = useSelector((state) => state.alunosEdit);
 
-  const { dataFotoSlice, loadingFotoSlice, errorFotoSlice } = useSelector(
-    (state) => state.alunosFotoEdit,
-  );
-
-  const { id, nome, sobrenome, email, idade, peso, altura } = data.data;
+  const { id, nome, sobrenome, email, idade, peso, altura, Fotos } = data.data;
 
   const handleSubmit = (values) => {
     const newObj = {
@@ -99,7 +91,8 @@ export default function FormModalEdit({ data, funcCloseModal }) {
             <div className="div-container-img-student">
               <div className="img-student-perfil">
                 <img
-                  src={imgStudent}
+                  crossOrigin="use-credentials"
+                  src={Fotos[0].url}
                   alt="Imagem de perfil estudante"
                   className="img-perfil"
                 />

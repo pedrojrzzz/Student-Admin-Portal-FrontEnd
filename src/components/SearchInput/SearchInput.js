@@ -1,11 +1,10 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-continue */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-unused-vars */
-import React, { useContext, useEffect } from 'react';
+
+import React, { useContext } from 'react';
 import { InputWrapper, SearchIcon, Input } from './styled';
 import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 
@@ -25,6 +24,7 @@ export default function SearchInput() {
         for (let key in newObj[i]) {
           if (newObj[i].hasOwnProperty(key)) {
             if (key === 'id') continue;
+            if (key === 'status') continue;
             if (typeof newObj[i][key] !== 'object' || newObj[i][key] === null) {
               newObj[i][key] = String(newObj[i][key]);
             }
@@ -40,6 +40,8 @@ export default function SearchInput() {
         }
       }
     }
+    console.log('novo objeto no pesquisador');
+    console.log(newObj);
     return newObj;
   }
 
@@ -60,7 +62,7 @@ export default function SearchInput() {
     if (objString === null) return;
     objString.map((item, index) => {
       Object.keys(item).forEach((key) => {
-        if (key === 'id' || key === 'Fotos') return; // Não checar chave id e Fotos, não necessário
+        if (key === 'id' || key === 'Fotos' || key === 'status') return; // Não checar chave id,Fotos e status, não necessário
         if (alreadySearch.includes(index)) return; // Se aluno já estiver incluido no resultado, não incluir novamente.
         if (item[key].includes(searchValue)) {
           result.push(item);

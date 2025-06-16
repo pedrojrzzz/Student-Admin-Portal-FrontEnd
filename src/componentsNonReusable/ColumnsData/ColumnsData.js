@@ -27,7 +27,8 @@ export default function ColumnsNames() {
   const { listToBeDisplayed, listIsEmpty, setListIsEmpty } = useContext(
     SearchAndFilterContext,
   );
-
+  console.log('lisToBeDisplayed');
+  console.log(listToBeDisplayed);
   const refreshPage = () => {
     navigate(0);
   };
@@ -84,6 +85,7 @@ export default function ColumnsNames() {
                     <td>{currentObject.peso}kg</td>
                     <td>{currentObject.altura}m</td>
                     <td>
+                      {console.log(currentObject.status)}
                       {currentObject.status === true ? (
                         <ActiveButton>Ativo</ActiveButton>
                       ) : (
