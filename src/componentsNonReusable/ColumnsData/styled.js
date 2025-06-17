@@ -3,12 +3,18 @@ import styled from 'styled-components';
 export const DivContainerFather = styled.div`
   height: 450px;
   width: 90%;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+    height: 500px;
+  }
 `;
 
 export const DivContainer = styled.div`
   height: 415px;
   width: 100%;
   overflow-y: auto;
+  overflow-x: auto;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -17,6 +23,8 @@ export const DivContainer = styled.div`
 
   table {
     width: 100%;
+    //min-width: 500px;
+    overflow-x: auto;
   }
 
   table thead {
@@ -60,6 +68,26 @@ export const DivContainer = styled.div`
     border-bottom: 0.5px solid rgb(217, 217, 219);
     padding: 10px; /* Adicione padding para as células */
     text-align: start;
+  }
+
+  @media (max-width: 1000px) {
+    .coluna-altura {
+      display: none;
+    }
+
+    .coluna-peso {
+      display: none;
+    }
+
+    .coluna-email {
+      display: none;
+    }
+  }
+
+  @media (max-width: 510px) {
+    table {
+      width: calc(100% - 100px);
+    }
   }
 `;
 

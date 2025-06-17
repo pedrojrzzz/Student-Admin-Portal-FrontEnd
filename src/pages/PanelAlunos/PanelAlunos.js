@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchRequest } from '../../redux/slices/alunosSlice';
 import { careFormErrors } from './careFetchErrors/careFetchErrors';
@@ -14,7 +13,16 @@ export default function PanelAlunos() {
   const { data, loading, error } = useSelector((state) => state.alunos);
   const alunoWasFetched = useRef(null);
 
-  console.log(data);
+  const contextValues = useMemo(
+    () => ({
+      data,
+      loading,
+      error,
+      resultSearch: null,
+      resultFilter: null,
+    }),
+    [data, loading, error],
+  );
 
   useEffect(() => {
     if (alunoWasFetched.current === true) return;
@@ -30,14 +38,18 @@ export default function PanelAlunos() {
     <div>
       <HeaderLogado />
 
-      <StudentsInfoContext.Provider
-        value={{ data, loading, error, resultSearch: null, resultFilter: null }}
-      >
+      <StudentsInfoContext.Provider value={contextValues}>
         <DivContainer>
           <TableInfo />
           <TableAlunos />
         </DivContainer>
       </StudentsInfoContext.Provider>
+      <div
+        style={{
+          height: '100px',
+          width: '100%',
+        }}
+      />
     </div>
   );
 }

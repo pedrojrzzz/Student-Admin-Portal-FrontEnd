@@ -10,6 +10,14 @@ export const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 1200px) {
+    width: 90%;
+  }
+
+  @media (max-width: 100px) {
+    width: 100%;
+  }
 `;
 
 //**?Header Table Students?*/

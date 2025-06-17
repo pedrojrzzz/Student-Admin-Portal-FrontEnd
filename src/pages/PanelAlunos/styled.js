@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const DivContainer = styled.div`
   background-color: #2c2e33;
-  height: 100vh; // Alterar para auto depois
-  width: 100vw;
+  height: auto; // Alterar para auto depois
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  //overflow: hidden;
   padding-top: 40px;
 `;
 

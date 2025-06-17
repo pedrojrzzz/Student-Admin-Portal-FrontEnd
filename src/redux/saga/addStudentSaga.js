@@ -10,10 +10,6 @@ import { getAuthorization } from '../../utils/authUtils';
 function cresteStudentsApi({ newStudent, file }) {
   const authorization = getAuthorization();
 
-  console.log('dentro do saga');
-  console.log(newStudent);
-  console.log(file);
-
   const formData = new FormData();
   formData.append('aluno', JSON.stringify(newStudent));
   formData.append('arquivo', file); // Arquivo aqui

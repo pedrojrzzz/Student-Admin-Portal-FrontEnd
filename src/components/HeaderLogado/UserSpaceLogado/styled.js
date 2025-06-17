@@ -19,9 +19,16 @@ export const DivContainer = styled.div`
     font: 15px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 750px) {
+    width: 165px;
     position: absolute;
-    right: 0px;
+    right: 15px;
+    column-gap: 7px;
+  }
+
+  @media (max-width: 600px) {
+    width: 150px;
+    right: 50px;
   }
 `;
 

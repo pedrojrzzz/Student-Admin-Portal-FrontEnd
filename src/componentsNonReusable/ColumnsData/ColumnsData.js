@@ -51,10 +51,10 @@ export default function ColumnsNames() {
                 <p>Imagem</p>
               </th>
               <th>Nome</th>
-              <th>Email</th>
+              <th className="coluna-email">Email</th>
               <th>Idade</th>
-              <th>Peso</th>
-              <th>Altura</th>
+              <th className="coluna-peso">Peso</th>
+              <th className="coluna-altura">Altura</th>
               <th>Status</th>
               <th className="columnEdit">
                 <p>Editar</p>
@@ -80,12 +80,11 @@ export default function ColumnsNames() {
                       {' '}
                       {`${currentObject.nome} ${currentObject.sobrenome}`}
                     </td>
-                    <td>{currentObject.email}</td>
+                    <td className="coluna-email">{currentObject.email}</td>
                     <td>{currentObject.idade}</td>
-                    <td>{currentObject.peso}kg</td>
-                    <td>{currentObject.altura}m</td>
+                    <td className="coluna-peso">{currentObject.peso}kg</td>
+                    <td className="coluna-altura">{currentObject.altura}m</td>
                     <td>
-                      {console.log(currentObject.status)}
                       {currentObject.status === true ? (
                         <ActiveButton>Ativo</ActiveButton>
                       ) : (

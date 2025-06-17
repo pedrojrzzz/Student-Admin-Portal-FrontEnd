@@ -8,18 +8,18 @@ export default createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    
+
   }
 
-  
   html, body, #root {
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
   }
 
   body {
     font-family: sans-serif;
     background-color: ${fifthColor};
+    
   }
 
   body .Toastify__toast-container {

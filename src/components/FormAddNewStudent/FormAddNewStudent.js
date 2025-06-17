@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Formik, Field } from 'formik';
@@ -23,7 +22,6 @@ const initialValues = {
   status: 1,
 };
 
-// eslint-disable-next-line no-unused-vars
 export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
   const [studentImgState, setStudentImgState] = useState({
     fileUploaded: null,
@@ -35,26 +33,30 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
   const [profileImgIsEmpty, setProfileImgIsEmpty] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { data, error, loading } = useSelector((state) => state.addNewStudent);
+  const { response, error, loading } = useSelector(
+    (state) => state.addNewStudent,
+  );
 
   const handleSubmit = async (values) => {
-    // if (!studentImgState.fileUploaded) {
-    //   // Não permitir envio do formulário sem uma foto de perfil pro aluno
-    //   setStudentImgState((prev) => ({
-    //     ...prev,
-    //     isEmpty: true,
-    //   }));
-    //   setProfileImgIsEmpty(true);
-    //   return;
-    // }
-    // setProfileImgIsEmpty(false);
+    if (!studentImgState.fileUploaded) {
+      // Não permitir envio do formulário sem uma foto de perfil pro aluno
+      setStudentImgState((prev) => ({
+        ...prev,
+        isEmpty: true,
+      }));
+      setProfileImgIsEmpty(true);
+      return;
+    }
+    setProfileImgIsEmpty(false);
+
     dispatch(
       fetchRequest({ newStudent: values, file: studentImgState.fileUploaded }),
     );
+    modalSelector.current.close();
   };
 
   useEffect(() => {
-    if (Object.keys(data).length > 0 && error === null) {
+    if (Object.keys(response).length > 0 && error === null) {
       console.log('Novo aluno criado');
       handleSuccess(navigate);
     }
@@ -65,15 +67,15 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
     }
   }, [loading]);
 
-  useEffect(() => {
-    console.log(studentImgState);
-    if (studentImgState.fileUploaded) {
-      setStudentImgState((prev) => ({
-        ...prev,
-        isEmpty: false,
-      }));
-    }
-  }, [studentImgState.fileUploaded]);
+  // useEffect(() => {
+  //   console.log(studentImgState);
+  //   if (studentImgState.fileUploaded) {
+  //     setStudentImgState((prev) => ({
+  //       ...prev,
+  //       isEmpty: false,
+  //     }));
+  //   }
+  // }, [studentImgState.fileUploaded]);
 
   return (
     <Formik
@@ -133,7 +135,6 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
             <Field
               name="nome"
               as={TextField}
-              /* defaultValue={props.data.data.nome} */
               label="Nome"
               variant="outlined"
               error={touched.nome && Boolean(errors.nome)}

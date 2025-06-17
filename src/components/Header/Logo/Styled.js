@@ -25,6 +25,9 @@ export const DivContainer = styled.div`
   }
 
   @media (max-width: 600px) {
+    width: auto;
+    margin-left: 10px;
+
     a {
       font-size: 22px;
     }

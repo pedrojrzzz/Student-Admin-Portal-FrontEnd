@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  data: [],
+  response: [],
   loading: false,
   error: null,
 };
@@ -18,7 +18,7 @@ const addStudentSlice = createSlice({
 
     fetchSuccess(state, action) {
       state.loading = false;
-      state.data = action.payload;
+      state.response = action.payload;
     },
 
     fetchError(state, action) {
