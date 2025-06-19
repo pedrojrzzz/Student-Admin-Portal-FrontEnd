@@ -44,9 +44,13 @@ const DivBase = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
   .ContainerTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 150px;
     color: ${titleColor};
     font-size: ${titleFontSize};
@@ -55,8 +59,9 @@ const DivBase = styled.div`
   }
 
   .ContainerNumber {
-    padding-top: 10px;
-    padding-right: 28px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     color: ${textColor};
     font-size: ${numberFontSize};
   }
@@ -136,6 +141,10 @@ export const DivContainer = styled.div`
   justify-content: space-evenly;
   padding-left: 60px;
   padding-right: 60px;
+
+  @media (max-width: 1200px) {
+    width: 90%;
+  }
 
   @media (max-width: 1100px) {
     padding-left: 10px;

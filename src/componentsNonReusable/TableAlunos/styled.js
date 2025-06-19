@@ -22,12 +22,13 @@ export const DivContainer = styled.div`
 
 //**?Header Table Students?*/
 export const HeaderTableStudents = styled.div`
-  width: 90%;
+  width: 85%;
   height: fit-content;
   margin-top: 30px;
   display: flex;
   flex-direction: row;
   position: relative;
+  margin-bottom: 20px;
 
   @media (max-width: 900px) {
     flex-direction: column;
