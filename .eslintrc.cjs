@@ -34,7 +34,6 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'import/no-extraneous-dependencies': 0,
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
     'react/prop-types': 0,
     'consistent-return': 0,
     'spaced-comment': 0,
