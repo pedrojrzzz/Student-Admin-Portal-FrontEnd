@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
 import { toast } from 'react-toastify';
 
 export default function handleSuccess(navigate) {
-  console.log('oi estou dentro do handleSuccess');
   const options = {
     position: 'top-center',
     pauseOnHover: false,
@@ -18,5 +16,3 @@ export default function handleSuccess(navigate) {
 
   notify();
 }
-
-// Não vou usar o navigate, vou mudar o valor do aluno no listToBeDisplayed

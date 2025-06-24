@@ -40,8 +40,6 @@ export default function SearchInput() {
         }
       }
     }
-    console.log('novo objeto no pesquisador');
-    console.log(newObj);
     return newObj;
   }
 

@@ -7,9 +7,6 @@ const option = {
 };
 
 export default function handleErrors(error) {
-  console.log('dentro do handleErrors');
-  console.log(error);
-
   const notify = (message) => toast.error(message, option);
 
   if (error?.status === 400) {

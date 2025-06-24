@@ -2,7 +2,6 @@
 import { toast } from 'react-toastify';
 
 export default function handleSuccess(response, navigate) {
-  console.log('oi estou dentro do handleSuccess');
   const options = {
     position: 'top-center',
     pauseOnHover: false,

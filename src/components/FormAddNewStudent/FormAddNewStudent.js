@@ -57,18 +57,11 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
 
   useEffect(() => {
     if (Object.keys(response).length > 0 && error === null) {
-      console.log('Novo aluno criado');
       handleSuccess(navigate);
-    }
-
-    if (error) {
-      console.log('Erro ao criar aluno');
-      console.log(error);
     }
   }, [loading]);
 
   // useEffect(() => {
-  //   console.log(studentImgState);
   //   if (studentImgState.fileUploaded) {
   //     setStudentImgState((prev) => ({
   //       ...prev,
