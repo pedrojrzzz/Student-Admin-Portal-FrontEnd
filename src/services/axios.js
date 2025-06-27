@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'http://backendsap.pedroinc.cloud',
+  baseURL: 'https://backendsap.pedroinc.cloud',
   withCredentials: true,
 });
