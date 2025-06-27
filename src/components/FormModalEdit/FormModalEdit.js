@@ -8,6 +8,7 @@ import { FormStyled, ButtonCloseModal } from './styled';
 import SanitizeDataModalEdit from './handlers/SanitizeData';
 import { fetchRequestEditStudents } from '../../redux/slices/studentEditSlice';
 import { fetchRequestEditFotoStudent } from '../../redux/slices/studentEditFotoSlice';
+import { fetchRequest as getStudents } from '../../redux/slices/alunosSlice';
 import { SpinnerLoading } from '../../styles/GlobalStyles';
 import '@mantine/core/styles.css';
 import SwitchButton from '../SwitchButton/SwitchButton';
@@ -65,8 +66,9 @@ export default function FormModalEdit({ data, funcCloseModal }) {
       !successMessageAlreadyDisplayed.current
     ) {
       successMessageAlreadyDisplayed.current = true;
+      dispatch(getStudents());
       funcCloseModal();
-      handleSuccess(dataAlunosEdit.response, navigate);
+      handleSuccess(dataAlunosEdit.response);
     }
   }, [errorAlunosEdit, dataAlunosEdit]);
 
