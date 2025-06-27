@@ -28,7 +28,8 @@ export default function FormModalEdit({ data, funcCloseModal }) {
     error: errorAlunosEdit,
   } = useSelector((state) => state.alunosEdit);
 
-  const { id, nome, sobrenome, email, idade, peso, altura, Fotos } = data.data;
+  const { id, nome, sobrenome, email, idade, peso, altura, status, Fotos } =
+    data.data;
 
   const handleSubmit = (values) => {
     const newObj = {
@@ -162,7 +163,7 @@ export default function FormModalEdit({ data, funcCloseModal }) {
             </div>
 
             <div className="div-status">
-              <SwitchButton setChecked={setChecked} checked={checked} />
+              <SwitchButton setChecked={setChecked} checked={status} />
             </div>
 
             <div className="div-buttons">
