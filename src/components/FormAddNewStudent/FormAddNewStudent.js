@@ -37,6 +37,8 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
     (state) => state.addNewStudent,
   );
 
+  const { loading: loadingGetStudents } = useSelector((state) => state.alunos);
+
   const handleSubmit = async (values) => {
     if (!studentImgState.fileUploaded) {
       // Não permitir envio do formulário sem uma foto de perfil pro aluno
@@ -52,12 +54,12 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
     dispatch(
       fetchRequest({ newStudent: values, file: studentImgState.fileUploaded }),
     );
-    modalSelector.current.close();
   };
 
   useEffect(() => {
     if (Object.keys(response).length > 0 && error === null) {
       dispatch(getStudents());
+      modalSelector.current.close();
       handleSuccess();
     }
   }, [loading]);
