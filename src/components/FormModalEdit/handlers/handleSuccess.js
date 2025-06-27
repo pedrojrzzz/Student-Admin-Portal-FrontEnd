@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { toast } from 'react-toastify';
 
-export default function handleSuccess(response) {
+export default function handleSuccess() {
   const options = {
     position: 'top-center',
     pauseOnHover: false,
@@ -9,7 +9,7 @@ export default function handleSuccess(response) {
   };
   // eslint-disable-next-line arrow-body-style
   const notify = () => {
-    return toast.success(response[0], options);
+    return toast.success('Dados alterados com sucesso', options);
   };
   notify();
 }

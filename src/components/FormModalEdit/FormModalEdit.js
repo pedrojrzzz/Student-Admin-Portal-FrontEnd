@@ -66,7 +66,7 @@ export default function FormModalEdit({ data, funcCloseModal }) {
       successMessageAlreadyDisplayed.current = true;
       dispatch(getStudents());
       funcCloseModal();
-      handleSuccess(dataAlunosEdit.response);
+      handleSuccess();
     }
   }, [errorAlunosEdit, dataAlunosEdit]);
 
