@@ -6,7 +6,6 @@ import {
 } from './styled';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import FilterInput from '../../components/FilterInput/FilterInput';
-//import ColumnsData from '../ColumnsData/ColumnsData';
 import TableStudents from '../TableStudents/TableStudents';
 import { StudentsInfoContextProvider } from '../../context/StudentsInfoContext';
 import { SearchAndFilterContextProvider } from '../../context/SearchAndFilterContext';

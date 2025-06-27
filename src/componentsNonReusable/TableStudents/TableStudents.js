@@ -49,7 +49,7 @@ export default function TableStudents() {
           />
         </DivImgStudent>
       </TableCell>
-      <TableCell align="left">{row.nome}</TableCell>
+      <TableCell align="left">{`${row.nome} ${row.sobrenome}`}</TableCell>
       <TableCell align="left">{row.email}</TableCell>
       <TableCell align="center">{row.idade}</TableCell>
       <TableCell align="center">{row.peso}</TableCell>

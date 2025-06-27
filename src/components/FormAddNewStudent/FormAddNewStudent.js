@@ -4,8 +4,9 @@ import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material';
 import { Avatar } from '@mantine/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { fetchRequest } from '../../redux/slices/addStudentSlice';
+import { fetchRequest as getStudents } from '../../redux/slices/alunosSlice';
+
 import { AddNewStudentSchema } from './careForm/AddNewStudentSchema';
 import { FormStyled, ButtonCloseModal } from './styled';
 import ButtonFile from '../FileButton/ButtonFile';
@@ -31,7 +32,6 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
   const [fileUploaded, setFileUploaded] = useState(null); // Apagar depois, checar se está sendo usado
   const [urlImgStudent, setUrlImgStudent] = useState(null); // Apagar depois, checar se está sendo usado
   const [profileImgIsEmpty, setProfileImgIsEmpty] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { response, error, loading } = useSelector(
     (state) => state.addNewStudent,
@@ -57,18 +57,10 @@ export default function FormAddNewStudent({ modalSelector, funcCloseModal }) {
 
   useEffect(() => {
     if (Object.keys(response).length > 0 && error === null) {
-      handleSuccess(navigate);
+      dispatch(getStudents());
+      handleSuccess();
     }
   }, [loading]);
-
-  // useEffect(() => {
-  //   if (studentImgState.fileUploaded) {
-  //     setStudentImgState((prev) => ({
-  //       ...prev,
-  //       isEmpty: false,
-  //     }));
-  //   }
-  // }, [studentImgState.fileUploaded]);
 
   return (
     <Formik

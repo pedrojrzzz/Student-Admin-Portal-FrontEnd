@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-export default function handleSuccess(navigate) {
+export default function handleSuccess() {
   const options = {
     position: 'top-center',
     pauseOnHover: false,
@@ -10,9 +10,6 @@ export default function handleSuccess(navigate) {
   const notify = () => {
     return toast.success('Aluno criado com sucesso', options);
   };
-  setTimeout(() => {
-    navigate(0);
-  }, 3000);
 
   notify();
 }
