@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material'; // Certifique-se de importar o Button
-import { useNavigate } from 'react-router-dom';
 import { EditStudentsDataSchema } from './handlers/EditStudentDataSchema';
 import { FormStyled, ButtonCloseModal } from './styled';
 import SanitizeDataModalEdit from './handlers/SanitizeData';
@@ -19,7 +18,6 @@ import handleSuccess from './handlers/handleSuccess';
 export default function FormModalEdit({ data, funcCloseModal }) {
   const [fileUploaded, setFileUploaded] = useState(null);
   const [checked, setChecked] = useState(true);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const errorAlreadyDisplayed = useRef(false);
   const successMessageAlreadyDisplayed = useRef(false);
