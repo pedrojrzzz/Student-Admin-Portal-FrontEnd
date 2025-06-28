@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { TextField, Button } from '@mui/material'; // Certifique-se de importar o Button
@@ -12,24 +12,21 @@ import { SpinnerLoading } from '../../styles/GlobalStyles';
 import '@mantine/core/styles.css';
 import SwitchButton from '../SwitchButton/SwitchButton';
 import ButtonFile from '../FileButton/ButtonFile';
-import handleErrors from './handlers/handleErrors';
-import handleSuccess from './handlers/handleSuccess';
 
 export default function FormModalEdit({ data, funcCloseModal }) {
   const [fileUploaded, setFileUploaded] = useState(null);
-  const [checked, setChecked] = useState(true);
-  const dispatch = useDispatch();
-  const errorAlreadyDisplayed = useRef(false);
-  const successMessageAlreadyDisplayed = useRef(false);
 
-  const {
-    data: dataAlunosEdit,
-    loading: loadingAlunosEdit,
-    error: errorAlunosEdit,
-  } = useSelector((state) => state.alunosEdit);
+  const dispatch = useDispatch();
+  // const errorAlreadyDisplayed = useRef(false);
+  // const successMessageAlreadyDisplayed = useRef(false);
+
+  const { loading: loadingAlunosEdit } = useSelector(
+    (state) => state.alunosEdit,
+  );
 
   const { id, nome, sobrenome, email, idade, peso, altura, status, Fotos } =
     data.data;
+  const [checked, setChecked] = useState(status);
 
   const handleSubmit = (values) => {
     const newObj = {
@@ -48,28 +45,10 @@ export default function FormModalEdit({ data, funcCloseModal }) {
         fetchRequestEditFotoStudent({ id: newObj.id, file: fileUploaded }),
       );
     }
-  };
 
-  useEffect(() => {
-    if (errorAlunosEdit && !errorAlreadyDisplayed.current) {
-      // Marca o erro como já exibido
-      errorAlreadyDisplayed.current = true;
-      funcCloseModal(); // Fecha o modal
-      handleErrors(errorAlunosEdit); // Lida com o erro
-    }
-    if (!errorAlunosEdit) {
-      errorAlreadyDisplayed.current = false;
-    }
-    if (
-      Object.keys(dataAlunosEdit).length > 0 &&
-      !successMessageAlreadyDisplayed.current
-    ) {
-      successMessageAlreadyDisplayed.current = true;
-      dispatch(getStudents());
-      funcCloseModal();
-      handleSuccess();
-    }
-  }, [errorAlunosEdit, dataAlunosEdit]);
+    funcCloseModal();
+    dispatch(getStudents());
+  };
 
   return (
     <div>
@@ -163,7 +142,7 @@ export default function FormModalEdit({ data, funcCloseModal }) {
             </div>
 
             <div className="div-status">
-              <SwitchButton setChecked={setChecked} checked={status} />
+              <SwitchButton setChecked={setChecked} checked={checked} />
             </div>
 
             <div className="div-buttons">

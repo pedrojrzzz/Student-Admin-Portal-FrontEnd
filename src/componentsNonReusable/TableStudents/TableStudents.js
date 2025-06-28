@@ -25,7 +25,7 @@ import { SearchAndFilterContext } from '../../context/SearchAndFilterContext';
 
 export default function TableStudents() {
   // Estado global dos alunos
-  const { loading, error } = useSelector((state) => state.alunos);
+  const { data, loading, error } = useSelector((state) => state.alunos);
 
   // Estado de pesquisa e filtro
   const { listToBeDisplayed, listIsEmpty } = useContext(SearchAndFilterContext);
@@ -92,7 +92,7 @@ export default function TableStudents() {
             </TableRow>
           </TableHead>
           <TableBody style={{ position: 'relative' }}>
-            {listToBeDisplayed && rows}
+            {data.length >= 1 && rows}
 
             {loading && (
               <DivMessage>
@@ -104,7 +104,6 @@ export default function TableStudents() {
             {error && (
               <DivMessage>
                 <GiShipWreck size={100} />
-
                 <p>Desculpe, não foi possível buscar os alunos</p>
               </DivMessage>
             )}

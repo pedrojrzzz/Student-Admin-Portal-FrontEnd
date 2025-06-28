@@ -12,6 +12,7 @@ const alunosSlice = createSlice({
   initialState,
   reducers: {
     fetchRequest(state) {
+      state.data = [];
       state.loading = true;
       state.error = null;
     },

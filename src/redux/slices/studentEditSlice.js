@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import handleSuccess from '../../components/FormModalEdit/handlers/handleSuccess';
+import handleErrors from '../../components/FormModalEdit/handlers/handleErrors';
 /* eslint-disable no-param-reassign */
 
 const initialState = {
@@ -12,6 +14,7 @@ const studentEditSlice = createSlice({
   initialState,
   reducers: {
     fetchRequestEditStudents(state) {
+      state.data = [];
       state.loading = true;
       state.error = null;
     },
@@ -19,11 +22,13 @@ const studentEditSlice = createSlice({
     fetchSuccessEditStudent(state, action) {
       state.loading = false;
       state.data = action.payload;
+      handleSuccess();
     },
 
     fetchErrorEditStudent(state, action) {
       state.loading = false;
       state.error = action.payload;
+      handleErrors();
     },
   },
 });
